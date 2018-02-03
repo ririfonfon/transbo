@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang='fr-FR'>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta name='viewport' content='width=device-width' />
+  <title>Console Control</title>
+  <script type='text/javascript' src='main.js'></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+<body class="noselect noscroll">
+<div class="content">
+    <br/>  <br/>  <br/>
+  <h1>Console Control</h1>
+  <form>
+  <canvas id='colorbar'></canvas>
+  <br/>
+
+  <div class="slider-group">
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c1_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="this.form.c1.value=this.value; prepareVar1(); " >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c1' type='range' value='0' min='0' max='255' step='1' oninput=" this.form.c1_in.value=this.value; prepareVar1();"  >
+      </div>
+      <div class="slider-title">
+        Access
+      </div>
+    </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c2_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar2(); this.form.c2.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c2' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar2(); this.form.c2_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        Vest.
+      </div>
+    </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c3_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar3(); this.form.c3.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c3' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar3(); this.form.c3_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        Compt.
+      </div>
+    </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c4_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar4(); this.form.c4.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c4' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar4(); this.form.c4_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        Transbo
+      </div>
+    </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c5_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar5(); this.form.c5.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c5' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar5(); this.form.c5_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        LED
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div id='controls'>
+      <ul id='mode'>
+         <li><a  class='m active' id='1'>Mauve</a></li>
+         <li><a  class='m' id='2'>Rouge</a></li>
+         <li><a  class='m' id='3'>Vert</a></li>
+         <li><a  class='m' id='4'>Bleu</a></li>
+         <li><a  class='m' id='5'>Orange</a></li>
+         <li><a  class='m' id='6'>Special</a></li>
+
+      </ul>
+    </div>
+   </form>
+ </div><!--  END CONTENT -->
+</body>
+</html>
