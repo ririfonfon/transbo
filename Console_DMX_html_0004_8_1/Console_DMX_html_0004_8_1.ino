@@ -101,7 +101,7 @@ const char* ssid     = "esptransbo";
 const char* password = "esptransbo";
 
 //ESP8266WiFiMulti WiFiMulti;
-ESP8266WebServer server = ESP8266WebServer(80);
+ESP8266WebServer server ( 80 );
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 // dmx shield
