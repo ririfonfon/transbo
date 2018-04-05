@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.62 (Windows - x86)">
+  <section name="config">
+    <options closefiles="1" openmode="1" name="TRAN V11 Multi FLASH"/>
+  </section>
+  <section name="data">
+    <explorer view="" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2018-04-05 19:01" user="ririf" host="BOMBASSEPORTABL"/>
+  </section>
+  <section name="files">
+    <file name="MIDI_Faders.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="ba73cd6e6e19ac31b472f15c0317c3e3"/>
+    </file>
+    <file name="MIDI_LAUNCH.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="ddc24ba9f67a62e894ede872a47b433f"/>
+    </file>
+    <file name="MIDI_LED.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="7be80b4d761af661621df3814915263d"/>
+    </file>
+    <file name="MIDI_MyVariables.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="00ae53c6c5fcf8b76ac7da671a812c6b"/>
+    </file>
+    <file name="MIDI_PulsarDespulsar.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="10afc0945f92998ff4ce0157663013f7"/>
+    </file>
+    <file name="MIDI_Search_Register.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="ce7cb869c7b0cbb75f75ea98deceb3a5"/>
+    </file>
+    <file name="MidiMAIN.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="ab776edcd925c71ca56fc3319ac67828"/>
+    </file>
+    <file name="MidiRequester.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="f71ac67de2987cc263cb589ccc1a02f2"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="Default Target" enabled="1" default="1">
+      <inputfile value="MidiMAIN.pb"/>
+      <outputfile value=""/>
+      <compiler version="PureBasic 5.62 (Windows - x86)"/>
+      <executable value="TRANS V10 thread multi flash 00.exe"/>
+      <options thread="1" xpskin="1" admin="1" onerror="1"/>
+      <purifier enable="1"/>
+      <temporaryexe value="source"/>
+      <icon enable="1">gmanet.ico</icon>
+      <debugger custom="1" type="ide"/>
+      <warnings custom="1" type="ignore"/>
+      <versioninfo enable="1">
+        <field0 value="10"/>
+        <field1 value="10"/>
+        <field2 value="RIRI"/>
+        <field3 value="MULTIMIDI"/>
+        <field4 value="V10"/>
+        <field5 value="10"/>
+        <field9 value="RIRI"/>
+        <field10 value="RIRI"/>
+        <field11 value="RIRI"/>
+      </versioninfo>
+    </target>
+  </section>
+</project>
