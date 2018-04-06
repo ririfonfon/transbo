@@ -46,7 +46,8 @@ Dim LaunchJ.b(78)
 
 Dim Callkey.l(50)
 
-
+#MaxMidiCodeur = 512
+Dim Codeur_CodeurValues(#MaxMidiCodeur)
 
 
 #Interval = 40
@@ -82,7 +83,7 @@ Global my_hMidiOut6.l
 #ShowMsgBox = #True  ;IF #TRUE IT SHOWS MESSAGE DEBUG BOXES
 Global PtoEncontrado
 
-; IDE Options = PureBasic 5.50 (Windows - x64)
-; CursorPosition = 48
+; IDE Options = PureBasic 5.62 (Windows - x86)
+; CursorPosition = 49
 ; UseIcon = bcedit.ico
 ; Executable = ..\W7_FlashNov2012_Wait.exe

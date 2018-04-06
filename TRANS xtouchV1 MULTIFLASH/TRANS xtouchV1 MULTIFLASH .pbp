@@ -7,9 +7,13 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2018-04-06 01:14" user="ririf" host="BOMBASSEPORTABL"/>
+    <lastopen date="2018-04-06 09:22" user="ririf" host="BOMBASSEPORTABL"/>
   </section>
   <section name="files">
+    <file name="MGRartnetnewtom.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="c7e75cbc246a67543571c6c25f41411a"/>
+    </file>
     <file name="MIDI_Faders.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
       <fingerprint md5="ba73cd6e6e19ac31b472f15c0317c3e3"/>
@@ -24,11 +28,11 @@
     </file>
     <file name="MIDI_MyVariables.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="00ae53c6c5fcf8b76ac7da671a812c6b"/>
+      <fingerprint md5="6b9a0b468da48d6d8f98ee01fbb2fd64"/>
     </file>
     <file name="MIDI_PulsarDespulsar.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="34f04a084da145ce7cf705cb3707a53e"/>
+      <fingerprint md5="04c4a122294adf968e020611aad6c929"/>
     </file>
     <file name="MIDI_Search_Register.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -36,15 +40,11 @@
     </file>
     <file name="MidiMAIN.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="f84beecfc4750dda63757dad8b060885"/>
+      <fingerprint md5="69f562371feda3c9de87e4cd26ff81ae"/>
     </file>
     <file name="MidiRequester.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
       <fingerprint md5="f71ac67de2987cc263cb589ccc1a02f2"/>
-    </file>
-    <file name="MGRartnetnewtom.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="81ee0df8af15dc026b9e6437fe16d4e5"/>
     </file>
   </section>
   <section name="targets">

@@ -35,13 +35,13 @@ Value_last16 = 1
 
 
 ;LOCAL PROCEDURE
-Prototype setPORTS(portIN.i, portOUT.i)
-Prototype setSUBNET(sub.i)
-Prototype startNODE()
-Prototype stopNODE()
-Prototype restartNODE()
-Prototype getDMX(channel.i)
-Prototype sendDMX(channel.i, value.i)
+PrototypeC setPORTS(portIN.i, portOUT.i)
+PrototypeC setSUBNET(sub.i)
+PrototypeC startNODE()
+PrototypeC stopNODE()
+PrototypeC restartNODE()
+PrototypeC getDMX(channel.i)
+PrototypeC sendDMX(channel.i, value.i)
 
 ;LOAD LIBRARY
 #Library = 1
@@ -50,6 +50,15 @@ Else
   Debug "failed to open library"
   End
 EndIf
+
+Global setPORTS.setPORTS
+Global setSUBNET.setSUBNET
+Global startNODE.startNODE
+Global stopNODE.stopNODE
+Global restartNODE.restartNODE
+Global getDMX.getDMX
+Global sendDMX.sendDMX
+
 
 ;LOAD FUNCTION FROM DLL INTO PUREBASIC PROCEDURE
 setPORTS.setPORTS = GetFunction(#Library, "setPORTS") 
@@ -88,9 +97,36 @@ setSUBNET(0)
 
 ;START NODE
 startNODE()
+Debug "start node 4 6"
+
+Procedure.l ArtNetOut(Codeur.l, CodeurValue.l)
+  
+  Shared Codeur_CodeurValues()
+  
+  If Codeur < 1 Or Codeur > #MaxMidiCodeur+1
+    Debug "error checking CC number Codeur"
+    ProcedureReturn #False
+  EndIf
+  Codeur_CodeurValues(Codeur) = Int((CodeurValue / 127)*255)
+  
+  If Codeur <> 0
+    If sendDmx(Codeur,Codeur_CodeurValues(Codeur)) > 0
+      Debug "Error sendDmx"
+      ProcedureReturn #False
+    Else
+      sendDmx(Codeur, Codeur_CodeurValues(Codeur))
+      Debug ">>>>> dendDmx = Codeur n° "+Codeur+" AT = "+Codeur_CodeurValues(Codeur)
+      ProcedureReturn #True : Debug " return process true"
+    EndIf
+  EndIf
+  Debug "error ,findmxsend"
+  ProcedureReturn #False : Debug " return process false"
+EndProcedure
 
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 16
+; CursorPosition = 117
+; FirstLine = 10
+; Folding = -
 ; EnableXP
 ; Executable = MGRartnet.exe
 ; EnableUnicode

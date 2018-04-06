@@ -2111,7 +2111,7 @@ EndIf
 
 EndProcedure
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 1328
-; FirstLine = 1270
+; CursorPosition = 1284
+; FirstLine = 1226
 ; Folding = -
 ; UseIcon = ..\..\bcedit.ico

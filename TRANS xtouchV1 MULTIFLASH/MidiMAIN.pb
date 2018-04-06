@@ -222,11 +222,16 @@ IncludeFile   "MidiRequester.pb"
                                     
                   Debug ";----> procedure midi in 1 Ecrit  faders et enc <------------- "
             EndIf
+            
+            ;----> procedure midi in 1 Ecrit  faders Plus ArtNet <------------- 
+            ;My procedure...
+            If (dwParam1 & $F)  = #channel3
+              midiin=1
+              Debug "fader plus send artnet"
+             ArtNetOut(((dwParam1 >> 8) & $FF),(dwParam1 >> 16) & $FF) 
+           EndIf
            
-            
          
-            
-            
             ;----> DEBUG program change
           Case $C 
             Debug "Program Change" 
@@ -351,7 +356,13 @@ Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22
                   Debug ";----> procedure midi in 2 Ecrit  faders et enc <------------- "
             EndIf
            
-            
+          ;----> procedure midi in 2 Ecrit  faders Plus ArtNet <------------- 
+            ;My procedure...
+            If (dwParam12 & $F)  = #channel3
+              midiin=2
+              Debug "fader plus send artnet"
+             ArtNetOut(((dwParam12 >> 8) & $FF),(dwParam12 >> 16) & $FF) 
+           EndIf  
           
             
             
@@ -672,7 +683,13 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
                   
             EndIf   
             
-            
+          ;----> procedure midi in 4 Ecrit  faders Plus ArtNet <------------- 
+            ;My procedure...
+            If (dwParam14 & $F)  = #channel3
+              midiin=4
+              Debug "fader plus send artnet"
+             ArtNetOut(((dwParam14 >> 8) & $FF),(dwParam14 >> 16) & $FF) 
+           EndIf  
             
             ;----> DEBUG program change
           Case $C 
@@ -1447,9 +1464,9 @@ EndDataSection
 ;--- fin de data section 
 
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 207
-; FirstLine = 147
+; CursorPosition = 225
+; FirstLine = 225
 ; Folding = --
-; Markers = 206,1030
+; Markers = 206,1047
 ; UseIcon = ..\bcedit.ico
 ; Executable = ..\V2\812 002.exe
