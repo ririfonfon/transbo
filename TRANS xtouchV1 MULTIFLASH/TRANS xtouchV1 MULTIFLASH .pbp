@@ -7,12 +7,12 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2018-04-06 20:33" user="ririf" host="BOMBASSEPORTABL"/>
+    <lastopen date="2018-04-06 23:21" user="ririf" host="BOMBASSEPORTABL"/>
   </section>
   <section name="files">
     <file name="MGRartnetnewtom.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="dbf1ff08247ade3845b68c3b4cc909d3"/>
+      <fingerprint md5="e68550049680a6e7f17eb772aa24b0db"/>
     </file>
     <file name="MIDI_Faders.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -32,15 +32,15 @@
     </file>
     <file name="MIDI_PulsarDespulsar.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="29711e2b1eb67d92eb3ba136b66b1a8d"/>
+      <fingerprint md5="e46e51cbbdd301670aae84782184f8d2"/>
     </file>
     <file name="MIDI_Search_Register.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="ce7cb869c7b0cbb75f75ea98deceb3a5"/>
+      <fingerprint md5="042df3c9eeac143669e8b44d251034df"/>
     </file>
     <file name="MidiMAIN.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="859a59369b4f82e3cfd1744b3dba3410"/>
+      <fingerprint md5="4ac95218e257c3a6172c7d6b71ef98e4"/>
     </file>
     <file name="MidiRequester.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -52,7 +52,7 @@
       <inputfile value="MidiMAIN.pb"/>
       <outputfile value=""/>
       <compiler version="PureBasic 5.62 (Windows - x86)"/>
-      <executable value="TRANS V10 thread multi flash 00.exe"/>
+      <executable value="TRANSxtouchV1 MULTIFLASH 11.exe"/>
       <options thread="1" xpskin="1" admin="1" onerror="1" debug="1"/>
       <purifier enable="1"/>
       <temporaryexe value="source"/>

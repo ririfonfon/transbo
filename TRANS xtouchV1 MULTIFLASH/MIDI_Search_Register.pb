@@ -76,7 +76,7 @@ PtoEncontrado = 0        ;Stores the mem position if found, else = 0
  If OsDetect=5
       PtoInicio = $10000000
       PtoFinal =  $7FFFFFFF
-      CadenaParaBuscar(0)  = 00
+      CadenaParaBuscar(0)  = 11
  EndIf
  
       
@@ -171,7 +171,7 @@ EndProcedure
 
 
 
-; IDE Options = PureBasic 5.50 (Windows - x86)
+; IDE Options = PureBasic 5.62 (Windows - x86)
 ; CursorPosition = 78
 ; FirstLine = 42
 ; Folding = -
