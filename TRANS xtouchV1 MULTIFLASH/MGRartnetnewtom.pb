@@ -90,7 +90,7 @@ EndIf
 
 
 ;SET PORTS  (INPUT, OUTPUT)  par defaut: 0 / 1
-setPORTS(4,6)
+setPORTS(0,1)
 
 ;SET SUBNET   par defaut : 0
 setSUBNET(0)
@@ -115,7 +115,7 @@ Procedure.l ArtNetOut(Codeur.l, CodeurValue.l)
       ProcedureReturn #False
     Else
       sendDmx(Codeur, Codeur_CodeurValues(Codeur))
-      Debug ">>>>> dendDmx = Codeur n° "+Codeur+" AT = "+Codeur_CodeurValues(Codeur)
+      Debug ">>>>> sendDmx = Codeur n° "+Codeur+" AT = "+Codeur_CodeurValues(Codeur)
       ProcedureReturn #True : Debug " return process true"
     EndIf
   EndIf
@@ -123,9 +123,28 @@ Procedure.l ArtNetOut(Codeur.l, CodeurValue.l)
   ProcedureReturn #False : Debug " return process false"
 EndProcedure
 
+Procedure.l ArtNetbtnOut(Ch.l, Val.l)
+  
+  Shared Ch_Val()
+  
+  Ch_Val(Ch) = Int((Val / 127)*255)
+  
+  If Ch <> 0
+    If sendDmx(Ch+16,Ch_Val(Ch)) > 0
+      Debug "Error btn sendDmx"
+      ProcedureReturn #False
+    Else
+      sendDmx(Ch+16, Ch_Val(Ch))
+      Debug ">>>>> sendDmxbtn = Ch n° "+Ch+16+" AT = "+Ch_Val(Ch)
+      ProcedureReturn #True : Debug " return process btn true"
+    EndIf
+  EndIf
+  Debug "error ,findmxsendbtn"
+  ProcedureReturn #False : Debug " return process btn false"
+EndProcedure
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 117
-; FirstLine = 10
+; CursorPosition = 92
+; FirstLine = 29
 ; Folding = -
 ; EnableXP
 ; Executable = MGRartnet.exe

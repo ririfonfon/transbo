@@ -51,7 +51,6 @@ Shared Launch()
 Shared  Behringer_FaderValues() 
 Shared  MAonPC_FaderValues()
 Shared Callkey()
-; Shared sendDMX()
 
 
 ;we check here if we have lost the MAonPC window...
@@ -310,7 +309,6 @@ Select nota
     
     
 ;--------------- plus transbo
-
 Case 70
   If velocity = $7F :Callkey(17)=Callkey(17)+1:PressKey(17,Callkey(17)) :EndIf; list
   If velocity = $00 :Callkey(17)=Callkey(17)-1:PressKey(17,Callkey(17)) :EndIf
@@ -1211,122 +1209,6 @@ Case 123
 EndIf
 ;-------------------------------
 
-;=========================================================================================================================
-;=========================================================================================================================
-;----------------select MIDI channel 12-----------------------------------------------------------------------------------
-;=========================================================================================================================
-;=========================================================================================================================
-;
-
-; If channel = #channel3
-; 
-; Select nota
-; 
-; 
-; 
-; ;--------REMOTE ARTNET 1 16 ------------------------------
-; 
-; Case 0
-;      If velocity = $7F :sendDMX(17, 255) : EndIf  ;ex bt remote bas 1
-;      If velocity = $00 :sendDMX(17, 0) : EndIf
-; Case 1
-;      If velocity = $7F :sendDMX(18, 255) : EndIf  ;ex bt remote haut 1
-;      If velocity = $00 :sendDMX(18, 0) : EndIf
-; Case 2
-;      If velocity = $7F :sendDMX(19, 255) : EndIf  ;ex bt remote bas 2
-;      If velocity = $00 :sendDMX(19, 0) : EndIf
-; Case 3
-;      If velocity = $7F :sendDMX(20, 255) : EndIf  ;ex bt remote haut 2
-;      If velocity = $00 :sendDMX(20, 0) : EndIf
-; Case 4
-;      If velocity = $7F :sendDMX(21, 255) : EndIf  ;ex bt remote bas 3
-;      If velocity = $00 :sendDMX(21, 0) : EndIf
-; Case5
-;      If velocity = $7F :sendDMX(22, 255) : EndIf  ;ex bt remote haut 3
-;      If velocity = $00 :sendDMX(22, 0) : EndIf
-; Case 6
-;      If velocity = $7F :sendDMX(23, 255) : EndIf  ;ex bt remote bas 4
-;      If velocity = $00 :sendDMX(23, 0) : EndIf
-; Case 7
-;      If velocity = $7F :sendDMX(24, 255) : EndIf  ;ex bt remote haut 4
-;      If velocity = $00 :sendDMX(24, 0) : EndIf
-; Case 8
-;      If velocity = $7F :sendDMX(25, 255) : EndIf  ;ex bt remote bas 5
-;      If velocity = $00 :sendDMX(25, 0) : EndIf
-; Case 9
-;      If velocity = $7F :sendDMX(26, 255) : EndIf  ;ex bt remote haut 5
-;      If velocity = $00 :sendDMX(26, 0) : EndIf
-; Case 10
-;      If velocity = $7F :sendDMX(27, 255) : EndIf  ;ex bt remote bas 6
-;      If velocity = $00 :sendDMX(27, 0) : EndIf
-; Case 11
-;      If velocity = $7F :sendDMX(28, 255) : EndIf  ;ex bt remote haut 6
-;      If velocity = $00 :sendDMX(28, 0) : EndIf     
-; Case 12
-;      If velocity = $7F :sendDMX(29, 255) : EndIf  ;ex bt remote bas 7
-;      If velocity = $00 :sendDMX(29, 0) : EndIf
-; Case 13
-;      If velocity = $7F :sendDMX(30, 255) : EndIf  ;ex bt remote haut 7
-;      If velocity = $00 :sendDMX(30, 0) : EndIf     
-; Case 14
-;      If velocity = $7F :sendDMX(31, 255) : EndIf  ;ex bt remote bas 8
-;      If velocity = $00 :sendDMX(31, 0) : EndIf
-; Case 15
-;      If velocity = $7F :sendDMX(32, 255) : EndIf  ;ex bt remote haut 8
-;      If velocity = $00 :sendDMX(32, 0) : EndIf     
-; Case 16
-;      If velocity = $7F :sendDMX(33, 255) : EndIf  ;ex bt remote bas 9
-;      If velocity = $00 :sendDMX(33, 0) : EndIf
-; Case 17
-;      If velocity = $7F :sendDMX(34, 255) : EndIf  ;ex bt remote haut 9
-;      If velocity = $00 :sendDMX(34, 0) : EndIf     
-; Case 18
-;      If velocity = $7F :sendDMX(35, 255) : EndIf  ;ex bt remote bas 10
-;      If velocity = $00 :sendDMX(35, 0) : EndIf
-; Case 19
-;      If velocity = $7F :sendDMX(36, 255) : EndIf  ;ex bt remote haut 10
-;      If velocity = $00 :sendDMX(36, 0) : EndIf     
-; Case 20
-;      If velocity = $7F :sendDMX(37, 255) : EndIf  ;ex bt remote bas 11
-;      If velocity = $00 :sendDMX(37, 0) : EndIf
-; Case 21
-;      If velocity = $7F :sendDMX(38, 255) : EndIf  ;ex bt remote haut 11
-;      If velocity = $00 :sendDMX(38, 0) : EndIf     
-; Case 22
-;      If velocity = $7F :sendDMX(39, 255) : EndIf  ;ex bt remote bas 12
-;      If velocity = $00 :sendDMX(39, 0) : EndIf
-; Case 23
-;      If velocity = $7F :sendDMX(40, 255) : EndIf  ;ex bt remote haut 12
-;      If velocity = $00 :sendDMX(40, 0) : EndIf     
-; Case 24
-;      If velocity = $7F :sendDMX(41, 255) : EndIf  ;ex bt remote bas 13
-;      If velocity = $00 :sendDMX(41, 0) : EndIf
-; Case 25
-;      If velocity = $7F :sendDMX(42, 255) : EndIf  ;ex bt remote haut 13
-;      If velocity = $00 :sendDMX(42, 0) : EndIf     
-; Case 26
-;      If velocity = $7F :sendDMX(43, 255) : EndIf  ;ex bt remote bas 14
-;      If velocity = $00 :sendDMX(43, 0) : EndIf
-; Case 27
-;      If velocity = $7F :sendDMX(44, 255) : EndIf  ;ex bt remote haut 14
-;      If velocity = $00 :sendDMX(44, 0) : EndIf     
-; Case 28
-;      If velocity = $7F :sendDMX(45, 255) : EndIf  ;ex bt remote bas 15
-;      If velocity = $00 :sendDMX(45, 0) : EndIf
-; Case 29
-;      If velocity = $7F :sendDMX(46, 255) : EndIf  ;ex bt remote haut 15
-;      If velocity = $00 :sendDMX(46, 0) : EndIf
-; Case 30
-;      If velocity = $7F :sendDMX(47, 255) : EndIf  ;ex bt remote bas 16
-;      If velocity = $00 :sendDMX(47, 0) : EndIf
-; Case 31
-;      If velocity = $7F :sendDMX(48, 255) : EndIf  ;ex bt remote haut 16
-;      If velocity = $00 :sendDMX(48, 0) : EndIf     
-;      
-; EndSelect
-; 
-; 
-; EndIf  
      
 ;---------------------LAUNCH PAD
 
@@ -2111,7 +1993,7 @@ EndIf
 
 EndProcedure
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 1284
-; FirstLine = 1226
+; CursorPosition = 52
+; FirstLine = 931
 ; Folding = -
 ; UseIcon = ..\..\bcedit.ico

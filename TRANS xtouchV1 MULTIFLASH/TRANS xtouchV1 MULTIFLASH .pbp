@@ -7,16 +7,16 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2018-04-06 09:22" user="ririf" host="BOMBASSEPORTABL"/>
+    <lastopen date="2018-04-06 20:33" user="ririf" host="BOMBASSEPORTABL"/>
   </section>
   <section name="files">
     <file name="MGRartnetnewtom.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="c7e75cbc246a67543571c6c25f41411a"/>
+      <fingerprint md5="dbf1ff08247ade3845b68c3b4cc909d3"/>
     </file>
     <file name="MIDI_Faders.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="ba73cd6e6e19ac31b472f15c0317c3e3"/>
+      <fingerprint md5="4f4566870144f682f007519c2b1a7f94"/>
     </file>
     <file name="MIDI_LAUNCH.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -24,15 +24,15 @@
     </file>
     <file name="MIDI_LED.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="bcd98a17e389025d8ad77a42d8caf476"/>
+      <fingerprint md5="4f7c246d2546003c81d896d739ca928d"/>
     </file>
     <file name="MIDI_MyVariables.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="6b9a0b468da48d6d8f98ee01fbb2fd64"/>
+      <fingerprint md5="0203ae3652d98caf5a3be45e9fe85115"/>
     </file>
     <file name="MIDI_PulsarDespulsar.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="04c4a122294adf968e020611aad6c929"/>
+      <fingerprint md5="29711e2b1eb67d92eb3ba136b66b1a8d"/>
     </file>
     <file name="MIDI_Search_Register.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
@@ -40,7 +40,7 @@
     </file>
     <file name="MidiMAIN.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="69f562371feda3c9de87e4cd26ff81ae"/>
+      <fingerprint md5="859a59369b4f82e3cfd1744b3dba3410"/>
     </file>
     <file name="MidiRequester.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>

@@ -348,7 +348,7 @@ If LedValueIpad(2)<>LedValue(2)
       EndIf
       
       If Mid(LedBin(5),3,1) ="1";EX BTN
-         midiOutShortMsg_(my_hMidiOut4,($7F2697))
+        midiOutShortMsg_(my_hMidiOut4,($7F2697))
       Else
          midiOutShortMsg_(my_hMidiOut4,($002697))
       EndIf
@@ -599,7 +599,7 @@ If LedValueIpad(2)<>LedValue(2)
        
      EndProcedure
      
- ;------ 39v 59v delete seq<group    
+ ;------ 39v 59v delete seq group    
      Procedure readled9(*bidon)
   
   Shared LedValue()
@@ -2021,8 +2021,8 @@ If LedValueIpad(2)<>LedValue(2)
      CreateThread (@readled28(),*bidon)
      CreateThread (@readled29(),*bidon)
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 1974
-; FirstLine = 1907
+; CursorPosition = 739
+; FirstLine = 739
 ; Folding = -----
 ; EnableXP
 ; EnableUnicode

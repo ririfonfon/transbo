@@ -48,7 +48,8 @@ Dim Callkey.l(50)
 
 #MaxMidiCodeur = 512
 Dim Codeur_CodeurValues(#MaxMidiCodeur)
-
+Dim Ch_Val(#MaxMidiCodeur)
+Dim old_dmx(16)
 
 #Interval = 40
 #channel = 9  ; midi output #channel 1..16 (= 0..15)
@@ -84,6 +85,6 @@ Global my_hMidiOut6.l
 Global PtoEncontrado
 
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 49
+; CursorPosition = 51
 ; UseIcon = bcedit.ico
 ; Executable = ..\W7_FlashNov2012_Wait.exe

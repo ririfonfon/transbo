@@ -133,12 +133,18 @@ IncludeFile   "MidiRequester.pb"
 
  Procedure MidiInProc(hMidiIn.l, wMsg.l, dwInstance.l, dwParam1.l, dwParam2.l) 
   Protected Status.l, OnOf.l, NoteNr.l, Velocity.l 
-    midiin=1
+  midiin=1
+  Shared LedValueIpad()
   
     midiOutShortMsg_(my_hMidiOut2, dwParam1)
     midiOutShortMsg_(my_hMidiOut4, dwParam1)
-  Debug " 1 midiout request 2 et 4 " + Hex(dwParam1)
-  
+    Debug " 1 midiout request 2 et 4 " + Hex(dwParam1)
+    
+   ;----> Midi TO artnet
+           If (dwParam1 & $F)  = #channel3 And ((dwParam1 & $FF )/ 16 ) <> $B
+              Debug "btn plus send artnet"
+             ArtNetbtnOut(((dwParam1 >> 8) & $FF),(dwParam1 >> 16) & $FF) 
+           EndIf
    
   Select wMsg 
     Case #MM_MIM_OPEN 
@@ -159,10 +165,41 @@ IncludeFile   "MidiRequester.pb"
             Debug "  Note: " + Hex((dwParam1 >> 8) & $FF) 
             Debug "  Velocity: " + Hex((dwParam1 >> 16) & $FF) 
             
+            If ((dwParam1 >> 8) & $FF) = 1 Or ((dwParam1 >> 8) & $FF) =2 Or ((dwParam1 >> 8) & $FF) =3 Or ((dwParam1 >> 8) & $FF) =21 Or ((dwParam1 >> 8) & $FF) =22 Or ((dwParam1 >> 8) & $FF) =23 Or ((dwParam1 >> 8) & $FF) =41 Or ((dwParam1 >> 8) & $FF) =42 Or ((dwParam1 >> 8) & $FF) =43
+              LedValueIpad(18)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 4 Or ((dwParam1 >> 8) & $FF) =5 Or ((dwParam1 >> 8) & $FF) =24 Or ((dwParam1 >> 8) & $FF) =25 Or ((dwParam1 >> 8) & $FF) =44 Or ((dwParam1 >> 8) & $FF) =45
+              LedValueIpad(17)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 6 Or ((dwParam1 >> 8) & $FF) =7 Or ((dwParam1 >> 8) & $FF) =8 Or ((dwParam1 >> 8) & $FF) =26 Or ((dwParam1 >> 8) & $FF) =27 Or ((dwParam1 >> 8) & $FF) =28 Or ((dwParam1 >> 8) & $FF) =46 Or ((dwParam1 >> 8) & $FF) =47 Or ((dwParam1 >> 8) & $FF) =48
+              LedValueIpad(20)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 9 Or ((dwParam1 >> 8) & $FF) =10 Or ((dwParam1 >> 8) & $FF) =29 Or ((dwParam1 >> 8) & $FF) =30 Or ((dwParam1 >> 8) & $FF) =49 Or ((dwParam1 >> 8) & $FF) =50
+              LedValueIpad(19)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 11 Or ((dwParam1 >> 8) & $FF) =12 Or ((dwParam1 >> 8) & $FF) =13 Or ((dwParam1 >> 8) & $FF) =31 Or ((dwParam1 >> 8) & $FF) =32 Or ((dwParam1 >> 8) & $FF) =33 Or ((dwParam1 >> 8) & $FF) =51 Or ((dwParam1 >> 8) & $FF) =52 Or ((dwParam1 >> 8) & $FF) =53
+              LedValueIpad(22)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 14 Or ((dwParam1 >> 8) & $FF) =15 Or ((dwParam1 >> 8) & $FF) =34 Or ((dwParam1 >> 8) & $FF) =35 Or ((dwParam1 >> 8) & $FF) =54 Or ((dwParam1 >> 8) & $FF) =55
+              LedValueIpad(21)=0
+            EndIf
+             If ((dwParam1 >> 8) & $FF) = 16 Or ((dwParam1 >> 8) & $FF) =36 Or ((dwParam1 >> 8) & $FF) =55
+              LedValueIpad(24)=0
+            EndIf
+            If ((dwParam1 >> 8) & $FF) = 88
+              LedValueIpad(7)=0
+            EndIf
+            If ((dwParam1 >> 8) & $FF) = 94
+              LedValueIpad(29)=100
+            EndIf
+            If ((dwParam1 >> 8) & $FF) = 62
+              LedValueIpad(11)=0
+            EndIf
+            
 ;----- Added Note Off
 
             ;My procedure...
-            If (dwParam1 & $F)  = #channel Or (dwParam1 & $F) = #channel2 Or (dwParam1 & $F) = #channel3
+            If (dwParam1 & $F)  = #channel Or (dwParam1 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam1 >> 8) & $FF, $00,dwParam1 & $F ); Always Off so $00 velocity
             EndIf
             
@@ -179,12 +216,11 @@ IncludeFile   "MidiRequester.pb"
             Debug "  Velocity: " + Hex((dwParam1 >> 16) & $FF)
             ;------note off 
             ;My procedure...
-            If (dwParam1 & $F)  = #channel Or (dwParam1 & $F) = #channel2 Or (dwParam1 & $F) = #channel3
+            If (dwParam1 & $F)  = #channel Or (dwParam1 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam1 >> 8) & $FF, (dwParam1 >> 16) & $FF , dwParam1 & $F) 
             EndIf
-            
-            
-            
+              
+              
             ;----> DEBUG  key aftertouch debug
             Case $A ;after touch
             Debug "Key Aftertouch" 
@@ -201,10 +237,7 @@ IncludeFile   "MidiRequester.pb"
             Debug "  fonction: " + Hex(dwParam1  & $FF) 
             Debug "  Controller: " + GetControllerName((dwParam1 >> 8) & $FF) 
             Debug "  Wert: " + Hex((dwParam1 >> 16) & $FF)
-            
-          
-
-                
+     
             ;----> procedure midi in 1 Ecrit  faders et enc <------------- 
             ;My procedure...
             If (dwParam1 & $F)  = #channel
@@ -212,14 +245,11 @@ IncludeFile   "MidiRequester.pb"
                   ;Faders
                   
                   WriteBehringerToMAonPC ((dwParam1 >> 8) & $FF, (dwParam1 >> 16) & $FF)
-                  
-                  
+
                   ;------------- proccess Encoders...
-                  
-                  
+
                   WriteEncodersToMAonPC  ((dwParam1 >> 8) & $FF, (dwParam1 >> 16) & $FF)
-                  
-                                    
+                
                   Debug ";----> procedure midi in 1 Ecrit  faders et enc <------------- "
             EndIf
             
@@ -230,8 +260,7 @@ IncludeFile   "MidiRequester.pb"
               Debug "fader plus send artnet"
              ArtNetOut(((dwParam1 >> 8) & $FF),(dwParam1 >> 16) & $FF) 
            EndIf
-           
-         
+
             ;----> DEBUG program change
           Case $C 
             Debug "Program Change" 
@@ -276,14 +305,19 @@ EndProcedure
 ;------------------- BCF 2
 Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22.l) 
   Protected Status2.l, OnOf2.l, NoteNr2.l, Velocity2.l 
-  
+  Shared LedValueIpad()
   midiin=2
   
   midiOutShortMsg_(my_hMidiOut, dwParam12)
   midiOutShortMsg_(my_hMidiOut4, dwParam12)
   Debug " 2 midiout request 1 et 4 " + Hex(dwParam12)
   
-  
+  ;----> Midi TO artnet
+           If (dwParam12 & $F)  = #channel3 And ((dwParam12 & $FF )/ 16 ) <> $B
+              Debug "btn plus send artnet"
+             ArtNetbtnOut(((dwParam12 >> 8) & $FF),(dwParam12 >> 16) & $FF) 
+           EndIf
+           
   Select wMsg2 
     Case #MM_MIM_OPEN 
       Debug "2 open" 
@@ -303,10 +337,41 @@ Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22
             Debug " 2 Note: " + Hex((dwParam12 >> 8) & $FF) 
             Debug " 2 Velocity: " + Hex((dwParam12 >> 16) & $FF) 
             
+            If ((dwParam12 >> 8) & $FF) = 1 Or ((dwParam12 >> 8) & $FF) =2 Or ((dwParam12 >> 8) & $FF) =3 Or ((dwParam12 >> 8) & $FF) =21 Or ((dwParam12 >> 8) & $FF) =22 Or ((dwParam12 >> 8) & $FF) =23 Or ((dwParam12 >> 8) & $FF) =41 Or ((dwParam12 >> 8) & $FF) =42 Or ((dwParam12 >> 8) & $FF) =43
+              LedValueIpad(18)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 4 Or ((dwParam12 >> 8) & $FF) =5 Or ((dwParam12 >> 8) & $FF) =24 Or ((dwParam12 >> 8) & $FF) =25 Or ((dwParam12 >> 8) & $FF) =44 Or ((dwParam12 >> 8) & $FF) =45
+               LedValueIpad(17)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 6 Or ((dwParam12 >> 8) & $FF) =7 Or ((dwParam12 >> 8) & $FF) =8 Or ((dwParam12 >> 8) & $FF) =26 Or ((dwParam12 >> 8) & $FF) =27 Or ((dwParam12 >> 8) & $FF) =28 Or ((dwParam12 >> 8) & $FF) =46 Or ((dwParam12 >> 8) & $FF) =47 Or ((dwParam12 >> 8) & $FF) =48
+               LedValueIpad(20)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 9 Or ((dwParam12 >> 8) & $FF) =10 Or ((dwParam12 >> 8) & $FF) =29 Or ((dwParam12 >> 8) & $FF) =30 Or ((dwParam12 >> 8) & $FF) =49 Or ((dwParam12 >> 8) & $FF) =50
+               LedValueIpad(19)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 11 Or ((dwParam12 >> 8) & $FF) =12 Or ((dwParam12 >> 8) & $FF) =13 Or ((dwParam12 >> 8) & $FF) =31 Or ((dwParam12 >> 8) & $FF) =32 Or ((dwParam12 >> 8) & $FF) =33 Or ((dwParam12 >> 8) & $FF) =51 Or ((dwParam12 >> 8) & $FF) =52 Or ((dwParam12 >> 8) & $FF) =53
+               LedValueIpad(22)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 14 Or ((dwParam12 >> 8) & $FF) =15 Or ((dwParam12 >> 8) & $FF) =34 Or ((dwParam12 >> 8) & $FF) =35 Or ((dwParam12 >> 8) & $FF) =54 Or ((dwParam12 >> 8) & $FF) =55
+               LedValueIpad(21)=0
+            EndIf
+             If ((dwParam12 >> 8) & $FF) = 16 Or ((dwParam12 >> 8) & $FF) =36 Or ((dwParam12 >> 8) & $FF) =55
+               LedValueIpad(24)=0
+            EndIf
+            If ((dwParam12 >> 8) & $FF) = 88
+              LedValueIpad(7)=0
+            EndIf
+            If ((dwParam12 >> 8) & $FF) = 94
+              LedValueIpad(29)=0
+            EndIf
+            If ((dwParam12 >> 8) & $FF) = 62
+              LedValueIpad(11)=0
+            EndIf
+
 ;----- Added Note Off
              ;-------note off 
             ;My procedure...
-            If (dwParam12 & $F)  = #channel Or (dwParam12 & $F) = #channel2 Or (dwParam12 & $F) = #channel3
+            If (dwParam12 & $F)  = #channel Or (dwParam12 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam12 >> 8) & $FF, $00,dwParam12 & $F ); Always Off so $00 velocity
             EndIf
             
@@ -323,12 +388,10 @@ Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22
             Debug " 2 Velocity: " + Hex((dwParam12 >> 16) & $FF)
             ;------note off 
             ;My procedure...
-            If (dwParam12 & $F)  = #channel Or (dwParam12 & $F) = #channel2 Or (dwParam12 & $F) = #channel3
+            If (dwParam12 & $F)  = #channel Or (dwParam12 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam12 >> 8) & $FF, (dwParam12 >> 16) & $FF , dwParam12 & $F) 
             EndIf
-            
-            
-            
+   
             ;----> DEBUG  key aftertouch debug
             Case $A
             Debug " 2 Key Aftertouch" 
@@ -343,8 +406,7 @@ Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22
             Debug " 2 fonction: " + Hex(dwParam12  & $FF)
             Debug " 2 Controller: " + GetControllerName((dwParam12 >> 8) & $FF) 
             Debug " 2 Wert: " + Hex((dwParam12 >> 16) & $FF)
-            
-             
+
             ;----> procedure midi in 2 Ecrit  faders et enc <------------- 
             ;My procedure...
             If (dwParam12 & $F)  = #channel
@@ -363,9 +425,7 @@ Procedure MidiInProc2(hMidiIn2.l, wMsg2.l, dwInstance2.l, dwParam12.l, dwParam22
               Debug "fader plus send artnet"
              ArtNetOut(((dwParam12 >> 8) & $FF),(dwParam12 >> 16) & $FF) 
            EndIf  
-          
-            
-            
+
             ;----> DEBUG program change
           Case $C 
             Debug " 2 Program Change" 
@@ -421,10 +481,7 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
       Debug "3 close" 
       
     Case #MM_MIM_DATA
-    
-    
-    
-     
+
       Status3 = dwParam13 & $FF 
       
       If Status3 < $F0 
@@ -463,21 +520,14 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
             If dwParam13 < $190  
             Debug " dwparam13 = " + Hex(dwParam13)
             PulsarDespulsarTecla ( $9 , $00 , dwParam13 & $F):Debug "NOTE 0 OFF":EndIf  
-            
-            
-            
+
             ;------note off 
             ;My procedure...
-
-            
-                     
+       
             If dwParam13 >= $190
             Debug " dwparam13 = " + Hex(dwParam13)
                PulsarDespulsarTecla ((dwParam13 >> 8) & $FF , (dwParam13 >> 16) & $FF , dwParam13 & $F) 
             EndIf
-            
-
-
 
             ;----> DEBUG  key aftertouch debug
             Case $A
@@ -486,9 +536,7 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
             Debug " 3 fonction: " + Hex(dwParam13  & $FF)
             Debug " 3 Note: " + Hex((dwParam13 >> 8) & $FF) 
             Debug " 3 Value: " + Hex((dwParam13 >> 16) & $FF) 
-     
-     
-     
+
             ;----> DEBUG control change 
           Case $B 
             Debug " 3 Controller Change" 
@@ -498,7 +546,6 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
             Debug " 3 Wert: " + Hex((dwParam13 >> 16) & $FF)
             ;-------- TOUCH DU HAUT CONTROL CHANGE LAUNCHPAD
 
- 
             If dwParam13  & $FF = $B0
                 Debug "CONTROL CHANGE PASSE = $B0 OK "
                 If (dwParam13 >> 8) & $FF >= $68
@@ -506,16 +553,7 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
                     PulsarDespulsarTecla (((dwParam13 >> 8) & $FF ) + $11 , (dwParam13 >> 16) & $FF , $00)
                 EndIf    
             EndIf    
-     
-     
-     
-     
-     
-     
-            
-             
-                
-            
+  
             ;----> DEBUG program change
           Case $C 
             Debug " 3 Program Change" 
@@ -523,23 +561,13 @@ Procedure MidiInProc3(hMidiIn3.l, wMsg3.l, dwInstance3.l, dwParam13.l, dwParam23
             Debug " 3 fonction: " + Hex(dwParam13  & $FF)
             Debug " 3 Instrument: " + Hex((dwParam13 >> 8 ) & $FF) 
 
-
-
-
-
-
-
-
             ;----> DEBUG  channel pressure 
           Case $D 
             Debug " 3 Channel Pressure" 
             Debug " 3 Kanal: " + Hex(dwParam13 & $F) 
             Debug " 3 fonction: " + Hex(dwParam13  & $FF)
             Debug " 3 Value: " + Hex((dwParam13 >> 8) & $FF) 
-           
-
-
-           
+   
         EndSelect 
       EndIf 
     
@@ -570,7 +598,11 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
    midiOutShortMsg_(my_hMidiOut2, dwParam14)
   Debug " 4 midiout request 1 et 2 " + Hex(dwParam12)
   
-  
+  ;----> Midi TO artnet
+           If (dwParam14 & $F)  = #channel3 And ((dwParam14 & $FF )/ 16 ) <> $B
+              Debug "btn plus send artnet"
+             ArtNetbtnOut(((dwParam14 >> 8) & $FF),(dwParam14 >> 16) & $FF) 
+           EndIf
   
   Select wMsg4 
     Case #MM_MIM_OPEN 
@@ -590,11 +622,11 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
             Debug " 4 fonction: " + Hex(dwParam14  & $FF) 
             Debug " 4 Note: " + Hex((dwParam14 >> 8) & $FF) 
             Debug " 4 Velocity: " + Hex((dwParam14 >> 16) & $FF) 
-            
+
 ;----- Added Note Off
              ;-------note off 
             ;My procedure...
-            If (dwParam14 & $F)  = #channel Or (dwParam14 & $F) = #channel2 Or (dwParam14 & $F) = #channel3
+            If (dwParam14 & $F)  = #channel Or (dwParam14 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam14 >> 8) & $FF, $00,dwParam14 & $F ); Always Off so $00 velocity
             EndIf
             
@@ -610,15 +642,12 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
             Debug " 4 Note: " + Hex((dwParam14 >> 8) & $FF) 
             Debug " 4 Velocity: " + Hex((dwParam14 >> 16) & $FF)
             ;------note off 
-            
-            
+
             ;My procedure...
-            If (dwParam14 & $F)  = #channel Or (dwParam14 & $F) = #channel2 Or (dwParam14 & $F) = #channel3
+            If (dwParam14 & $F)  = #channel Or (dwParam14 & $F) = #channel2 
                 PulsarDespulsarTecla ((dwParam14 >> 8) & $FF, (dwParam14 >> 16) & $FF , dwParam14 & $F) 
-            EndIf
-            
-            
-            
+              EndIf 
+
             ;----> DEBUG  key aftertouch debug            
           Case $A
             Debug " 4 Key Aftertouch" 
@@ -642,10 +671,7 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
                   ;Faders
                   WriteBehringerToMAonPC ((dwParam14 >> 8) & $FF, (dwParam14 >> 16) & $FF)
                   Debug ";----> procedure midi in 4 Ecrit  faders <------------- "
-                  
-                  
-                  
-                  
+
                   ;Encoders...
                   
                   If  NV = 1 And ((dwParam14 >> 8) & $FF) = $1E 
@@ -661,26 +687,21 @@ Procedure MidiInProc4(hMidiIn4.l, wMsg4.l, dwInstance4.l, dwParam14.l, dwParam24
                   Debug ";----> NV procedure midi in 4 Ecrit  enc <------------- "
                  
                 EndIf
-                
-                 
-                 
+
                  If  VL = 1 And ((dwParam14 >> 8) & $FF) < $28 And ((dwParam14 >> 8) & $FF) > $20
                     
                     WriteEncodersToMAonPC  (((dwParam14 >> 8) & $FF) + $A , (dwParam14 >> 16) & $FF)
                    Debug ";---------- +$A VL----------------"
                  
                  EndIf
-                 
-                 
+
                  If  VL = 0 And ((dwParam14 >> 8) & $FF) < $28 And ((dwParam14 >> 8) & $FF) > $20
                    
                   WriteEncodersToMAonPC  ((dwParam14 >> 8) & $FF, (dwParam14 >> 16) & $FF)
                   Debug ";----> VL procedure midi in 4 Ecrit  enc <------------- "
                  
                 EndIf
-                
-                  
-                  
+    
             EndIf   
             
           ;----> procedure midi in 4 Ecrit  faders Plus ArtNet <------------- 
@@ -730,19 +751,10 @@ Procedure MidiInProc5(hMidiIn5.l, wMsg5.l, dwInstance5.l, dwParam15.l, dwParam25
   
   midiin=7
 
-
-  
-  
-  
-  
-  
   Select wMsg5 
     Case #MM_MIM_OPEN 
       Debug "5 open" 
 
-    
-    
-    
     Case #MM_MIM_CLOSE 
       Debug "5 close" 
       
@@ -782,11 +794,6 @@ Procedure MidiInProc5(hMidiIn5.l, wMsg5.l, dwInstance5.l, dwParam15.l, dwParam25
                 PulsarDespulsarTecla ((dwParam15 >> 8) & $FF, (dwParam15 >> 16) & $FF , dwParam15 & $F) 
             EndIf
 
-
-            
-            
-            
-            
             ;----> DEBUG  key aftertouch debug
             Case $A
             Debug " 5 Key Aftertouch" 
@@ -801,11 +808,7 @@ Procedure MidiInProc5(hMidiIn5.l, wMsg5.l, dwInstance5.l, dwParam15.l, dwParam25
             Debug " 5 fonction: " + Hex(dwParam15  & $FF)
             Debug " 5 Controller: " + GetControllerName((dwParam15 >> 8) & $FF) 
             Debug " 5 Wert: " + Hex((dwParam15 >> 16) & $FF)
-            
-             
-            
-            
-            
+
             ;----> DEBUG program change
           Case $C 
             Debug " 5 Program Change" 
@@ -844,19 +847,10 @@ Procedure MidiInProc6(hMidiIn6.l, wMsg6.l, dwInstance6.l, dwParam16.l, dwParam26
   
   midiin=8
 
-
-  
-  
-  
-  
-  
   Select wMsg6 
     Case #MM_MIM_OPEN 
       Debug "6 open" 
 
-    
-    
-    
     Case #MM_MIM_CLOSE 
       Debug "6 close" 
       
@@ -896,11 +890,6 @@ Procedure MidiInProc6(hMidiIn6.l, wMsg6.l, dwInstance6.l, dwParam16.l, dwParam26
                 PulsarDespulsarTecla ((dwParam16 >> 8) & $FF, (dwParam16 >> 16) & $FF , dwParam16 & $F) 
             EndIf
 
-
-            
-            
-            
-            
             ;----> DEBUG  key aftertouch debug
             Case $A
             Debug " 6 Key Aftertouch" 
@@ -915,11 +904,7 @@ Procedure MidiInProc6(hMidiIn6.l, wMsg6.l, dwInstance6.l, dwParam16.l, dwParam26
             Debug " 6 fonction: " + Hex(dwParam16  & $FF)
             Debug " 6 Controller: " + GetControllerName((dwParam16 >> 8) & $FF) 
             Debug " 6 Wert: " + Hex((dwParam16 >> 16) & $FF)
-            
-             
-            
-            
-            
+
             ;----> DEBUG program change
           Case $C 
             Debug " 6 Program Change" 
@@ -1195,8 +1180,7 @@ Repeat
                
                 Debug "Le Message Midi est  " + Hex(midimsg) + " expédié vers handle " + Hex(my_hMidiOut)
                 ;Send!
-              
-                
+ 
                 midiOutShortMsg_(my_hMidiOut, midimsg)
                 midiOutShortMsg_(my_hMidiOut2, midimsg)
                 midiOutShortMsg_(my_hMidiOut4, midimsg)
@@ -1244,13 +1228,23 @@ Repeat
       readled26(*bidon)
       readled28(*bidon)
       readled29(*bidon)
-      
-      
+        
       LaunchLed(*bidon1)
       
- 
- 
- 
+;       Value2 = getDMX(2)
+;       If (Value2 <> Value_last2)
+;         Value_last2 = Value2
+;         Debug "getdmx2"
+;         midimsg = $B0 + (1 * $100) + (((Value2/255)*127) * $10000) + #channel3
+;         midiOutShortMsg_(my_hMidiOut, midimsg)
+;         midiOutShortMsg_(my_hMidiOut2, midimsg)
+;         midimsg = $90 + (1 * $100) + (((Value2/255)*127) * $10000) + #channel3
+;         midiOutShortMsg_(my_hMidiOut, midimsg)
+;         midiOutShortMsg_(my_hMidiOut2, midimsg)
+;       EndIf
+;       
+;  
+;  Debug "value2 = "+Value2
  
 
 
@@ -1464,9 +1458,9 @@ EndDataSection
 ;--- fin de data section 
 
 ; IDE Options = PureBasic 5.62 (Windows - x86)
-; CursorPosition = 225
-; FirstLine = 225
+; CursorPosition = 192
+; FirstLine = 131
 ; Folding = --
-; Markers = 206,1047
+; Markers = 240,1032
 ; UseIcon = ..\bcedit.ico
 ; Executable = ..\V2\812 002.exe

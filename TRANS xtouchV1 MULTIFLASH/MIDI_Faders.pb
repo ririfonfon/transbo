@@ -162,7 +162,8 @@ Procedure.b WriteEncodersToMAonPC(Encoder.l, EncValue.l)
 ;current value... no MIDI Feedback to Behringer is needed....
 
 
-If Encoder < 30 Or Encoder > 49  Or Encoder = 32 Or Encoder = 42;There is an empty space in index(1) we never must to use CC enc 32
+;   If Encoder < 30 Or Encoder > 49  Or Encoder = 32 Or Encoder = 42;There is an empty space in index(1) we never must to use CC enc 32
+  If Encoder < 30 Or Encoder > 49 ;There is an empty space in index(1) we never must to use CC enc 32
     Debug "Error checking CC number WriteEncodersToMAonPC"+" pHandle= "+Hex(pHandle)
     ProcedureReturn #False
 EndIf
@@ -191,7 +192,8 @@ EndIf
 If Encoder = 40
   Increm = 1
   Encoder = Encoder - 40  ;As array starts in Index(0)
-  NavDirection = 0
+;   NavDirection = 0
+  NavDirection = Pow(0,ScreenNum) 
 EndIf
 
 Debug "Encoder = " + Str(Encoder) 
@@ -266,8 +268,8 @@ Debug "Encoder = " + Str(Encoder)
 EndProcedure
 
 
-; IDE Options = PureBasic 5.50 (Windows - x64)
-; CursorPosition = 166
-; FirstLine = 166
+; IDE Options = PureBasic 5.62 (Windows - x86)
+; CursorPosition = 195
+; FirstLine = 154
 ; Folding = -
-; Markers = 123,228
+; Markers = 123,230
