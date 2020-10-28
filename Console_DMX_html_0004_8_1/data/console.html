@@ -76,6 +76,31 @@
         LED
       </div>
     </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c6_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar6(); this.form.c6.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c6' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar6(); this.form.c6_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        P.LED1
+      </div>
+    </div>
+
+    <div class="slider-box">
+      <div class="num-wrapper">
+        <input id='c7_in' type='number' placeholder='0' min='0' max='255' step='1'  oninput="prepareVar7(); this.form.c7.value=this.value" >
+      </div>
+      <div class="slider-wrapper">
+        <input id='c7' type='range' value='0' min='0' max='255' step='1' oninput="prepareVar7(); this.form.c7_in.value=this.value"  >
+      </div>
+      <div class="slider-title">
+        P.LED2
+      </div>
+    </div>
+
   </div>
   <br/>
 
