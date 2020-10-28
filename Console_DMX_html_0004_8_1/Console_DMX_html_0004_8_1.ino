@@ -30,6 +30,8 @@ int M2[] = {0, 43, 44};
 //int M3[] ={};
 int M4[] = {0, 131, 141, 151, 161};
 //int M5[] ={};
+int M6[] = {0,171,181};
+int M7[] = {0,191,201};
 
 //grp Led
 int R[] = {0, 4, 7, 10, 13};
@@ -587,6 +589,21 @@ void send_Mast() {
     D[temp] = Mast[4];
     ESP8266DMX.setSlot(temp, D[temp]);
   }//for M4
+
+for (int i = 1; i < (sizeof(M6) / 4); i++)
+  {
+    int temp = M6[i];
+    D[temp] = Mast[6];
+    ESP8266DMX.setSlot(temp, D[temp]);
+  }//for M6
+
+  for (int i = 1; i < (sizeof(M7) / 4); i++)
+  {
+    int temp = M7[i];
+    D[temp] = Mast[7];
+    ESP8266DMX.setSlot(temp, D[temp]);
+  }//for M7
+  
 }//send_Mast
 
 //////////////////////////////////////////websocket///////////////////////////////////////////////
@@ -671,6 +688,26 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
           send_rvb();
         }//e
 
+        if (payload[1] == 'f') {
+          char * pEnd;
+          Mast[6] = strtol ((const char *) &payload[2], &pEnd, 8);
+          for (int i = 1; i < (sizeof(M6) / 4); i++) {
+            int temp = M4[i];
+            D[temp] = Mast[6];
+            ESP8266DMX.setSlot(temp, D[temp]);
+          }//for M6
+        }//f
+
+        if (payload[1] == 'g') {
+          char * pEnd;
+          Mast[7] = strtol ((const char *) &payload[2], &pEnd, 8);
+          for (int i = 1; i < (sizeof(M7) / 4); i++) {
+            int temp = M4[i];
+            D[temp] = Mast[7];
+            ESP8266DMX.setSlot(temp, D[temp]);
+          }//for M7
+        }//f
+
         //  wvu tsr qpo nml kji //
         if (payload[1] == 'i') {
           char * pEnd;
@@ -709,7 +746,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         if (payload[1] == 'q') {
           char * pEnd;
           ccdblue = strtol ((const char *) &payload[2], &pEnd, 8);
-        }//k
+        }//q
 
         if (payload[1] == 'r') {
           char * pEnd;
