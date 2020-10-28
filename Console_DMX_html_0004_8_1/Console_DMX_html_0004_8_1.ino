@@ -745,7 +745,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 void srv_handle_set() {
   for (uint8_t i = 0; i < server.args(); i++) {
     if (server.argName(i) == "c") {
-      uint32_t rvbtmp = (uint32_t) strtol(&server.arg(i)[0], NULL, 16);
+      uint32_t rvbtmp = (uint32_t) strtol(server.arg(i).c_str(), NULL, 16);
       if (rvbtmp >= 0x000000 && rvbtmp <= 0xFFFFFF)
       {
         tred = (rvbtmp >> 16);
@@ -757,7 +757,7 @@ void srv_handle_set() {
 
     //////////////////////////////////////////memoire///////////////////////////////////////////////
     if (server.argName(i) == "m") {
-      Mem = (uint8_t) strtol(&server.arg(i)[0], NULL, 10);
+      Mem = (uint8_t) strtol(server.arg(i).c_str(), NULL, 10);
 #ifdef DEBUGH
       Serial.print("m=");
       Serial.println(Mem);
@@ -918,7 +918,7 @@ void srv_handle_set() {
       Serial.print("mem=");
 #endif
 
-      Mem = (uint8_t) strtol(&server.arg(i)[0], NULL, 10);
+      Mem = (uint8_t) strtol(server.arg(i).c_str(), NULL, 10);
 
       if (Mem == 0) {
 
