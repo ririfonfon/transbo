@@ -88,6 +88,20 @@ function prepareVar5() {
       var data = "ae"+values; console.log('iData: ' + data); connection.send(data);
 }//prepare 5
 
+function prepareVar6() {
+  var a = parseInt(document.getElementById('c6').value).toString(8);
+  if(a.length < 2) { a = '0' + a; }
+  values=a;
+  var data = "af"+values; console.log('iData: ' + data); connection.send(data);
+}//prepare 6
+
+function prepareVar7() {
+  var a = parseInt(document.getElementById('c7').value).toString(8);
+  if(a.length < 2) { a = '0' + a; }
+  values=a;
+  var data = "ag"+values; console.log('iData: ' + data); connection.send(data);
+}//prepare 7
+
 function handle_M_B_S(e) {
   e.preventDefault();
   var name = e.target.className;
