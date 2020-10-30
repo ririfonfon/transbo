@@ -216,12 +216,12 @@ void send_Mast()
         ESP8266DMX.setSlot(temp, D[temp]);
     } //for M2
 
-    for (int i = 1; i < (sizeof(M4) / 4); i++)
+    for (int i = 1; i < (sizeof(M5) / 4); i++)
     {
-        int temp = M4[i];
-        D[temp] = Mast[4];
+        int temp = M5[i];
+        D[temp] = Mast[5];
         ESP8266DMX.setSlot(temp, D[temp]);
-    } //for M4
+    } //for M5
 
     for (int i = 1; i < (sizeof(M6) / 4); i++)
     {
@@ -236,5 +236,12 @@ void send_Mast()
         D[temp] = Mast[7];
         ESP8266DMX.setSlot(temp, D[temp]);
     } //for M7
+
+    for (int i = 1; i < (sizeof(M8) / 4); i++)
+    {
+        int temp = M8[i];
+        D[temp] = Mast[8];
+        ESP8266DMX.setSlot(temp, D[temp]);
+    } //for M8
 
 } //send_Mast
