@@ -71,25 +71,25 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[3] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_rvb2();
             } //c
-
+            
             if (payload[1] == 'd')
             {
                 char *pEnd;
-                Mast[4] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M4) / 4); i++)
-                {
-                    int temp = M4[i];
-                    D[temp] = Mast[4];
-                    ESP8266DMX.setSlot(temp, D[temp]);
-                } //for M4
-            }     //d
+                Mast[5] = strtol((const char *)&payload[2], &pEnd, 8);
+                send_rvb();
+            } //d
 
             if (payload[1] == 'e')
             {
                 char *pEnd;
                 Mast[5] = strtol((const char *)&payload[2], &pEnd, 8);
-                send_rvb();
-            } //e
+                for (int i = 1; i < (sizeof(M5) / 4); i++)
+                {
+                    int temp = M5[i];
+                    D[temp] = Mast[5];
+                    ESP8266DMX.setSlot(temp, D[temp]);
+                } //for M5
+            }     //e
 
             if (payload[1] == 'f')
             {
