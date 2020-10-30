@@ -8,14 +8,14 @@ uint8_t Mem = 1;
 int M1[] = {0, 41, 42};
 int M2[] = {0, 43, 44};
 //int M3[] ={};
-int M4[] = {0, 131, 141, 151, 161};
-//int M5[] ={};
+int M5[] = {0, 131, 141, 151, 161};
+//int M4[] ={};
 int M6[] = {0, 171, 181};
 int M7[] = {0, 191, 201};
 int M8[] = {0, 211, 221};
 
 uint8_t start_dmx = 1;
-const uint8_t end_dmx = 171;
+const int end_dmx = 300;
 int D[end_dmx];
 
 //grp Led
