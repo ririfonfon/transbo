@@ -160,30 +160,12 @@ void setup()
   /*defo dmx*/
   ESP8266DMX.setSlot(1, 0);
   ESP8266DMX.setSlot(2, 255);
-  ESP8266DMX.setSlot(135, 0);
-  ESP8266DMX.setSlot(136, 0);
-  ESP8266DMX.setSlot(137, 0);
-  ESP8266DMX.setSlot(138, 0);
-  ESP8266DMX.setSlot(139, 0);
-  ESP8266DMX.setSlot(140, 0);
-  ESP8266DMX.setSlot(145, 0);
-  ESP8266DMX.setSlot(146, 0);
-  ESP8266DMX.setSlot(147, 0);
-  ESP8266DMX.setSlot(148, 0);
-  ESP8266DMX.setSlot(149, 0);
-  ESP8266DMX.setSlot(150, 0);
-  ESP8266DMX.setSlot(155, 0);
-  ESP8266DMX.setSlot(156, 0);
-  ESP8266DMX.setSlot(157, 0);
-  ESP8266DMX.setSlot(158, 0);
-  ESP8266DMX.setSlot(159, 0);
-  ESP8266DMX.setSlot(160, 0);
-  ESP8266DMX.setSlot(165, 0);
-  ESP8266DMX.setSlot(166, 0);
-  ESP8266DMX.setSlot(167, 0);
-  ESP8266DMX.setSlot(168, 0);
-  ESP8266DMX.setSlot(169, 0);
-  ESP8266DMX.setSlot(170, 0);
+
+  for (int i = 135; i < end_dmx; i++)
+  {
+    ESP8266DMX.setSlot(i, 0);
+  }
+
   //defo color
   lred = 255;
   lgreen = 0;
