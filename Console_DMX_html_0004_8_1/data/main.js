@@ -102,6 +102,13 @@ function prepareVar7() {
   var data = "ag"+values; console.log('iData: ' + data); connection.send(data);
 }//prepare 7
 
+function prepareVar8() {
+  var a = parseInt(document.getElementById('c8').value).toString(8);
+  if(a.length < 2) { a = '0' + a; }
+  values=a;
+  var data = "ah"+values; console.log('iData: ' + data); connection.send(data);
+}//prepare 8
+
 function handle_M_B_S(e) {
   e.preventDefault();
   var name = e.target.className;
