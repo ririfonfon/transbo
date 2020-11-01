@@ -68,27 +68,8 @@ void setup()
   WiFi.softAP(ssid, password, 10, 1);
 
   IPAddress myIP = WiFi.softAPIP();
-
-
-
-  //fsbrowser serveur
-  // if (SPIFFS.begin())
-  // {
-  //   File dir = SPIFFS.openDir("/");
-  //   while (dir.next())
-  //   {
-  //     String fileName = dir.fileName();
-  //     size_t fileSize = dir.fileSize();
-  //    #ifdef DEBUG;
-  //     Serial.printf("FS File: %s, size: %s\n", fileName.c_str(), formatBytes(fileSize).c_str());
-  //   #endif;
-  //   } //while (dir.next()) {
-  //  #ifdef DEBUG;
-  //   Serial.printf("\n");
-  //  #endif;
-  // } //SPIFFS.begin();
  
- SPIFFS.begin();
+  SPIFFS.begin();
 
   listDir(SPIFFS, "/", 0);
 
@@ -139,21 +120,6 @@ void setup()
   server.on("/set", srv_handle_set);
   server.serveStatic("/", SPIFFS, "/console.html");
   server.begin();
-
-  #ifdef DEBUG
-  Serial.println("HTTP server started.");
-  Serial.println("ready!");
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.print("RSSI: ");
-  Serial.print(WiFi.RSSI());
-  Serial.println(" dBm");
-  Serial.println();
-  Serial.print("Configuring access point...");
-  Serial.println("AP IP address: ");
-  Serial.println(myIP);
-  Serial.println("HTTP server started");
-  #endif
 
   MDNS.addService("http", "tcp", 80);
   MDNS.addService("ws", "tcp", 81);
@@ -302,6 +268,16 @@ void setup()
     Serial.println(clblue);
    #endif
   } //(EEPROM.read(62) == 'O' && EEPROM.read(63) == 'K')
+
+  #ifdef DEBUG
+  Serial.println("HTTP server started.");
+  Serial.println("ready!");
+  Serial.println();
+  Serial.print("Configuring access point...");
+  Serial.println("AP IP address: ");
+  Serial.println(myIP);
+  Serial.println("HTTP server OK");
+  #endif
 
 } //setup
 
