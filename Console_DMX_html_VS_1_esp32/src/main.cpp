@@ -87,6 +87,8 @@ void setup()
   //   Serial.printf("\n");
   //  #endif;
   // } //SPIFFS.begin();
+ 
+ SPIFFS.begin();
 
   listDir(SPIFFS, "/", 0);
 
@@ -95,7 +97,7 @@ void setup()
   server.on("/list", HTTP_GET, handleFileList);
   //load editor
   server.on("/edit", HTTP_GET, []() {
-    if (!handleFileRead("/edit.htm"))
+    if (!handleFileRead("/edit.html"))
       server.send(404, "text/plain", "FileNotFound");
   });
   //create file
