@@ -1,5 +1,5 @@
 
-//#define DEBUG 1
+#define DEBUG 1
 //#define DEBUGH 1
 //#define DEBUGC 1
 //#define DEBUGMASTER 1
