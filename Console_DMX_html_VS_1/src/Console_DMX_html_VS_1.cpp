@@ -28,11 +28,11 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 // dmx shield
 #include <LXESP8266UARTDMX.h>
 
-#include <void.h>
-#include <srv_handle_set.h>
+#include <fonction_void.h>
+#include <fonction_srv_handle_set.h>
 
-#include <web_socket.h>
-#include <spiffs.h>
+#include <fonction_web_socket.h>
+#include <fonction_spiffs.h>
 
 //////////////////////////////////////////S E T U P////////////////////////////////////////
 void setup()
