@@ -26,10 +26,7 @@
 
 #include <variable.h>
 
-// WiFiMulti WiFiMulti;
 WebServer server(80);
-
-
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 // dmx shield
@@ -37,9 +34,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 
 #include <fonction_void.h>
 #include <fonction_srv_handle_set.h>
-
 #include <fonction_web_socket.h>
-
 #include <fonction_spiffs.h>
 
 
@@ -48,9 +43,9 @@ void setup()
 {
   EEPROM.begin(EEPROM_SIZE);
 
-  //init pin dmx low
+  //init pin dmx
   pinMode(2, OUTPUT);
-  digitalWrite(2, LOW);
+  digitalWrite(2, HIGH);// HIGH dmx out
   // DMX
   ESP32DMX.startOutput(); // initialize with bus length
 
