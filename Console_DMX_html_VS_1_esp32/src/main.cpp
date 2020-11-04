@@ -1,3 +1,4 @@
+// platformio run --target uploadfs // cmd console download spiff
 
 #define DEBUG 1
 //#define DEBUGH 1
