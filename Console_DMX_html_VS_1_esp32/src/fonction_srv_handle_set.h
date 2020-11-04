@@ -19,10 +19,10 @@ void srv_handle_set()
         if (server.argName(i) == "m")
         {
             Mem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
-         #ifdef DEBUGH
+#ifdef DEBUGH
             Serial.print("m=");
             Serial.println(Mem);
-         #endif
+#endif
 
             if (Mem == 1)
             {
@@ -44,7 +44,7 @@ void srv_handle_set()
 
                 send_rvb();
                 send_rvb2();
-            } //mem1
+            } //mem1 mauve
 
             if (Mem == 2)
             {
@@ -66,7 +66,7 @@ void srv_handle_set()
 
                 send_rvb();
                 send_rvb2();
-            } //mem2
+            } //mem2 rouge
 
             if (Mem == 3)
             {
@@ -88,7 +88,7 @@ void srv_handle_set()
 
                 send_rvb();
                 send_rvb2();
-            } //mem3
+            } //mem3 vert
 
             if (Mem == 4)
             {
@@ -111,7 +111,7 @@ void srv_handle_set()
 
                 send_rvb();
                 send_rvb2();
-            } //mem4
+            } //mem4 bleu
 
             if (Mem == 5)
             {
@@ -134,7 +134,7 @@ void srv_handle_set()
 
                 send_rvb();
                 send_rvb2();
-            } //mem5
+            } //mem5 orange
 
             if (Mem == 6)
             {
@@ -175,35 +175,47 @@ void srv_handle_set()
                 lblue = clblue;
 
                 send_rvb6();
-            } //mem6
+            } //mem6 special
+
+            if (Mem == 7)
+            {
+                ESP32DMX.setSlot(1, 0);
+                ESP32DMX.setSlot(2, 255);
+
+                for (int i = 135; i < end_dmx; i++)
+                {
+                    ESP32DMX.setSlot(i, 0);
+                }
+
+            } // mem7 audio
 
         } //serveur m
 
         //////////////////////////////////////////special mem///////////////////////////////////////////
         if (server.argName(i) == "mem")
         {
-         #ifdef DEBUGSPEC
+#ifdef DEBUGSPEC
             Serial.print("mem=");
-         #endif
+#endif
 
             Mem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
 
             if (Mem == 0)
             {
 
-             #ifdef DEBUGSPEC
+#ifdef DEBUGSPEC
                 Serial.print("mem=");
                 Serial.println(Mem);
-             #endif
+#endif
                 load_spec();
             } //if(Mem==0){
 
             if (Mem == 1)
             {
-             #ifdef DEBUGSPEC
+#ifdef DEBUGSPEC
                 Serial.print("mem=");
                 Serial.println(Mem);
-             #endif
+#endif
                 save_spec();
             } //if(Mem==1){
         }     //serveur mem
