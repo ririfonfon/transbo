@@ -113,6 +113,18 @@
                         </div>
                     </div>
 
+                    <div class="slider-box">
+                        <div class="num-wrapper">
+                            <input id='c9_in' type='number' placeholder='0' min='0' max='255' step='1' oninput="this.form.c9.value=this.value; prepareVar9(); ">
+                        </div>
+                        <div class="slider-wrapper">
+                            <input id='c9' type='range' value='0' min='0' max='255' step='1' oninput="this.form.c9_in.value=this.value; prepareVar9(); ">
+                        </div>
+                        <div class="slider-title">
+                            Regie
+                        </div>
+                    </div>
+
                 </div>
                 <br/>
 
@@ -124,7 +136,7 @@
                         <li><a class='m' id='4'>Bleu</a></li>
                         <li><a class='m' id='5'>Orange</a></li>
                         <li><a class='m' id='6'>Special</a></li>
-                        <li><a class='m' id='7'>Audio</a></li>
+                        <li><a class='m' id='7'>Auto</a></li>
 
                     </ul>
                 </div>
