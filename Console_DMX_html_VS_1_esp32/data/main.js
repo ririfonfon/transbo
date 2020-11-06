@@ -122,6 +122,15 @@ function prepareVar8() {
     connection.send(data);
 } //prepare 8
 
+function prepareVar9() {
+    var a = parseInt(document.getElementById('c9').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ai" + values;
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 9
+
 function handle_M_B_S(e) {
     e.preventDefault();
     var name = e.target.className;
