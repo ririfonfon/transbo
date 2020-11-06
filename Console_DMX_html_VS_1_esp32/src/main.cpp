@@ -7,7 +7,7 @@
 //#define DEBUGDMX 1
 //#define DEBUGRVB 1
 //#define DEBUGcolor 1
-//#define DEBUGSPEC 1
+#define DEBUGSPEC 1
 
 #include <Arduino.h>
 #include <FS.h>
@@ -55,7 +55,7 @@ void setup()
   Serial.println();
  #endif
 
-  // connect to WiFi
+  //////////////////////////////////////////////////// connect to WiFi
 
   /* You can remove the password parameter if you want the AP to be open. */
 
@@ -69,7 +69,7 @@ void setup()
 
   listDir(SPIFFS, "/", 0);
 
-  //SERVER INIT
+  ///////////////////////////////////////////////////SERVER INIT
   //list directory
   server.on("/list", HTTP_GET, handleFileList);
   //load editor
@@ -120,7 +120,7 @@ void setup()
   MDNS.addService("http", "tcp", 80);
   MDNS.addService("ws", "tcp", 81);
 
-  /*defo dmx*/
+ ////////////////////////////////////// /*defo dmx*/
   ESP32DMX.setSlot(1, 0);
   ESP32DMX.setSlot(2, 255);
 
@@ -130,25 +130,37 @@ void setup()
   }
 
   //defo color
-  lred = 255;
+  lred = 255;//led
   lgreen = 0;
   lblue = 255;
 
-  tred = 255;
+  tred = 255;// trans 1
   tgreen = 127;
   tblue = 0;
 
-  cgred = 255;
-  cggreen = 0;
-  cgblue = 255;
-  cred = 255;
+  ttred = 255;//trans 2
+  ttgreen = 0;
+  ttblue =  0;
+  ttwhite = 10;
+
+  cred = 255;//comptoire
   cgreen = 0;
   cblue = 255;
-  cdred = 255;
-  cdgreen = 0;
-  cdblue = 255;
 
-  send_rvb1();
+  lored = 255;//logo
+  logreen = 0;
+  loblue = 255;
+
+  clured = 255;//club
+  clugreen = 127;
+  clublue = 0;
+  clowhite = 10;
+
+  rered = 255;// regie
+  regreen = 127;
+  reblue = 0;
+
+  send_rvb6();
 
   /*EEPROM*/
   if (EEPROM.read(62) != 'O' || EEPROM.read(63) != 'K')
@@ -169,37 +181,62 @@ void setup()
     Serial.println("EEPROM content cleared!");
    #endif
 
-    ccgred = 0;
-    ccggreen = 0;
-    ccgblue = 0;
-    ccred = 0;
+    ccred = 0;// comptoire
     ccgreen = 0;
-    ccblue = 0;
-    ccdred = 0;
-    ccdgreen = 0;
-    ccdblue = 0;
-    ctred = 0;
-    ctgreen = 0;
-    ctblue = 0;
-    clred = 0;
-    clgreen = 0;
-    clblue = 0;
+    ccblue = 0; 
 
-    EEPROM.write(1, ccgred);
-    EEPROM.write(2, ccggreen);
-    EEPROM.write(3, ccgblue);
-    EEPROM.write(4, ccred);
-    EEPROM.write(5, ccgreen);
-    EEPROM.write(6, ccblue);
-    EEPROM.write(7, ccdred);
-    EEPROM.write(8, ccdgreen);
-    EEPROM.write(9, ccdblue);
-    EEPROM.write(10, ctred);
-    EEPROM.write(11, ctgreen);
-    EEPROM.write(12, ctblue);
-    EEPROM.write(13, clred);
-    EEPROM.write(14, clgreen);
-    EEPROM.write(15, clblue);
+    clred = 0;// led
+    clgreen = 0;
+    clblue = 0; 
+
+    ctred = 0;// trans 1
+    ctgreen = 0;
+    ctblue = 0; 
+
+    cttred = 0;// trans 2
+    cttgreen = 0;
+    cttblue = 0;
+    cttwhite = 0;
+
+    clored = 0;//logo
+    clogreen = 0;
+    cloblue = 0;
+    clowhite = 0;
+
+    cclured = 0;// club
+    cclugreen = 0;
+    cclublue = 0;
+    ccluwhite = 0;
+
+    crered = 0;// regie
+    cregreen = 0;
+    creblue = 0; 
+
+    EEPROM.write(1, ccred);
+    EEPROM.write(2, ccgreen);
+    EEPROM.write(3, ccblue);
+    EEPROM.write(4, clred);
+    EEPROM.write(5, clgreen);
+    EEPROM.write(6, clblue);
+    EEPROM.write(7, ctred);
+    EEPROM.write(8, ctgreen);
+    EEPROM.write(9, ctblue);
+    EEPROM.write(10, cttred);
+    EEPROM.write(11, cttgreen);
+    EEPROM.write(12, cttblue);
+    EEPROM.write(13, cttwhite);
+    EEPROM.write(14, clored);
+    EEPROM.write(15, clogreen);
+    EEPROM.write(16,cloblue);
+    EEPROM.write(17,clowhite);
+    EEPROM.write(18,cclured);
+    EEPROM.write(19,cclugreen);
+    EEPROM.write(20,cclublue);
+    EEPROM.write(21,ccluwhite);
+    EEPROM.write(22,crered);
+    EEPROM.write(23,cregreen);
+    EEPROM.write(24,creblue);
+
     EEPROM.write(62, 'O');
     EEPROM.write(63, 'K');
     EEPROM.commit();
@@ -207,62 +244,35 @@ void setup()
 
   if (EEPROM.read(62) == 'O' && EEPROM.read(63) == 'K')
   {
-    ccgred = EEPROM.read(1);
-    ccggreen = EEPROM.read(2);
-    ccgblue = EEPROM.read(3);
-    ccred = EEPROM.read(4);
-    ccgreen = EEPROM.read(5);
-    ccblue = EEPROM.read(6);
-    ccdred = EEPROM.read(7);
-    ccdgreen = EEPROM.read(8);
-    ccdblue = EEPROM.read(9);
-    ctred = EEPROM.read(10);
-    ctgreen = EEPROM.read(11);
-    ctblue = EEPROM.read(12);
-    clred = EEPROM.read(13);
-    clgreen = EEPROM.read(14);
-    clblue = EEPROM.read(15);
+    ccred = EEPROM.read(1);
+    ccgreen = EEPROM.read(2);
+    ccblue = EEPROM.read(3);
+    clred = EEPROM.read(4);
+    clgreen = EEPROM.read(5);
+    clblue = EEPROM.read(6);
+    ctred = EEPROM.read(7);
+    ctgreen = EEPROM.read(8);
+    ctblue = EEPROM.read(9);
+    cttred = EEPROM.read(10);
+    cttgreen = EEPROM.read(11);
+    cttblue = EEPROM.read(12);
+    cttwhite = EEPROM.read(13);
+    clored = EEPROM.read(14);
+    clogreen = EEPROM.read(15);
+    cloblue = EEPROM.read(16);
+    clowhite = EEPROM.read(17);
+    cclured = EEPROM.read(18);
+    cclugreen = EEPROM.read(19);
+    cclublue = EEPROM.read(20);
+    ccluwhite = EEPROM.read(21);
+    crered = EEPROM.read(22);
+    cregreen = EEPROM.read(23);
+    creblue = EEPROM.read(24);
 
     #ifdef DEBUG
     Serial.println("EEPROM READ");
     #endif
 
-   #ifdef DEBUGSPEC
-    Serial.print("ccgred=");
-    Serial.println(ccgred);
-    Serial.print("ccggreen=");
-    Serial.println(ccggreen);
-    Serial.print("ccgblue=");
-    Serial.println(ccgblue);
-
-    Serial.print("ccred=");
-    Serial.println(ccred);
-    Serial.print("ccgreen=");
-    Serial.println(ccgreen);
-    Serial.print("ccblue=");
-    Serial.println(ccblue);
-
-    Serial.print("ccdred=");
-    Serial.println(ccdred);
-    Serial.print("ccdgreen=");
-    Serial.println(ccdgreen);
-    Serial.print("ccdblue=");
-    Serial.println(ccdblue);
-
-    Serial.print("ctred=");
-    Serial.println(ctred);
-    Serial.print("ctgreen=");
-    Serial.println(ctgreen);
-    Serial.print("ctblue=");
-    Serial.println(ctblue);
-
-    Serial.print("clred=");
-    Serial.println(clred);
-    Serial.print("clgreen=");
-    Serial.println(clgreen);
-    Serial.print("clblue=");
-    Serial.println(clblue);
-   #endif
   } //(EEPROM.read(62) == 'O' && EEPROM.read(63) == 'K')
 
   #ifdef DEBUG
