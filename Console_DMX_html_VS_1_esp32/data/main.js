@@ -1,10 +1,11 @@
-var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
-
 window.addEventListener('load', setup);
 window.addEventListener('resize', drawColorbar);
 
+var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+
 function connect() {
-    connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+    console.log('connect()');
+    // connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
 
     connection.onopen = function() {
         connection.send('Connect ' + new Date());
@@ -16,7 +17,7 @@ function connect() {
         if (e.data.charAt(0) == 'c') {
             var data = e.data.split(':');
             document.getElementById(data[0]).value = data[1];
-        } //if
+        } //if (e.data.charAt(0) == 'c')
 
         if (e.data.charAt(0) == 'm') {
             var val = e.data.split(':')[1];
@@ -25,7 +26,65 @@ function connect() {
                 el.classList.remove('active');
             });
             document.getElementById(val).classList.add('active');
-        } //if
+        } //if (e.data.charAt(0) == 'm')
+
+        if (e.data.charAt(0) == 'a') {
+
+            if (e.data.charAt(1) == 'a') {
+                var data = e.data.split(':');
+                document.getElementById('c1').value = data[1];
+                document.getElementById('c1_in').value = data[1];
+            } //if a
+
+            if (e.data.charAt(1) == 'b') {
+                var data = e.data.split(':');
+                document.getElementById('c2').value = data[1];
+                document.getElementById('c2_in').value = data[1];
+            } //if b
+
+            if (e.data.charAt(1) == 'c') {
+                var data = e.data.split(':');
+                document.getElementById('c3').value = data[1];
+                document.getElementById('c3_in').value = data[1];
+            } //if c
+
+            if (e.data.charAt(1) == 'd') {
+                var data = e.data.split(':');
+                document.getElementById('c4').value = data[1];
+                document.getElementById('c4_in').value = data[1];
+            } //if d
+
+            if (e.data.charAt(1) == 'e') {
+                var data = e.data.split(':');
+                document.getElementById('c5').value = data[1];
+                document.getElementById('c5_in').value = data[1];
+            } //if e
+
+            if (e.data.charAt(1) == 'f') {
+                var data = e.data.split(':');
+                document.getElementById('c6').value = data[1];
+                document.getElementById('c6_in').value = data[1];
+            } //if f
+
+            if (e.data.charAt(1) == 'g') {
+                var data = e.data.split(':');
+                document.getElementById('c7').value = data[1];
+                document.getElementById('c7_in').value = data[1];
+            } //if g
+
+            if (e.data.charAt(1) == 'h') {
+                var data = e.data.split(':');
+                document.getElementById('c8').value = data[1];
+                document.getElementById('c8_in').value = data[1];
+            } //if h
+
+            if (e.data.charAt(1) == 'i') {
+                var data = e.data.split(':');
+                document.getElementById('c9').value = data[1];
+                document.getElementById('c9_in').value = data[1];
+            } //if i
+
+        } //if (e.data.charAt(0) == 'a')
 
     }; //function (e)
 
@@ -40,10 +99,13 @@ function connect() {
     connection.onerror = function(err) {
         console.error('Socket encountered error: ', err.message, 'Closing socket');
         connection.close();
+        setTimeout(function() {
+            connect();
+        }, 1000);
     };
 }
 
-connect();
+// connect();
 
 
 
@@ -263,4 +325,5 @@ function setup() {
 
     // can.addEventListener('touchstart', Touch, false);
     can.addEventListener('click', Click, false);
+    connect();
 }
