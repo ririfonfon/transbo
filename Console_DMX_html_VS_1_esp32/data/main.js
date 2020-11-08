@@ -9,10 +9,15 @@ function connect() {
 
     connection.onopen = function() {
         connection.send('Connect ' + new Date());
+        console.log('connection.send.');
     };
 
     connection.onmessage = function(e) {
         console.log('Server: ', e.data);
+        var data = e.data.split(':');
+        console.log('data[1]: ', data[1]);
+        console.log('data[2]: ', data[2]);
+        console.log('data[3]: ', data[3]);
 
         if (e.data.charAt(0) == 'c') {
             var data = e.data.split(':');
@@ -89,7 +94,7 @@ function connect() {
     }; //function (e)
 
     connection.onclose = function(e) {
-        console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+        console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason, e.code);
         connection.close();
         setTimeout(function() {
             connect();
