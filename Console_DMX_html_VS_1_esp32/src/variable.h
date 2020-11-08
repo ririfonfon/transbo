@@ -1,7 +1,7 @@
 const char *host = "console";
 
-uint8_t clientn = 0;
-int list[8];  // client 
+int clientn = -1;
+int list[8] = {-1,-1,-1,-1,-1,-1,-1,-1};  // client 
 
 const uint8_t Master = 9;
 int Mast[Master];

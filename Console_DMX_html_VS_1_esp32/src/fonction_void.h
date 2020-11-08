@@ -27,7 +27,7 @@ void load_spec()
     cregreen = EEPROM.read(23);
     creblue = EEPROM.read(24);
 
-    for (int i = 1; i <= clientn; i++)
+    for (int i = 0; i <= clientn; i++)
     {
 
         if (list[i] != -1)
