@@ -1,9 +1,15 @@
 //////////////////////////////////////////websocket///////////////////////////////////////////////
-void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
+// void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
+void webSocketEvent(AsyncWebSocket       *server,
+             AsyncWebSocketClient *client,
+             AwsEventType          type,
+             void                 *arg,
+             uint8_t              *payload,
+             size_t                lenght)
 {
     switch (type)
     {
-    case WStype_DISCONNECTED:
+    case  WS_EVT_DISCONNECT:
         clientn = clientn - 1;
         list[clientn] = 0;
 #ifdef DEBUG
@@ -16,9 +22,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
         break;
 
-    case WStype_CONNECTED:
+    case WS_EVT_CONNECT:
         clientn = clientn + 1;
-        list[clientn] = num;
+        list[clientn] = client->id();
 #ifdef DEBUG
         Serial.println("Client connected!");
         Serial.print("clientn : ");
@@ -29,15 +35,20 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
         break;
 
-    case WStype_TEXT:
+    // case WStype_TEXT:
+    // case WS_TEXT:
+    case WS_EVT_DATA:
+
         //  is the start for this data
         if (payload[0] == 'a')
         {
             for (int i = 0; i < clientn; i++)
             {
-                webSocket.sendTXT(list[i], payload);
+                // webSocket.sendTXT(list[i], payload);
+                // webSocket.textAll(payload,lenght);
+                webSocket.text(list[i], payload, lenght);
                 #ifdef DEBUG
-                Serial.println("webSocket.sendTXT(list[i], payload);");
+                Serial.println("webSocket.textAll(payload,lenght);");
                 Serial.print("clientn : ");
                 Serial.println(clientn);
                 Serial.print("list[clientn] : ");
