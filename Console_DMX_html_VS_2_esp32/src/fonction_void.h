@@ -33,7 +33,7 @@ void load_spec()
         if (list[i] != 0)
         {
 
-            webSocket.sendTXT(list[i], "ba:" + String(lround(ccred)));
+            webSocket.text(list[i], "ba:" + String(lround(ccred)));
             webSocket.sendTXT(list[i], "bb:" + String(lround(ccgreen)));
             webSocket.sendTXT(list[i], "bc:" + String(lround(ccblue)));
 
