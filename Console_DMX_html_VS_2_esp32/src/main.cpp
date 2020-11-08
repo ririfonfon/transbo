@@ -10,6 +10,7 @@
 #define DEBUGSPEC 1
 
 #include <Arduino.h>
+#include <SPIFFS.h>
 #include <FS.h>
 #include <EEPROM.h>
 #define EEPROM_SIZE 64
@@ -17,20 +18,20 @@
 #include <WiFiClient.h>
 #include <WiFiAP.h>
 
-// #include <WiFiMulti.h>
-#include <WiFiAP.h>
-#include <WebSocketsServer.h>
-#include <WebServer.h>
-#include <ESPmDNS.h>
-#include <SPIFFS.h>
+#include <ESPAsyncWebServer.h>
+// #include <WebSocketsServer.h>
+// #include <WebServer.h>
+ #include <ESPmDNS.h>
+
 #include <SPIFFSEditor.h>
 
 #include <variable.h>
 
-WebServer server(80);
-WebSocketsServer webSocket = WebSocketsServer(81);
+AsyncWebServer server(80);
+AsyncWebSocket webSocket("/webSocket");
+// WebSocketsServer webSocket = WebSocketsServer(81);
 
-// dmx shield
+// dmx
 #include <LXESP32DMX.h>
 
 #include <fonction_void.h>
