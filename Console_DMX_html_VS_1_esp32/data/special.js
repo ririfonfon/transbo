@@ -3,7 +3,8 @@ window.addEventListener('load', setup);
 var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
 
 function connect() {
-    connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+    console.log('connect()');
+    // connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
 
     connection.onopen = function() {
         connection.send('Connect ' + new Date());
@@ -167,10 +168,13 @@ function connect() {
     connection.onerror = function(err) {
         console.error('Socket encountered error: ', err.message, 'Closing socket');
         connection.close();
+        setTimeout(function() {
+            connect();
+        }, 1000);
     };
 }
 
-connect();
+// connect();
 
 id_array = new Array('cc1');
 values = new Array(id_array.length);
@@ -455,5 +459,6 @@ function setup() {
         // el.addEventListener('touchstart', handle_M_B_S, false);
         el.addEventListener('click', handle_M_B_S, false);
     });
+    connect();
 
 }
