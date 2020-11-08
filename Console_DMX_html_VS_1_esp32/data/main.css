@@ -187,6 +187,11 @@
         text-align: center;
     }
     
+    .colorbar-title {
+        display: block;
+        padding: 0px 3px;
+    }
+    
     .noselect {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -203,6 +208,12 @@
     }
     
     #colorbar {
+        display: inline-block;
+        width: 320px;
+        height: 100px;
+    }
+    
+    #colorbar2 {
         display: inline-block;
         width: 320px;
         height: 100px;
