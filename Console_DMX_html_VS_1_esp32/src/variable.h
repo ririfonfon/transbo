@@ -16,6 +16,12 @@ int M7[] = {0, 187};// logo
 int M8[] = {0, 195};// club
 int M9[] = {0, 101, 111};// regie
 
+int Soundfull[] = {0, 57, 67, 77, 87, 97, 128, 138, 148, 158, 168};// 25 = auto 1
+int Speedfull[] = {0, 58, 68, 78, 88, 98, 129, 139, 149, 159, 169};// 127
+
+int Soundnicols[] = {0, 177, 185, 193, 201};// 253
+int Speednicols[] = {0, 178, 186, 194, 202};// 127
+
 uint8_t start_dmx = 1;
 const int end_dmx = 300;
 int D[end_dmx];
