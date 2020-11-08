@@ -262,6 +262,18 @@ function Click(e) {
     submitVal('c', compToHex(rgb[0]) + compToHex(rgb[1]) + compToHex(rgb[2]));
 }
 
+function Click2(e) {
+    console.log('Click2(e)');
+    pos = getMousePos(can2, e);
+    console.log('pos2');
+    console.log(pos);
+    rgb = ctx2.getImageData(pos.x, pos.y, 1, 1).data;
+    console.log('rgb2');
+    console.log(rgb);
+    drawColorbar2(rgb);
+    submitVal('d', compToHex(rgb[0]) + compToHex(rgb[1]) + compToHex(rgb[2]));
+}
+
 // Thanks to the backup at http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
 function rgbToHsl(r, g, b) {
     console.log('rgbToHsl(r, g, b)');
@@ -312,6 +324,27 @@ function drawColorbar(rgb = [0, 0, 0]) {
     }
 }
 
+function drawColorbar2(rgb = [0, 0, 0]) {
+    console.log('drawColorbar2');
+    console.log(rgb[0]);
+    console.log(rgb[1]);
+    console.log(rgb[2]);
+    can2 = document.getElementById('colorbar2');
+    ctx2 = can2.getContext('2d');
+
+    var h = can.width / 360;
+
+    var hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+
+    for (var i = 0; i <= 360; i++) {
+        ctx2.fillStyle = 'hsl(' + i + ', 100%, 50%)';
+        ctx2.fillRect(i * h, 0, h, can2.height / 2);
+        ctx2.fillStyle = 'hsl(' + hsl[0] * 360 + ', 100%, ' + i * (100 / 360) + '%)';
+        ctx2.fillRect(i * h, can2.height / 2, h, can2.height / 2);
+    }
+}
+
+
 function setup() {
     console.log('setup()');
     var xhttp = new XMLHttpRequest();
@@ -328,7 +361,13 @@ function setup() {
 
     drawColorbar();
 
+    var can2 = document.getElementById('colorbar2');
+    var ctx2 = can2.getContext('2d');
+
+    drawColorbar2();
+
     // can.addEventListener('touchstart', Touch, false);
     can.addEventListener('click', Click, false);
+    can2.addEventListener('click', Click2, false);
     connect();
 }
