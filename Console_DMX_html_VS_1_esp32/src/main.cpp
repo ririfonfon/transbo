@@ -10,20 +10,19 @@
 #define DEBUGSPEC 1
 
 #include <Arduino.h>
-#include <FS.h>
-#include <EEPROM.h>
-#define EEPROM_SIZE 64
+// #include <FS.h>
 #include <WiFi.h>
-#include <WiFiClient.h>
-#include <WiFiAP.h>
+// #include <WiFiClient.h>
+// #include <WiFiAP.h>
 
-// #include <WiFiMulti.h>
-#include <WiFiAP.h>
 #include <WebSocketsServer.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
 #include <SPIFFS.h>
-#include <SPIFFSEditor.h>
+// #include <SPIFFSEditor.h>
+
+#include <EEPROM.h>
+#define EEPROM_SIZE 64
 
 #include <variable.h>
 
