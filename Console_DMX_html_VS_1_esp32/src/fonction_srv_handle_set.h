@@ -11,7 +11,31 @@ void srv_handle_set()
                 tred = (rvbtmp >> 16);
                 tgreen = (uint8_t((rvbtmp << 8) >> 16));
                 tblue = (uint8_t((rvbtmp << 16) >> 16));
+
+                rered = tred;
+                regreen = tgreen;
+                reblue = tblue;
+
                 send_rvb1();
+            }
+        }
+
+        if (server.argName(i) == "d")
+        {
+            uint32_t rvbtmp = (uint32_t)strtol(server.arg(i).c_str(), NULL, 16);
+            if (rvbtmp >= 0x000000 && rvbtmp <= 0xFFFFFF)
+            {
+                ttred = (rvbtmp >> 16);
+                ttgreen = (uint8_t((rvbtmp << 8) >> 16));
+                ttblue = (uint8_t((rvbtmp << 16) >> 16));
+                ttwhite = 0;
+
+                clured = ttred;
+                clugreen = ttgreen;
+                clublue = ttblue;
+                cluwhite = ttwhite;
+
+                send_rvb2();
             }
         }
 
