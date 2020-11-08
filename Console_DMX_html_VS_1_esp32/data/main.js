@@ -1,7 +1,7 @@
+var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+
 window.addEventListener('load', setup);
 window.addEventListener('resize', drawColorbar);
-
-var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
 
 function connect() {
     connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
