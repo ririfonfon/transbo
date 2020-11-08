@@ -7,7 +7,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         clientn = clientn - 1;
         list[clientn] = -1;
 
-#ifdef DEBUG
+#ifdef DEBUGsocket
         Serial.println("Disconnected!");
         Serial.print("num : ");
         Serial.println(num);
@@ -22,7 +22,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         clientn = clientn + 1;
         list[clientn] = num;
 
-#ifdef DEBUG
+#ifdef DEBUGsocket
         Serial.println("Client connected!");
         Serial.print("num : ");
         Serial.println(num);
@@ -37,7 +37,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         //  is the start for this data
         if (payload[0] == 'a')
         {
-#ifdef DEBUGSPEC
+#ifdef DEBUGsocket
             Serial.println("payload[0] == 'a'");
             for (int i = 0; i < clientn + 1; i++)
             {
@@ -65,7 +65,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 #endif
             if (payload[1] == 'a')
             {
-#ifdef DEBUGSPEC
+#ifdef DDEBUGsocket
                 Serial.println("payload[1] == 'a'");
 #endif
                 char *pEnd;
@@ -235,7 +235,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
         else if (payload[0] == 'b')
         {
-#ifdef DEBUGSPEC
+#ifdef DEBUGsocket
             Serial.println("payload[0] == 'b'");
 #endif
             //  wvu tsr qpo nml kji //

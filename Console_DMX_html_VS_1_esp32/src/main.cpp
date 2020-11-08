@@ -7,6 +7,7 @@
 //#define DEBUGDMX 1
 //#define DEBUGRVB 1
 //#define DEBUGcolor 1
+// #define DEBUGsocket 1
 #define DEBUGSPEC 1
 
 #include <Arduino.h>
