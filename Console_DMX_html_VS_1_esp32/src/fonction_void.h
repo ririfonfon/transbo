@@ -102,6 +102,115 @@ void save_spec()
     EEPROM.commit();
 } //save_spec
 
+void send_rvb1()
+{
+    ///////////////////////////////////////////////////////grp Trans 1
+    for (int i = 1; i < (sizeof(RR) / 4); i++)
+    {
+        int temp = RR[i];
+        D[temp] = tred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RR
+
+    for (int i = 1; i < (sizeof(GG) / 4); i++)
+    {
+        int temp = GG[i];
+        D[temp] = tgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GG
+
+    for (int i = 1; i < (sizeof(BB) / 4); i++)
+    {
+        int temp = BB[i];
+        D[temp] = tblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BB
+
+    ///////////////////////////////////////////////////////grp regie
+    for (int i = 1; i < (sizeof(RRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRR[i];
+        D[temp] = rered;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGG[i];
+        D[temp] = regreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBB[i];
+        D[temp] = reblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBB
+
+} //send_rvb1
+
+void send_rvb2()
+{
+///////////////////////////////////////////////////////grp trans 2
+    for (int i = 1; i < (sizeof(RRRR) / 4); i++)
+    {
+        int temp = RRRR[i];
+        D[temp] = ttred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRR
+
+    for (int i = 1; i < (sizeof(GGGG) / 4); i++)
+    {
+        int temp = GGGG[i];
+        D[temp] = ttgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGG
+
+    for (int i = 1; i < (sizeof(BBBB) / 4); i++)
+    {
+        int temp = BBBB[i];
+        D[temp] = ttblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBB
+
+    for (int i = 1; i < (sizeof(WWWW) / 4); i++)
+    {
+        int temp = WWWW[i];
+        D[temp] = ttwhite;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for WWWW
+
+///////////////////////////////////////////////////////grp club
+    for (int i = 1; i < (sizeof(RRRRRR) / 4); i++)
+    {
+        int temp = RRRRRR[i];
+        D[temp] = clured;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRR
+
+    for (int i = 1; i < (sizeof(GGGGGG) / 4); i++)
+    {
+        int temp = GGGGGG[i];
+        D[temp] = clugreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGG
+
+    for (int i = 1; i < (sizeof(BBBBBB) / 4); i++)
+    {
+        int temp = BBBBBB[i];
+        D[temp] = clublue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBB
+
+    for (int i = 1; i < (sizeof(WWWWWW) / 4); i++)
+    {
+        int temp = WWWWWW[i];
+        D[temp] = cluwhite;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for WWWW
+}//send_rvb2
+
 void send_rvb3()
 {
     //grp Comptoire
@@ -154,34 +263,6 @@ void send_rvb4()
 
 } //send_rvb4
 
-void send_rvb1()
-{
-    //grp Trans 1
-    for (int i = 1; i < (sizeof(RR) / 4); i++)
-    {
-        int temp = RR[i];
-        D[temp] = tred;
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for RR
-
-    for (int i = 1; i < (sizeof(GG) / 4); i++)
-    {
-        int temp = GG[i];
-        D[temp] = tgreen;
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for GG
-
-    for (int i = 1; i < (sizeof(BB) / 4); i++)
-    {
-        int temp = BB[i];
-        D[temp] = tblue;
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for BB
-
-} //send_rvb1
-
-
-
 void send_rvb6()
 {
     ///////////////////////////////////////////////////////grp led
@@ -206,7 +287,7 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for B
 
-    ///////////////////////////////////////////////////////grp transbo
+    ///////////////////////////////////////////////////////grp trans 1
     for (int i = 1; i < (sizeof(RR) / 4); i++)
     {
         int temp = RR[i];
@@ -337,6 +418,28 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for WWWW
 
+    ///////////////////////////////////////////////////////grp regie
+    for (int i = 1; i < (sizeof(RRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRR[i];
+        D[temp] = rered;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGG[i];
+        D[temp] = regreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBB[i];
+        D[temp] = reblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBB
+
 } //send_rvb6
 
 void send_Mast()
@@ -417,7 +520,7 @@ void send_Auto_on ()
                 for (int i = 1; i < (sizeof(Soundnicols) / 4); i++)
                 {
                    int temp =Soundnicols[i];
-                    D[temp] = 253;
+                    D[temp] = 125;
                     ESP32DMX.setSlot(temp, D[temp]);
                 }
                 for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
