@@ -64,6 +64,7 @@ void srv_handle_set()
                 regreen = lgreen;
                 reblue = lblue;
 
+                send_Auto_off();
                 send_rvb6(); // all
             }                //mem1 mauve
 
@@ -106,6 +107,7 @@ void srv_handle_set()
                 regreen = lgreen;
                 reblue = lblue;
 
+                send_Auto_off();
                 send_rvb6(); // all
             }                //mem2 rouge
 
@@ -148,6 +150,7 @@ void srv_handle_set()
                 regreen = lgreen;
                 reblue = lblue;
 
+                send_Auto_off();
                 send_rvb6(); // all
             }                //mem3 vert
 
@@ -190,6 +193,7 @@ void srv_handle_set()
                 regreen = lgreen;
                 reblue = lblue;
 
+                send_Auto_off();
                 send_rvb6(); // all
             }                //mem4 bleu
 
@@ -232,6 +236,7 @@ void srv_handle_set()
                 regreen = lgreen;
                 reblue = lblue;
 
+                send_Auto_off();
                 send_rvb6(); // all
             }                //mem5 orange
 
@@ -294,18 +299,13 @@ void srv_handle_set()
                 regreen = cregreen;
                 reblue = creblue;
 
+                send_Auto_off();
                 send_rvb6();
             } //mem6 special
 
             if (Mem == 7)
             {
-                ESP32DMX.setSlot(1, 0);
-                ESP32DMX.setSlot(2, 255);
-
-                for (int i = 135; i < end_dmx; i++)
-                {
-                    ESP32DMX.setSlot(i, 0);
-                }
+                send_Auto_on();
 
             } // mem7 audio
 
