@@ -1,12 +1,12 @@
 // platformio run --target uploadfs // cmd console download spiff
 
 #define DEBUG 1
-//#define DEBUGH 1
-//#define DEBUGC 1
-//#define DEBUGMASTER 1
-//#define DEBUGDMX 1
-//#define DEBUGRVB 1
-//#define DEBUGcolor 1
+// #define DEBUGH 1
+// #define DEBUGC 1
+// #define DEBUGMASTER 1
+// #define DEBUGDMX 1
+// #define DEBUGRVB 1
+// #define DEBUGcolor 1
 // #define DEBUGsocket 1
 #define DEBUGSPEC 1
 
