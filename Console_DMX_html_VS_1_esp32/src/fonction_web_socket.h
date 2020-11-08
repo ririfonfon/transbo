@@ -33,6 +33,19 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         //  is the start for this data
         if (payload[0] == 'a')
         {
+            for (int i = 0; i < clientn; i++)
+            {
+                webSocket.sendTXT(list[i], payload);
+                #ifdef DEBUG
+                Serial.println("webSocket.sendTXT(list[i], payload);");
+                Serial.print("clientn : ");
+                Serial.println(clientn);
+                Serial.print("list[clientn] : ");
+                Serial.println(list[clientn]);
+                #endif
+
+            }
+
 #ifdef DEBUGSPEC
             Serial.println("payload[0] == 'a'");
 #endif
