@@ -259,21 +259,21 @@ void send_rvb4()
     for (int i = 1; i < (sizeof(R) / 4); i++)
     {
         int temp = R[i];
-        D[temp] = ((lred / 255) * Mast[4]);
+        D[temp] = ((lred / 255) * Mast[4]) / 255 * M;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for R
 
     for (int i = 1; i < (sizeof(G) / 4); i++)
     {
         int temp = G[i];
-        D[temp] = ((lgreen / 255) * Mast[4]);
+        D[temp] = ((lgreen / 255) * Mast[4]) / 255 * M;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for G
 
     for (int i = 1; i < (sizeof(B) / 4); i++)
     {
         int temp = B[i];
-        D[temp] = ((lblue / 255) * Mast[4]);
+        D[temp] = ((lblue / 255) * Mast[4]) / 255 * M;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for B
 
@@ -458,64 +458,86 @@ void send_rvb6()
 
 } //send_rvb6
 
-void send_Mast()
+void send_Mast(int Mas)
 {
-    for (int i = 1; i < (sizeof(M1) / 4); i++)
+    if (Mas == 1 || Mas == 0)
     {
-        int temp = M1[i];
-        D[temp] = Mast[1];
-        ESP32DMX.setSlot(temp, D[temp]);
+        for (int i = 1; i < (sizeof(M1) / 4); i++)
+        {
+            int temp = M1[i];
+            D[temp] = (Mast[1] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
 
-    } //for M1
-
-    for (int i = 1; i < (sizeof(M2) / 4); i++)
+        } //for M1
+    }
+    if (Mas == 2 || Mas == 0)
     {
-        int temp = M2[i];
-        D[temp] = Mast[2];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M2
-
-    for (int i = 1; i < (sizeof(M3) / 4); i++)
+        for (int i = 1; i < (sizeof(M2) / 4); i++)
+        {
+            int temp = M2[i];
+            D[temp] = (Mast[2] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M2
+    }
+    if (Mas == 3 || Mas == 0)
     {
-        int temp = M3[i];
-        D[temp] = Mast[3];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M3
-
-    for (int i = 1; i < (sizeof(M5) / 4); i++)
+        for (int i = 1; i < (sizeof(M3) / 4); i++)
+        {
+            int temp = M3[i];
+            D[temp] = (Mast[3] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M3
+    }
+    if (Mas == 5 || Mas == 0)
     {
-        int temp = M5[i];
-        D[temp] = Mast[5];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M5
 
-    for (int i = 1; i < (sizeof(M6) / 4); i++)
+        for (int i = 1; i < (sizeof(M5) / 4); i++)
+        {
+            int temp = M5[i];
+            D[temp] = (Mast[5] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M5
+    }
+    if (Mas == 6 || Mas == 0)
     {
-        int temp = M6[i];
-        D[temp] = Mast[6];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M6
 
-    for (int i = 1; i < (sizeof(M7) / 4); i++)
+        for (int i = 1; i < (sizeof(M6) / 4); i++)
+        {
+            int temp = M6[i];
+            D[temp] = (Mast[6] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M6
+    }
+    if (Mas == 7 || Mas == 0)
     {
-        int temp = M7[i];
-        D[temp] = Mast[7];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M7
 
-    for (int i = 1; i < (sizeof(M8) / 4); i++)
+        for (int i = 1; i < (sizeof(M7) / 4); i++)
+        {
+            int temp = M7[i];
+            D[temp] = (Mast[7] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M7
+    }
+    if (Mas == 8 || Mas == 0)
     {
-        int temp = M8[i];
-        D[temp] = Mast[8];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M8
 
-    for (int i = 1; i < (sizeof(M9) / 4); i++)
+        for (int i = 1; i < (sizeof(M8) / 4); i++)
+        {
+            int temp = M8[i];
+            D[temp] = (Mast[8] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M8
+    }
+    if (Mas == 9 || Mas == 0)
     {
-        int temp = M9[i];
-        D[temp] = Mast[9];
-        ESP32DMX.setSlot(temp, D[temp]);
-    } //for M9
+
+        for (int i = 1; i < (sizeof(M9) / 4); i++)
+        {
+            int temp = M9[i];
+            D[temp] = (Mast[9] / 255) * M;
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M9
+    }
 
 } //send_Mast
 
@@ -699,6 +721,5 @@ void init_eeprom()
 
 void init_led()
 {
-pinMode(onboard_led.pin, OUTPUT);
-}//init_led
-
+    pinMode(onboard_led.pin, OUTPUT);
+} //init_led
