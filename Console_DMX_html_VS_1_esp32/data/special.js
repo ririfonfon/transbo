@@ -174,7 +174,7 @@ function connect() {
     };
 }
 
-// connect();
+connect();
 
 id_array = new Array('cc1');
 values = new Array(id_array.length);
