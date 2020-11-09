@@ -54,11 +54,23 @@ String getContentType(String filename)
     return "text/plain";
 } //getContentType(String filename)
 
+bool exists(String path)
+{
+    bool yes = false;
+    File file = SPIFFS.open(path, "r");
+    if (!file.isDirectory())
+    {
+        yes = true;
+    }
+    file.close();
+    return yes;
+}
+
 bool handleFileRead(String path)
 {
- #ifdef DEBUG;
+#ifdef DEBUG;
     Serial.println("handleFileRead: " + path);
- #endif;
+#endif;
     if (path.endsWith("/"))
         path += "index.htm";
     String contentType = getContentType(path);
@@ -149,6 +161,10 @@ void handleFileCreate()
 
 void handleFileList()
 {
+#ifdef DEBUG;
+    Serial.println("handleFileList: " + path);
+#endif;
+
     if (!server.hasArg("dir"))
     {
         server.send(500, "text/plain", "BAD ARGS");
@@ -156,52 +172,43 @@ void handleFileList()
     }
 
     String path = server.arg("dir");
- #ifdef DEBUG;
-    Serial.println("handleFileList: " + path);
- #endif;
+
     File dir = SPIFFS.open(path);
     path = String();
 
-    if(!dir.isDirectory())
-    {
-    dir.close();
-    server.send(500, "text/plain", "NOT DIR");
-        return;
-   }
-  dir.rewindDirectory();
-
     String output = "[";
-   
-   for (int cnt = 0; true; ++cnt) {
-    File entry = dir.openNextFile();
-    if (!entry)
-    break;
 
-    if (cnt > 0)
-      output += ',';
-
-        output += "{\"type\":\"";
-        output += (entry.isDirectory()) ? "dir" : "file";
-        output += "\",\"name\":\"";
-        output += String(entry.name()).substring(1);
-        output += "\"}";
-        entry.close();
-    }
-
-    output += "]";
-    server.send(200, "text/json", output);
+    if(dir.isDirectory()){
+      File file = dir.openNextFile();
+      while(file){
+          if (output != "[") {
+            output += ',';
+          }
+          output += "{\"type\":\"";
+          output += (file.isDirectory()) ? "dir" : "file";
+          output += "\",\"name\":\"";
+          output += String(file.name()).substring(1);
+          output += "\"}";
+          file = dir.openNextFile();
+      }
+  }
+  output += "]";
+  server.send(200, "text/json", output);
 } //handleFileList()
 
-void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
-  Serial.printf("Listing directory: %s\n", dirname);
+void listDir(fs::FS &fs, const char *dirname, uint8_t levels)
+{
+    Serial.printf("Listing directory: %s\n", dirname);
 
-  File root = fs.open(dirname);
-  if (!root) {
-      Serial.println("Failed to open directory");
-    return;
-  }
-  if (!root.isDirectory()) {
-      Serial.println("Not a directory");
-    return;
-  }
+    File root = fs.open(dirname);
+    if (!root)
+    {
+        Serial.println("Failed to open directory");
+        return;
+    }
+    if (!root.isDirectory())
+    {
+        Serial.println("Not a directory");
+        return;
+    }
 }
