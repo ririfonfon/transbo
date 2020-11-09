@@ -336,6 +336,30 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             } //x
 
         } //payload[0] == B
+        else if (payload[0] == '*')
+        {
+#ifdef DEBUG
+            Serial.println("payload[0] == '*LOAD*'");
+#endif
+            for (int i = 0; i <= clientn; i++)
+            {
+                if (list[i] != -1)
+                {
+                    webSocket.sendTXT(list[i], "aa:" + String(lround(Mast[1])));
+                    webSocket.sendTXT(list[i], "ab:" + String(lround(Mast[2])));
+                    webSocket.sendTXT(list[i], "ac:" + String(lround(Mast[3])));
+                    webSocket.sendTXT(list[i], "ad:" + String(lround(Mast[4])));
+                    webSocket.sendTXT(list[i], "ae:" + String(lround(Mast[5])));
+                    webSocket.sendTXT(list[i], "af:" + String(lround(Mast[6])));
+                    webSocket.sendTXT(list[i], "ag:" + String(lround(Mast[7])));
+                    webSocket.sendTXT(list[i], "ah:" + String(lround(Mast[8])));
+                    webSocket.sendTXT(list[i], "ai:" + String(lround(Mast[9])));
+                    webSocket.sendTXT(list[i], "az:" + String(lround(M)));
+                    webSocket.sendTXT(list[i], "m:" + String(Mem));
+                } //if (list[i] != num) {
+            }     //for (int i = 0; i < clientn; i++)
+
+        } //payload[0] == *
         break;
     } //type
 } //web socket
