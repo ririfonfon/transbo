@@ -43,10 +43,14 @@ void srv_handle_set()
         if (server.argName(i) == "m")
         {
             Mem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
-#ifdef DEBUGH
-            Serial.print("m=");
-            Serial.println(Mem);
-#endif
+
+            for (int i = 0; i <= clientn; i++)
+            {
+                if (list[i] != -1)
+                {
+                    webSocket.sendTXT(list[i], "m:" + String(Mem));
+                }
+            } //for (int i = 0; i <= clientn; i++)
 
             if (Mem == 1)
             {
@@ -92,7 +96,7 @@ void srv_handle_set()
                 send_rvb6(); // all
             }                //mem1 mauve
 
-            if (Mem == 2)
+            else if (Mem == 2)
             {
                 lred = 255;
                 lgreen = 0;
@@ -135,7 +139,7 @@ void srv_handle_set()
                 send_rvb6(); // all
             }                //mem2 rouge
 
-            if (Mem == 3)
+            else if (Mem == 3)
             {
                 lred = 0;
                 lgreen = 255;
@@ -178,7 +182,7 @@ void srv_handle_set()
                 send_rvb6(); // all
             }                //mem3 vert
 
-            if (Mem == 4)
+            else if (Mem == 4)
             {
                 lred = 0;
                 lgreen = 0;
@@ -221,7 +225,7 @@ void srv_handle_set()
                 send_rvb6(); // all
             }                //mem4 bleu
 
-            if (Mem == 5)
+            else if (Mem == 5)
             {
                 lred = 255;
                 lgreen = 127;
@@ -264,7 +268,7 @@ void srv_handle_set()
                 send_rvb6(); // all
             }                //mem5 orange
 
-            if (Mem == 6)
+            else if (Mem == 6)
             {
                 eeprom_read();
 
@@ -304,11 +308,231 @@ void srv_handle_set()
                 send_rvb6();
             } //mem6 special
 
-            if (Mem == 7)
+            else if (Mem == 7)
             {
                 send_Auto_on();
 
             } // mem7 audio
+
+            else if (Mem == 8)
+            {
+                lred = 255;
+                lgreen = 255;
+                lblue = 0;
+
+                //grp rgb Transbo 1
+                tred = lred;
+                tgreen = lgreen;
+                tblue = lblue;
+
+                //grp rgbw Transbo 2
+                ttred = lred;
+                ttgreen = lgreen;
+                ttblue = lblue;
+                ttwhite = defowhite;
+
+                //grp rgb comptoire
+                cred = lred;
+                cgreen = lgreen;
+                cblue = lblue;
+
+                //grp rgbw logo
+                lored = lred;
+                logreen = lgreen;
+                loblue = lblue;
+                lowhite = defowhite;
+
+                //grp rgbw club
+                clured = lred;
+                clugreen = lgreen;
+                clublue = lblue;
+                cluwhite = 0;
+
+                //grp rgb regie
+                rered = lred;
+                regreen = lgreen;
+                reblue = lblue;
+
+                send_Auto_off();
+                send_rvb6(); // all
+
+            } // mem8 yellow
+
+            else if (Mem == 9)
+            {
+                lred = 255;
+                lgreen = 0;
+                lblue = 255;
+
+                //grp rgb Transbo 1
+                tred = lred;
+                tgreen = lgreen;
+                tblue = lblue;
+
+                //grp rgbw Transbo 2
+                ttred = lred;
+                ttgreen = lgreen;
+                ttblue = lblue;
+                ttwhite = defowhite;
+
+                //grp rgb comptoire
+                cred = lred;
+                cgreen = lgreen;
+                cblue = lblue;
+
+                //grp rgbw logo
+                lored = lred;
+                logreen = lgreen;
+                loblue = lblue;
+                lowhite = defowhite;
+
+                //grp rgbw club
+                clured = lred;
+                clugreen = lgreen;
+                clublue = lblue;
+                cluwhite = 0;
+
+                //grp rgb regie
+                rered = lred;
+                regreen = lgreen;
+                reblue = lblue;
+
+                send_Auto_off();
+                send_rvb6(); // all
+
+            } // mem9 magenta
+
+            else if (Mem == 10)
+            {
+                lred = 0;
+                lgreen = 255;
+                lblue = 255;
+
+                //grp rgb Transbo 1
+                tred = lred;
+                tgreen = lgreen;
+                tblue = lblue;
+
+                //grp rgbw Transbo 2
+                ttred = lred;
+                ttgreen = lgreen;
+                ttblue = lblue;
+                ttwhite = defowhite;
+
+                //grp rgb comptoire
+                cred = lred;
+                cgreen = lgreen;
+                cblue = lblue;
+
+                //grp rgbw logo
+                lored = lred;
+                logreen = lgreen;
+                loblue = lblue;
+                lowhite = defowhite;
+
+                //grp rgbw club
+                clured = lred;
+                clugreen = lgreen;
+                clublue = lblue;
+                cluwhite = 0;
+
+                //grp rgb regie
+                rered = lred;
+                regreen = lgreen;
+                reblue = lblue;
+
+                send_Auto_off();
+                send_rvb6(); // all
+
+            } // mem10 cyan
+
+            else if (Mem == 11)
+            {
+                lred = 0;
+                lgreen = 0;
+                lblue = 0;
+
+                //grp rgb Transbo 1
+                tred = lred;
+                tgreen = lgreen;
+                tblue = lblue;
+
+                //grp rgbw Transbo 2
+                ttred = lred;
+                ttgreen = lgreen;
+                ttblue = lblue;
+                ttwhite = 0;
+
+                //grp rgb comptoire
+                cred = lred;
+                cgreen = lgreen;
+                cblue = lblue;
+
+                //grp rgbw logo
+                lored = lred;
+                logreen = lgreen;
+                loblue = lblue;
+                lowhite = 0;
+
+                //grp rgbw club
+                clured = lred;
+                clugreen = lgreen;
+                clublue = lblue;
+                cluwhite = 0;
+
+                //grp rgb regie
+                rered = lred;
+                regreen = lgreen;
+                reblue = lblue;
+
+                send_Auto_off();
+                send_rvb6(); // all
+
+            } // mem11 [   ]
+
+            else if (Mem == 12)
+            {
+                lred = 255;
+                lgreen = 255;
+                lblue = 255;
+
+                //grp rgb Transbo 1
+                tred = lred;
+                tgreen = lgreen;
+                tblue = lblue;
+
+                //grp rgbw Transbo 2
+                ttred = lred;
+                ttgreen = lgreen;
+                ttblue = lblue;
+                ttwhite = 255;
+
+                //grp rgb comptoire
+                cred = lred;
+                cgreen = lgreen;
+                cblue = lblue;
+
+                //grp rgbw logo
+                lored = lred;
+                logreen = lgreen;
+                loblue = lblue;
+                lowhite = 255;
+
+                //grp rgbw club
+                clured = lred;
+                clugreen = lgreen;
+                clublue = lblue;
+                cluwhite = 255;
+
+                //grp rgb regie
+                rered = lred;
+                regreen = lgreen;
+                reblue = lblue;
+
+                send_Auto_off();
+                send_rvb6(); // all
+
+            } // mem12 SERVICE
 
         } //serveur m
 
