@@ -1,11 +1,10 @@
 //////////////////////////////////////////V O I D////////////////////////////////////////
-void load_spec()
+void eeprom_read()
 {
-
     ccred = EEPROM.read(1);
     ccgreen = EEPROM.read(2);
     ccblue = EEPROM.read(3);
-    clured = EEPROM.read(4);
+    clred = EEPROM.read(4);
     clgreen = EEPROM.read(5);
     clblue = EEPROM.read(6);
     ctred = EEPROM.read(7);
@@ -27,6 +26,50 @@ void load_spec()
     cregreen = EEPROM.read(23);
     creblue = EEPROM.read(24);
 
+#ifdef DEBUG
+    Serial.println("EEPROM READ");
+#endif
+} //eeprom_read
+
+void eeprom_write()
+{
+    EEPROM.write(1, ccred);
+    EEPROM.write(2, ccgreen);
+    EEPROM.write(3, ccblue);
+    EEPROM.write(4, clred);
+    EEPROM.write(5, clgreen);
+    EEPROM.write(6, clblue);
+    EEPROM.write(7, ctred);
+    EEPROM.write(8, ctgreen);
+    EEPROM.write(9, ctblue);
+    EEPROM.write(10, cttred);
+    EEPROM.write(11, cttgreen);
+    EEPROM.write(12, cttblue);
+    EEPROM.write(13, cttwhite);
+    EEPROM.write(14, clored);
+    EEPROM.write(15, clogreen);
+    EEPROM.write(16, cloblue);
+    EEPROM.write(17, clowhite);
+    EEPROM.write(18, cclured);
+    EEPROM.write(19, cclugreen);
+    EEPROM.write(20, cclublue);
+    EEPROM.write(21, ccluwhite);
+    EEPROM.write(22, crered);
+    EEPROM.write(23, cregreen);
+    EEPROM.write(24, creblue);
+
+    EEPROM.write(62, 'O');
+    EEPROM.write(63, 'K');
+    EEPROM.commit();
+
+#ifdef DEBUG
+    Serial.println("EEPROM WRITE");
+#endif
+} //eeprom_write
+
+void load_spec()
+{
+    eeprom_read();
     for (int i = 0; i <= clientn; i++)
     {
 
@@ -72,34 +115,7 @@ void load_spec()
 
 void save_spec()
 {
-    EEPROM.write(1, ccred);
-    EEPROM.write(2, ccgreen);
-    EEPROM.write(3, ccblue);
-    EEPROM.write(4, clred);
-    EEPROM.write(5, clgreen);
-    EEPROM.write(6, clblue);
-    EEPROM.write(7, ctred);
-    EEPROM.write(8, ctgreen);
-    EEPROM.write(9, ctblue);
-    EEPROM.write(10, cttred);
-    EEPROM.write(11, cttgreen);
-    EEPROM.write(12, cttblue);
-    EEPROM.write(13, cttwhite);
-    EEPROM.write(14, clored);
-    EEPROM.write(15, clogreen);
-    EEPROM.write(16, cloblue);
-    EEPROM.write(17, clowhite);
-    EEPROM.write(18, cclured);
-    EEPROM.write(19, cclugreen);
-    EEPROM.write(20, cclublue);
-    EEPROM.write(21, ccluwhite);
-    EEPROM.write(22, crered);
-    EEPROM.write(23, cregreen);
-    EEPROM.write(24, creblue);
-
-    EEPROM.write(62, 'O');
-    EEPROM.write(63, 'K');
-    EEPROM.commit();
+    eeprom_write();
 } //save_spec
 
 void send_rvb1()
@@ -152,7 +168,7 @@ void send_rvb1()
 
 void send_rvb2()
 {
-///////////////////////////////////////////////////////grp trans 2
+    ///////////////////////////////////////////////////////grp trans 2
     for (int i = 1; i < (sizeof(RRRR) / 4); i++)
     {
         int temp = RRRR[i];
@@ -181,7 +197,7 @@ void send_rvb2()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for WWWW
 
-///////////////////////////////////////////////////////grp club
+    ///////////////////////////////////////////////////////grp club
     for (int i = 1; i < (sizeof(RRRRRR) / 4); i++)
     {
         int temp = RRRRRR[i];
@@ -209,7 +225,7 @@ void send_rvb2()
         D[temp] = cluwhite;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for WWWW
-}//send_rvb2
+} //send_rvb2
 
 void send_rvb3()
 {
@@ -503,59 +519,186 @@ void send_Mast()
 
 } //send_Mast
 
-void send_Auto_on () 
+void send_Auto_on()
 {
     for (int i = 1; i < (sizeof(Soundfull) / 4); i++)
-                {
-                   int temp =Soundfull[i];
-                    D[temp] = 25;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Speedfull) / 4); i++)
-                {
-                   int temp =Speedfull[i];
-                    D[temp] = 127;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Soundnicols) / 4); i++)
-                {
-                   int temp =Soundnicols[i];
-                    D[temp] = 125;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
-                {
-                   int temp =Speednicols[i];
-                    D[temp] = 127;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
+    {
+        int temp = Soundfull[i];
+        D[temp] = 25;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speedfull) / 4); i++)
+    {
+        int temp = Speedfull[i];
+        D[temp] = 127;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Soundnicols) / 4); i++)
+    {
+        int temp = Soundnicols[i];
+        D[temp] = 125;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
+    {
+        int temp = Speednicols[i];
+        D[temp] = 127;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
 } //send_Auto_on
 
-void send_Auto_off () 
+void send_Auto_off()
 {
     for (int i = 1; i < (sizeof(Soundfull) / 4); i++)
-                {
-                   int temp =Soundfull[i];
-                    D[temp] = 0;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Speedfull) / 4); i++)
-                {
-                   int temp =Speedfull[i];
-                    D[temp] = 0;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Soundnicols) / 4); i++)
-                {
-                   int temp =Soundnicols[i];
-                    D[temp] = 0;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
-                for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
-                {
-                   int temp =Speednicols[i];
-                    D[temp] = 0;
-                    ESP32DMX.setSlot(temp, D[temp]);
-                }
+    {
+        int temp = Soundfull[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speedfull) / 4); i++)
+    {
+        int temp = Speedfull[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Soundnicols) / 4); i++)
+    {
+        int temp = Soundnicols[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
+    {
+        int temp = Speednicols[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
 } //send_Auto_off
+
+void init_dmx_in()
+{
+    //init pin dmx
+    pinMode(4, OUTPUT);
+    digitalWrite(4, LOW); // LOW dmx in
+    pinMode(17, INPUT);
+    ESP32DMX.startOutput(17); // initialize with bus length
+} // init_dmx_in
+
+void init_dmx_out()
+{
+    pinMode(4, OUTPUT);
+    digitalWrite(4, HIGH); // HIGH dmx out
+    pinMode(16, OUTPUT);
+    ESP32DMX.startOutput(16); // initialize with bus length
+} // init_dmx_out
+
+void defo_dmx()
+{
+    ESP32DMX.setSlot(1, 0);
+    ESP32DMX.setSlot(2, 255);
+
+    for (int i = 135; i < end_dmx; i++)
+    {
+        ESP32DMX.setSlot(i, 0);
+    }
+
+    //defo color
+    lred = 255; //led
+    lgreen = 0;
+    lblue = 255;
+
+    tred = 255; // trans 1
+    tgreen = 127;
+    tblue = 0;
+
+    ttred = 255; //trans 2
+    ttgreen = 0;
+    ttblue = 0;
+    ttwhite = 10;
+
+    cred = 255; //comptoire
+    cgreen = 0;
+    cblue = 255;
+
+    lored = 255; //logo
+    logreen = 0;
+    loblue = 255;
+
+    clured = 255; //club
+    clugreen = 127;
+    clublue = 0;
+    clowhite = 10;
+
+    rered = 255; // regie
+    regreen = 127;
+    reblue = 0;
+
+    send_rvb6();
+} //defo_dmx
+
+void init_eeprom()
+{
+    if (EEPROM.read(62) != 'O' || EEPROM.read(63) != 'K')
+    {
+
+#ifdef DEBUG
+        Serial.println("failed to initialise EEPROM");
+        Serial.println("Formate EEPROM");
+#endif
+
+        for (int i = 0; i < EEPROM_SIZE; i++)
+        {
+            EEPROM.write(i, '\0');
+            if (i % 50 == 0)
+                delay(100);
+        }
+#ifdef DEBUG
+        Serial.println("EEPROM content cleared!");
+#endif
+
+        ccred = 0; // comptoire
+        ccgreen = 0;
+        ccblue = 0;
+
+        clred = 0; // led
+        clgreen = 0;
+        clblue = 0;
+
+        ctred = 0; // trans 1
+        ctgreen = 0;
+        ctblue = 0;
+
+        cttred = 0; // trans 2
+        cttgreen = 0;
+        cttblue = 0;
+        cttwhite = 0;
+
+        clored = 0; //logo
+        clogreen = 0;
+        cloblue = 0;
+        clowhite = 0;
+
+        cclured = 0; // club
+        cclugreen = 0;
+        cclublue = 0;
+        ccluwhite = 0;
+
+        crered = 0; // regie
+        cregreen = 0;
+        creblue = 0;
+
+        eeprom_write();
+
+    } //(EEPROM.read(62) != 'O' || EEPROM.read(63) != 'K')
+
+    if (EEPROM.read(62) == 'O' && EEPROM.read(63) == 'K')
+    {
+        eeprom_read();
+    } //(EEPROM.read(62) == 'O' && EEPROM.read(63) == 'K')
+} //init_eeprom()
+
+void init_led()
+{
+pinMode(onboard_led.pin, OUTPUT);
+}//init_led
 
