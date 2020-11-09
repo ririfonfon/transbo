@@ -16,8 +16,6 @@ function connect() {
         console.log('Server: ', e.data);
         var data = e.data.split(':');
         console.log('data[1]: ', data[1]);
-        console.log('data[2]: ', data[2]);
-        console.log('data[3]: ', data[3]);
 
         if (e.data.charAt(0) == 'c') {
             var data = e.data.split(':');
@@ -89,6 +87,11 @@ function connect() {
                 document.getElementById('c9_in').value = data[1];
             } //if i
 
+            if (e.data.charAt(1) == 'z') {
+                var data = e.data.split(':');
+                document.getElementById('c0').value = data[1];
+            } //if z
+
         } //if (e.data.charAt(0) == 'a')
 
     }; //function (e)
@@ -116,6 +119,15 @@ function connect() {
 
 id_array = new Array('c1');
 values = new Array(id_array.length);
+
+function prepareVar0() {
+    var a = parseInt(document.getElementById('c0').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "az" + values;
+    console.log('eData: ' + data);
+    connection.send(data);
+} //prepare 0
 
 function prepareVar1() {
     var a = parseInt(document.getElementById('c1').value).toString(8);
