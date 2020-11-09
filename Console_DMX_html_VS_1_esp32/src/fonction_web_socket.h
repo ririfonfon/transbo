@@ -70,12 +70,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 #endif
                 char *pEnd;
                 Mast[1] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M1) / 4); i++)
-                {
-                    int temp = M1[i];
-                    D[temp] = Mast[1];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M1
+                send_Mast(1);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -89,12 +84,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[2] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M2) / 4); i++)
-                {
-                    int temp = M2[i];
-                    D[temp] = Mast[2];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M2
+                send_Mast(2);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -108,12 +98,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[3] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M3) / 4); i++)
-                {
-                    int temp = M3[i];
-                    D[temp] = Mast[3];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M3
+                send_Mast(3);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -141,12 +126,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[5] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M5) / 4); i++)
-                {
-                    int temp = M5[i];
-                    D[temp] = Mast[5];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M5
+                send_Mast(5);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -160,12 +140,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[6] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M6) / 4); i++)
-                {
-                    int temp = M6[i];
-                    D[temp] = Mast[6];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M6
+                send_Mast(6);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -179,12 +154,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[7] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M7) / 4); i++)
-                {
-                    int temp = M7[i];
-                    D[temp] = Mast[7];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M7
+                send_Mast(7);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -198,12 +168,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[8] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M8) / 4); i++)
-                {
-                    int temp = M8[i];
-                    D[temp] = Mast[8];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M8
+                send_Mast(8);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -217,12 +182,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 Mast[9] = strtol((const char *)&payload[2], &pEnd, 8);
-                for (int i = 1; i < (sizeof(M9) / 4); i++)
-                {
-                    int temp = M9[i];
-                    D[temp] = Mast[9];
-                    ESP32DMX.setSlot(temp, D[temp]);
-                } //for M9
+                send_Mast(9);
                 for (int i = 0; i < clientn + 1; i++)
                 {
                     if (list[i] != num)
@@ -231,6 +191,21 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     } //if (list[i] != num) {
                 }     //for (int i = 0; i < clientn; i++)
             }         //i
+
+            if (payload[1] == 'z')
+            {
+                char *pEnd;
+                M = strtol((const char *)&payload[2], &pEnd, 8);
+                send_Mast(0);
+
+                for (int i = 0; i < clientn + 1; i++)
+                {
+                    if (list[i] != num)
+                    {
+                        webSocket.sendTXT(list[i], "az:" + String(lround(M)));
+                    } //if (list[i] != num) {
+                }     //for (int i = 0; i < clientn; i++)
+            }         //z
         }             //payload[0] = A
 
         else if (payload[0] == 'b')
