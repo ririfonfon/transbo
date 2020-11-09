@@ -4,8 +4,9 @@ int clientn = -1;
 int list[8] = {-1, -1, -1, -1, -1, -1, -1, -1}; // client
 
 const uint8_t Master = 9;
-int Mast[Master];
+float Mast[Master];
 uint8_t Mem = 1;
+int M;              // grand master
 int M1[] = {0, 41, 42};             // access
 int M2[] = {0, 43, 44};             // vest
 int M3[] = {0, 51, 61, 71, 81, 91}; // compt
