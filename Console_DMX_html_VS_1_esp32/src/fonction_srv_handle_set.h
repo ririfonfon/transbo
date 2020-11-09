@@ -64,7 +64,7 @@ void srv_handle_set()
                 ttred = lred;
                 ttgreen = lgreen;
                 ttblue = lblue;
-                ttwhite = 0;
+                ttwhite = defowhite;
 
                 //grp rgb comptoire
                 cred = lred;
@@ -75,7 +75,7 @@ void srv_handle_set()
                 lored = lred;
                 logreen = lgreen;
                 loblue = lblue;
-                lowhite = 0;
+                lowhite = defowhite;
 
                 //grp rgbw club
                 clured = lred;
@@ -107,7 +107,7 @@ void srv_handle_set()
                 ttred = lred;
                 ttgreen = lgreen;
                 ttblue = lblue;
-                ttwhite = 0;
+                ttwhite = defowhite;
 
                 //grp rgb comptoire
                 cred = lred;
@@ -118,7 +118,7 @@ void srv_handle_set()
                 lored = lred;
                 logreen = lgreen;
                 loblue = lblue;
-                lowhite = 0;
+                lowhite = defowhite;
 
                 //grp rgbw club
                 clured = lred;
@@ -150,7 +150,7 @@ void srv_handle_set()
                 ttred = lred;
                 ttgreen = lgreen;
                 ttblue = lblue;
-                ttwhite = 0;
+                ttwhite = defowhite;
 
                 //grp rgb comptoire
                 cred = lred;
@@ -161,7 +161,7 @@ void srv_handle_set()
                 lored = lred;
                 logreen = lgreen;
                 loblue = lblue;
-                lowhite = 0;
+                lowhite = defowhite;
 
                 //grp rgbw club
                 clured = lred;
@@ -193,7 +193,7 @@ void srv_handle_set()
                 ttred = lred;
                 ttgreen = lgreen;
                 ttblue = lblue;
-                ttwhite = 0;
+                ttwhite = defowhite;
 
                 //grp rgb comptoire
                 cred = lred;
@@ -204,7 +204,7 @@ void srv_handle_set()
                 lored = lred;
                 logreen = lgreen;
                 loblue = lblue;
-                lowhite = 0;
+                lowhite = defowhite;
 
                 //grp rgbw club
                 clured = lred;
@@ -236,7 +236,7 @@ void srv_handle_set()
                 ttred = lred;
                 ttgreen = lgreen;
                 ttblue = lblue;
-                ttwhite = 0;
+                ttwhite = defowhite;
 
                 //grp rgb comptoire
                 cred = lred;
@@ -247,7 +247,7 @@ void srv_handle_set()
                 lored = lred;
                 logreen = lgreen;
                 loblue = lblue;
-                lowhite = 0;
+                lowhite = defowhite;
 
                 //grp rgbw club
                 clured = lred;
@@ -266,30 +266,7 @@ void srv_handle_set()
 
             if (Mem == 6)
             {
-                ccred = EEPROM.read(1);
-                ccgreen = EEPROM.read(2);
-                ccblue = EEPROM.read(3);
-                clured = EEPROM.read(4);
-                clgreen = EEPROM.read(5);
-                clblue = EEPROM.read(6);
-                ctred = EEPROM.read(7);
-                ctgreen = EEPROM.read(8);
-                ctblue = EEPROM.read(9);
-                cttred = EEPROM.read(10);
-                cttgreen = EEPROM.read(11);
-                cttblue = EEPROM.read(12);
-                cttwhite = EEPROM.read(13);
-                clored = EEPROM.read(14);
-                clogreen = EEPROM.read(15);
-                cloblue = EEPROM.read(16);
-                clowhite = EEPROM.read(17);
-                cclured = EEPROM.read(18);
-                cclugreen = EEPROM.read(19);
-                cclublue = EEPROM.read(20);
-                ccluwhite = EEPROM.read(21);
-                crered = EEPROM.read(22);
-                cregreen = EEPROM.read(23);
-                creblue = EEPROM.read(24);
+                eeprom_read();
 
                 //grp rgb comptoire
                 cred = ccred;
