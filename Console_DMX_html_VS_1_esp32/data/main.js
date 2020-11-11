@@ -327,6 +327,12 @@ function drawColorbar(rgb = [0, 0, 0]) {
 
     var h = can.width / 360;
 
+    console.log('can.width');
+    console.log(can.width);
+    console.log('can.height');
+    console.log(can.height);
+
+
     var hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
 
     for (var i = 0; i <= 360; i++) {
