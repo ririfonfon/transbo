@@ -275,14 +275,14 @@ h1 {
 
 #colorbar {
     display: inline-block;
-    width: 360px;
-    height: 100px;
+    /* width: 360px;
+    height: 100px; */
 }
 
 #colorbar2 {
     display: inline-block;
-    width: 360px;
-    height: 100px;
+    /* width: 360px;
+    height: 100px; */
 }
 
 ul#controls {
