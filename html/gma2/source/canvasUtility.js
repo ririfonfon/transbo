@@ -1,7 +1,7 @@
 defineNamespace(window, "uiTypes.canvas");
 
-(function (ns) {
-    var drawString = function (text, fontSize, maxWidth, maxHeight, measureText) {
+(function(ns) {
+    var drawString = function(text, fontSize, maxWidth, maxHeight, measureText) {
         if (fontSize > maxHeight) {
             return false;
         }
@@ -25,7 +25,7 @@ defineNamespace(window, "uiTypes.canvas");
     };
 
 
-    var squeezeStringToRect = function(text, fontSize, maxWidth, maxHeight, measureText){
+    var squeezeStringToRect = function(text, fontSize, maxWidth, maxHeight, measureText) {
         var needLineBreak = false;
         var line = "";
         var lines = [];
@@ -50,11 +50,11 @@ defineNamespace(window, "uiTypes.canvas");
                         chLength = measureText(ch).width;
                     }
                     lineWidth += chLength;
-                    needLineBreak = checkNeedLineBreak(lineWidth, maxWidth, text, i+1, measureText);
+                    needLineBreak = checkNeedLineBreak(lineWidth, maxWidth, text, i + 1, measureText);
                     if (needLineBreak === true) {
                         lineWidth -= chLength;
                     }
-                } else if(ch == '\n') {
+                } else if (ch == '\n') {
                     needLineBreak = true;
                 } else {
                     ignoreChar = true;
@@ -93,7 +93,7 @@ defineNamespace(window, "uiTypes.canvas");
                 firstChar = true;
                 needLineBreak = false;
 
-                lines.push({line: line, length: lineWidth});
+                lines.push({ line: line, length: lineWidth });
 
                 lineWidth = 0;
                 line = "";
@@ -112,7 +112,7 @@ defineNamespace(window, "uiTypes.canvas");
         }
     };
 
-    var checkNeedLineBreak = function(lineWidth, maxWidth, text, charIndex, measureText){
+    var checkNeedLineBreak = function(lineWidth, maxWidth, text, charIndex, measureText) {
         var freeSpace = maxWidth - lineWidth;
         var result = false;
 
@@ -133,7 +133,7 @@ defineNamespace(window, "uiTypes.canvas");
         return result;
     };
 
-    var drawRoundedCornerRect = function(ctx, rect, radius){
+    var drawRoundedCornerRect = function(ctx, rect, radius) {
         if (!(radius instanceof Object)) {
             radius = {
                 topRight: radius,
@@ -161,7 +161,7 @@ defineNamespace(window, "uiTypes.canvas");
         ctx.closePath();
     };
 
-    var CanvasRenderer = function(context){
+    var CanvasRenderer = function(context) {
         this.ctx = context;
 
     };
@@ -260,7 +260,7 @@ defineNamespace(window, "uiTypes.canvas");
         }
     };
 
-    CanvasRenderer.prototype.drawCircle = function(centerPoint, radius, borderColor, borderWidth, fillColor){
+    CanvasRenderer.prototype.drawCircle = function(centerPoint, radius, borderColor, borderWidth, fillColor) {
         if (fillColor || borderColor) {
             this.ctx.beginPath();
             this.ctx.arc(centerPoint.x, centerPoint.y, radius, 0, 2 * Math.PI, false);
@@ -277,7 +277,7 @@ defineNamespace(window, "uiTypes.canvas");
         }
     };
 
-    CanvasRenderer.prototype.drawImage = function(rect, image, srcRect){
+    CanvasRenderer.prototype.drawImage = function(rect, image, srcRect) {
         rect.x = rect.x || rect.left || 0;
         rect.y = rect.y || rect.top || 0;
 
@@ -288,12 +288,12 @@ defineNamespace(window, "uiTypes.canvas");
         }
     };
 
-    CanvasRenderer.prototype.measureText = function(text, font){
+    CanvasRenderer.prototype.measureText = function(text, font) {
         this.setContextProperty("font", font);
         return this.ctx.measureText(text);
     };
-    
-    CanvasRenderer.prototype.fillText = function (rect, text, font, color, halign, valign, oneLine) {
+
+    CanvasRenderer.prototype.fillText = function(rect, text, font, color, halign, valign, oneLine) {
         if (!text) {
             return;
         }
@@ -389,9 +389,9 @@ defineNamespace(window, "uiTypes.canvas");
         if (valign === "top") {
             // do nothing
         } else if (valign === "bottom") {
-            rect.y += rect.height / 2 + lineHeight - lines.length/2 * lineHeight;
+            rect.y += rect.height / 2 + lineHeight - lines.length / 2 * lineHeight;
         } else if (valign === "middle") {
-            rect.y += rect.height / 2 + lineHeight / 2 - lines.length/2 * lineHeight;
+            rect.y += rect.height / 2 + lineHeight / 2 - lines.length / 2 * lineHeight;
         } else {
             generic.statusLogging("fillText invalid parameter valign");
         }
@@ -417,25 +417,25 @@ defineNamespace(window, "uiTypes.canvas");
 
     ns.CanvasRenderer = function(context) { return new CanvasRenderer(context); };
 
-    ns.CanvasRenderer.transformRectToBorderRect = CanvasRenderer.transformRectToBorderRect = function(rect, borderWidth){
+    ns.CanvasRenderer.transformRectToBorderRect = CanvasRenderer.transformRectToBorderRect = function(rect, borderWidth) {
         return {
-            x: utilities.math.round(rect.x           + borderWidth/2),
-            y: utilities.math.round(rect.y           + borderWidth/2),
-            width: utilities.math.round(rect.width   - borderWidth),
+            x: utilities.math.round(rect.x + borderWidth / 2),
+            y: utilities.math.round(rect.y + borderWidth / 2),
+            width: utilities.math.round(rect.width - borderWidth),
             height: utilities.math.round(rect.height - borderWidth)
         };
     };
 
-    ns.CanvasRenderer.applyOffset = CanvasRenderer.applyOffset = function(rect, offset){
+    ns.CanvasRenderer.applyOffset = CanvasRenderer.applyOffset = function(rect, offset) {
         return {
-            x: utilities.math.round(rect.x           + offset.left * rect.width),
-            y: utilities.math.round(rect.y           + offset.top * rect.height),
-            width: utilities.math.round(rect.width   - (offset.left + offset.right) * rect.width),
+            x: utilities.math.round(rect.x + offset.left * rect.width),
+            y: utilities.math.round(rect.y + offset.top * rect.height),
+            width: utilities.math.round(rect.width - (offset.left + offset.right) * rect.width),
             height: utilities.math.round(rect.height - (offset.top + offset.bottom) * rect.height)
         };
     };
 
-    ns.CanvasRenderer.getContentRect = CanvasRenderer.getContentRect = function(rect, borderWidth){
+    ns.CanvasRenderer.getContentRect = CanvasRenderer.getContentRect = function(rect, borderWidth) {
         if (!(borderWidth instanceof Object)) {
             borderWidth = {
                 top: borderWidth,
@@ -446,9 +446,9 @@ defineNamespace(window, "uiTypes.canvas");
         }
 
         return {
-            x: utilities.math.round(rect.x           + borderWidth.left),
-            y: utilities.math.round(rect.y           + borderWidth.top),
-            width: utilities.math.round(rect.width   - borderWidth.left - borderWidth.right),
+            x: utilities.math.round(rect.x + borderWidth.left),
+            y: utilities.math.round(rect.y + borderWidth.top),
+            width: utilities.math.round(rect.width - borderWidth.left - borderWidth.right),
             height: utilities.math.round(rect.height - borderWidth.top - borderWidth.bottom)
         };
     };
@@ -486,7 +486,7 @@ defineNamespace(window, "uiTypes.canvas");
     };
 })(window);
 
-(function(ns){
+(function(ns) {
     var CellBuilder = function(model) {
         this.$container = $(model);
         $("body").append(this.$container);
@@ -501,7 +501,7 @@ defineNamespace(window, "uiTypes.canvas");
 
     CellBuilder.prototype.init = function() {
         var items = $("*[data-role]", this.$container);
-        for(var i = 0; i < items.length; ++i){
+        for (var i = 0; i < items.length; ++i) {
             var item = {
                 $item: $(items[i]),
                 name: items[i].getAttribute("data-role")
@@ -521,7 +521,7 @@ defineNamespace(window, "uiTypes.canvas");
                 height: this.$container.height()
             };
 
-            for(var i = 0; i < this.modelStruct.length; ++i){
+            for (var i = 0; i < this.modelStruct.length; ++i) {
                 var $item = this.modelStruct[i].$item;
                 if ($item.is(":visible")) {
                     var rect = {

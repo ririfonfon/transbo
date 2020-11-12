@@ -1,8 +1,8 @@
-window.uiTypes.pages.ChannelSheet = (function(){
+window.uiTypes.pages.ChannelSheet = (function() {
     var PageBase = window.uiTypes.pages.Page;
 
-    var ChannelSheet = function (commandLine, commandExecutor) {
-        ChannelSheet.superclass.constructor.call(this, $.createItem({ class:"canvas-container", html: "<div><canvas>Sorry, your browser is not supported.</canvas></div>"}));
+    var ChannelSheet = function(commandLine, commandExecutor) {
+        ChannelSheet.superclass.constructor.call(this, $.createItem({ class: "canvas-container", html: "<div><canvas>Sorry, your browser is not supported.</canvas></div>" }));
 
         this.requirements = {
             showDimmerWheel: true
@@ -19,7 +19,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
     }
     window.generic.extend(ChannelSheet, window.uiTypes.pages.CanvasPage);
 
-    ChannelSheet.prototype.CreateWindow = function () {
+    ChannelSheet.prototype.CreateWindow = function() {
         this.m_ma2window = new window.uiTypes.canvas.ChannelSheetWindow(this.canvas, uiTypes.canvas.ChannelSheetCell, CanvasRenderer(this.canvas[0].getContext("2d")), { top: 0, left: 0, width: this.canvas[0].width, height: this.canvas[0].height });
         this.m_ma2window.init();
         $(this.m_ma2window).bind(this.m_ma2window.itemSelectedEvent, this.itemSelected_context);
@@ -34,19 +34,19 @@ window.uiTypes.pages.ChannelSheet = (function(){
         $(this).triggerHandler(PageBase.events.pageButtonsChanged, { buttons: this.pageButtons });
     };
 
-    ChannelSheet.prototype.RefreshTimerCallback = function () {
+    ChannelSheet.prototype.RefreshTimerCallback = function() {
         ChannelSheet.superclass.RefreshTimerCallback.call(this);
         if (!this.m_ma2window) {
             return;
         }
 
-        if(this.m_actualNotifications[commands.CommandType.hideName.id] !== undefined) {
+        if (this.m_actualNotifications[commands.CommandType.hideName.id] !== undefined) {
             this.m_ma2window.hideNamesChanged();
             this.m_actualNotifications[commands.CommandType.hideName.id] = undefined;
         }
     };
 
-    ChannelSheet.prototype.GetPayloadObject = function () {
+    ChannelSheet.prototype.GetPayloadObject = function() {
         var payload = new Object();
         payload.requestType = Server.requestTypes.channelSheet;
         payload.cntCols = 3;
@@ -66,11 +66,11 @@ window.uiTypes.pages.ChannelSheet = (function(){
     };
 
     ChannelSheet.prototype.CreatePageButtons = function() {
-        if(!this.pageButtons){
+        if (!this.pageButtons) {
             var getCommandState = this.m_ma2window.GetCommandState.bind(this.m_ma2window);
             var setCommandState = this.m_ma2window.SetCommandState.bind(this.m_ma2window);
 
-            var progOnlyHandler = (function(command, eventType){
+            var progOnlyHandler = (function(command, eventType) {
                 commands.defaultCommandHandler(command, eventType);
                 this.m_ma2window.ResetFocusAndOffset();
             }).bind(this);
@@ -89,16 +89,16 @@ window.uiTypes.pages.ChannelSheet = (function(){
         return this.pageButtons;
     };
 
-    ChannelSheet.prototype.Init = function () {
+    ChannelSheet.prototype.Init = function() {
         ChannelSheet.superclass.Init.call(this);
 
         this.$page.append(this.canvasContainer);
     };
-    ChannelSheet.prototype.ItemSelected = function (event, args) {
+    ChannelSheet.prototype.ItemSelected = function(event, args) {
         var ids = (args.ids instanceof Array) ? args.ids.join("+") : args.ids;
         this.m_commandExecutor.send({ command: "channel " + ids });
     };
-    ChannelSheet.prototype.Close = function () {
+    ChannelSheet.prototype.Close = function() {
         $(this.m_ma2window).unbind(this.m_ma2window.itemSelectedEvent, this.itemSelected_context);
 
         ChannelSheet.superclass.Close.call(this);
@@ -110,8 +110,8 @@ window.uiTypes.pages.ChannelSheet = (function(){
     return ChannelSheet;
 })();
 
-(function(ns){
-    var ChannelSheetWindow = function (parentElement, cellClass, renderer, rect) {
+(function(ns) {
+    var ChannelSheetWindow = function(parentElement, cellClass, renderer, rect) {
         ChannelSheetWindow.superclass.constructor.call(this, parentElement, renderer, rect);
 
         this.config = {
@@ -145,14 +145,14 @@ window.uiTypes.pages.ChannelSheet = (function(){
     };
     window.generic.extend(ChannelSheetWindow, window.uiTypes.canvas.CanvasBlockBox);
 
-    ChannelSheetWindow.prototype.init = function () {
+    ChannelSheetWindow.prototype.init = function() {
         $.extend(this.m_defaultSettings, this.config.hideName[this.GetCommandState(commands.CommandType.hideName).value]);
 
         ChannelSheetWindow.superclass.init.call(this);
 
         this.SetColsCount(this.GetVisibleColsCount());
-        var offset = this.m_defaultSettings.storage.Load("offset", {x:0,y:0});
-        var focus = this.m_defaultSettings.storage.Load("focus", {x:0,y:0});
+        var offset = this.m_defaultSettings.storage.Load("offset", { x: 0, y: 0 });
+        var focus = this.m_defaultSettings.storage.Load("focus", { x: 0, y: 0 });
         this.setOffset(offset);
         this.setFocus(focus);
     };
@@ -164,7 +164,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         state ? this.cellBuilder.hide("name") : this.cellBuilder.show("name");
     };
 
-    ChannelSheetWindow.prototype.SetDataSource = function (consolereturn) {
+    ChannelSheetWindow.prototype.SetDataSource = function(consolereturn) {
         if (!consolereturn || (consolereturn.responseType != Server.requestTypes.channelSheet)) {
             return false;
         }
@@ -178,7 +178,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         return true;
     };
 
-    ChannelSheetWindow.prototype.refresh = function (channelsheet) {
+    ChannelSheetWindow.prototype.refresh = function(channelsheet) {
         ChannelSheetWindow.superclass.refresh.call(this);
         if (!channelsheet) {
             return;
@@ -216,7 +216,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         this.drawScrollBars();
     };
 
-    ChannelSheetWindow.prototype.draw = function (data) {
+    ChannelSheetWindow.prototype.draw = function(data) {
         var maxCols = this.GetVisibleColsCount();
         var currentFocusPos = this.GetFocus();
         var rowIndex = 0;
@@ -246,7 +246,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         }
     };
 
-    ChannelSheetWindow.prototype.getCellData = function (itemData) {
+    ChannelSheetWindow.prototype.getCellData = function(itemData) {
         if (!itemData) {
             return {};
         }
@@ -273,7 +273,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         return cellData;
     };
 
-    ChannelSheetWindow.prototype.SelectRange = function (selectionSize, point, hDirection, vDirection) {
+    ChannelSheetWindow.prototype.SelectRange = function(selectionSize, point, hDirection, vDirection) {
         if (selectionSize) {
             var firstSelectedCell = {
                 x: Math.ceil(selectionSize.startX / this.m_containerSettings.cellRenderWidth) - 1,
@@ -317,8 +317,8 @@ window.uiTypes.pages.ChannelSheet = (function(){
     ns.ChannelSheetWindow = ChannelSheetWindow;
 })(window.uiTypes.canvas);
 
-(function(ns){
-    var ChannelSheetCell = function(renderer){
+(function(ns) {
+    var ChannelSheetCell = function(renderer) {
         this.m_renderer = renderer;
 
         this.m_defaultSettings = {
@@ -326,7 +326,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
             leading: 0.3, // em
             fontFamily: "Helvetica",
 
-            bgColor : remoteColors.channelSheet.cell.backgroundColor,
+            bgColor: remoteColors.channelSheet.cell.backgroundColor,
             textColor: remoteColors.channelSheet.cell.color
         };
 
@@ -358,7 +358,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         this.m_rects = {
             default: {},
             cell: {},
-            innerCell : {},
+            innerCell: {},
             content: {}
         };
     };
@@ -406,8 +406,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
 
         this.m_renderer.fillText(
             rect,
-            data.index.text,
-            { family: this.m_defaultSettings.fontFamily },
+            data.index.text, { family: this.m_defaultSettings.fontFamily },
             data.index.color || this.m_defaultSettings.textColor,
             this.m_elements.index.halign,
             this.m_elements.index.valign
@@ -423,8 +422,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
 
         this.m_renderer.fillText(
             rect,
-            data.name.text,
-            {
+            data.name.text, {
                 family: this.m_defaultSettings.fontFamily,
                 size: this.m_defaultSettings.cellFontSize
             },
@@ -447,8 +445,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         }
         this.m_renderer.fillText(
             textRect,
-            data.value.text,
-            { family: this.m_defaultSettings.fontFamily },
+            data.value.text, { family: this.m_defaultSettings.fontFamily },
             data.value.color || this.m_defaultSettings.textColor,
             this.m_elements.value.halign,
             this.m_elements.value.valign
@@ -467,7 +464,7 @@ window.uiTypes.pages.ChannelSheet = (function(){
         );
     };
 
-    ChannelSheetCell.prototype.draw = function (cell, model) {
+    ChannelSheetCell.prototype.draw = function(cell, model) {
         var data = cell.data;
 
         this.m_rects.cell = this.m_rects.default = utilities.math.roundRect(cell);

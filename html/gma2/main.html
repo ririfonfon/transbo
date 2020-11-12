@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang='fr-FR'>
+
+<head>
+    <meta charset="utf-8">
+    <title>gma2</title>
+    <link rel="stylesheet" type="text/css" href="./css/generic.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+    <link rel="apple-touch-icon" href="images/appicon.png" />
+    <link rel="shortcut icon" href="images/appicon.png" />
+</head>
+
+<body data-page-layout="phone-layout" style="opacity: 1;">
+    <script type="text/javascript" src="./js/start.js"></script>
+    <div class="overlay" rel="overlay" style="display: none;"></div>
+
+    <div class="main">
+        <div class="header">
+            <div class="header-left">
+                <div class="header-left-top">
+                    <div class="command-line-holder" data-reactid=".0"><img class="cmdline-history-button" alt="history" src="images/btncontext.png" data-reactid=".0.0">
+                        <div class="cmdline-prompt" data-reactid=".0.1" style="color: rgb(128, 128, 128);"> [Fixture]&gt;</div><input class="cmdline-input" type="text" data-reactid=".0.2"></div>
+                </div>
+                <div class="header-left-bottom">
+                    <div data-rel="buttons-container" class="horizontal-navigation-bar" style="display: flex;">
+                        <div data-rel="prev-button" class="horizontal-navigation-bar-left-button">
+                            <div data-rel="button-text" class="page-name">Executor Sheet</div>
+                        </div>
+                        <div data-rel="cur-button" class="horizontal-navigation-bar-current-page-title">
+                            <div data-rel="button-text">Playbacks</div>
+                            <div data-rel="icon" class="horizontal-navigation-bar-icon"> <img src="">
+                                <div data-rel="index" class="horizontal-navigation-bar-index"></div>
+                            </div> <embed data-rel="new-window-sign" class="newWindowSign" type="image/svg+xml" src="./images/newWindowSign.svg"> </div>
+                        <div data-rel="next-button" class="horizontal-navigation-bar-right-button">
+                            <div data-rel="button-text" class="page-name">CMD 1</div>
+                        </div>
+                    </div>
+                    <div data-rel="buttons-container" class="modal-horizontal-navigation-bar" style="display: none;">
+                        <div data-rel="cur-button" class="modal-horizontal-navigation-bar-current-page-title">
+                            <div data-rel="button-text">Main Menu</div>
+                        </div>
+                        <div data-rel="next-button" class="modal-horizontal-navigation-bar-right-button">
+                            <div data-rel="button-text" class="page-name"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right top-right-button">
+                <div class="commandbutton">
+                    <div class="buttonContent">
+                        <div class="text content">Wheels</div>
+                    </div>
+                </div>
+                <embed data-rel="popup-window-sign" class="popupWindowSign" type="image/svg+xml" src="./images/popupWindowSign.svg">
+            </div>
+        </div>
+
+        <div id="body" class="middle page-content" style="visibility: visible;">
+
+            <div class="middle-inner page-content-inner">
+                <div class="middle-left">
+                    <div class="universal-container">
+                        <div class="vertical-bar playbacks-bar" data-reactid=".1">
+                            <div class="vertical-bar_group playbacks-bar_group" data-reactid=".1.0">
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.0.$prev">
+                                    <div class="vertical-bar_item playbacks-bar_item vertical-bar_item__disabled playbacks-bar_item__disabled" data-reactid=".1.0.$prev.0">
+                                        <div class="content" data-reactid=".1.0.$prev.0.0"><span data-reactid=".1.0.$prev.0.0.0"> </span><span data-reactid=".1.0.$prev.0.0.1">Previous</span><span data-reactid=".1.0.$prev.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.0.$next">
+                                    <div class="vertical-bar_item playbacks-bar_item" data-reactid=".1.0.$next.0">
+                                        <div class="content" data-reactid=".1.0.$next.0.0"><span data-reactid=".1.0.$next.0.0.0"> </span><span data-reactid=".1.0.$next.0.0.1">Next 6-10</span><span data-reactid=".1.0.$next.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertical-bar_group playbacks-bar_group" data-reactid=".1.1">
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.1.$pageDown">
+                                    <div class="vertical-bar_item playbacks-bar_item vertical-bar_item__disabled playbacks-bar_item__disabled" data-reactid=".1.1.$pageDown.0">
+                                        <div class="content" data-reactid=".1.1.$pageDown.0.0"><span data-reactid=".1.1.$pageDown.0.0.0"> </span><span data-reactid=".1.1.$pageDown.0.0.1">Previous page </span><span data-reactid=".1.1.$pageDown.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.1.$pageUp">
+                                    <div class="vertical-bar_item playbacks-bar_item" data-reactid=".1.1.$pageUp.0">
+                                        <div class="content" data-reactid=".1.1.$pageUp.0.0"><span data-reactid=".1.1.$pageUp.0.0.0"> </span><span data-reactid=".1.1.$pageUp.0.0.1">Next page 2</span><span data-reactid=".1.1.$pageUp.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertical-bar_group playbacks-bar_group" data-reactid=".1.2">
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.2.$mode_Fader">
+                                    <div class="vertical-bar_item playbacks-bar_item vertical-bar_item__active playbacks-bar_item__active" data-reactid=".1.2.$mode_Fader.0">
+                                        <div class="content" data-reactid=".1.2.$mode_Fader.0.0"><span data-reactid=".1.2.$mode_Fader.0.0.0"> </span><span data-reactid=".1.2.$mode_Fader.0.0.1">Fader</span><span data-reactid=".1.2.$mode_Fader.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                                <div class="vertical-bar_item-wrapper playbacks-bar_item_wrapper" data-reactid=".1.2.$mode_Button">
+                                    <div class="vertical-bar_item playbacks-bar_item" data-reactid=".1.2.$mode_Button.0">
+                                        <div class="content" data-reactid=".1.2.$mode_Button.0.0"><span data-reactid=".1.2.$mode_Button.0.0.0"> </span><span data-reactid=".1.2.$mode_Button.0.0.1">Button</span><span data-reactid=".1.2.$mode_Button.0.0.2"> </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-center">
+                    <div class="middle-center-top page-top-buttons button-container line"></div>
+                    <div class="middle-center-bottom">
+                        <div class="middle-center-bottom-inner main-content">
+                            <div id="Playbacks" class="playbacks page">
+                                <div class="playbacks_faders" data-reactid=".4">
+                                    <div class="playbacks_page_title__small" data-reactid=".4.0">Fader 1 (1...5)</div>
+                                    <div class="playbacks_faders-row" data-reactid=".4.1">
+                                        <div class="playbacks_item-block" data-reactid=".4.1.$0">
+                                            <div class="playbacks_item-block_section" data-colspan="1" data-reactid=".4.1.$0.$0">
+                                                <div class="playbacks_executor-button playbacks_executor-button__short" data-reactid=".4.1.$0.$0.0" style="border-color: rgb(255, 255, 128);">
+                                                    <div class="top" data-reactid=".4.1.$0.$0.0.0" style="background-color: rgb(0, 0, 0);">
+                                                        <div class="status" data-reactid=".4.1.$0.$0.0.0.0">
+                                                            <div class="status-index" data-reactid=".4.1.$0.$0.0.0.0.0" style="color: rgb(192, 192, 192);">
+                                                                <div class="content" data-reactid=".4.1.$0.$0.0.0.0.0.0">1</div>
+                                                            </div>
+                                                            <div class="object-type" data-reactid=".4.1.$0.$0.0.0.0.1" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$0.0.0.0.1.0"><img class="special-symbols" data-reactid=".4.1.$0.$0.0.0.0.1.0.0" style="display: none;"><span data-reactid=".4.1.$0.$0.0.0.0.1.0.1">LT</span></div>
+                                                            </div>
+                                                            <div class="object-index" data-reactid=".4.1.$0.$0.0.0.0.2" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$0.0.0.0.2.0">1</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="title" data-reactid=".4.1.$0.$0.0.0.1" style="color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$0.0.0.1.0">Sequ</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cues" data-reactid=".4.1.$0.$0.0.1" style="background-color: rgb(63, 63, 32);">
+                                                        <div class="cue" data-reactid=".4.1.$0.$0.0.1.$0" style="color: rgb(255, 255, 255);">
+                                                            <div class="progress-bar" data-reactid=".4.1.$0.$0.0.1.$0.0" style="width: 0%;"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$0.0.1.$0.1"> 1 Cue</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="executor-blocks" data-reactid=".4.1.$0.$0.1">
+                                                    <div class="executor-block" data-reactid=".4.1.$0.$0.1.$0">
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$0.1.$0.0" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$0.1.$0.0.0"><span data-reactid=".4.1.$0.$0.1.$0.0.0.0"> </span><span data-reactid=".4.1.$0.$0.1.$0.0.0.1">Go</span><span data-reactid=".4.1.$0.$0.1.$0.0.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$0.1.$0.1" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$0.1.$0.1.0"><span data-reactid=".4.1.$0.$0.1.$0.1.0.0"> </span><span data-reactid=".4.1.$0.$0.1.$0.1.0.1">Swop</span><span data-reactid=".4.1.$0.$0.1.$0.1.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="fader" data-reactid=".4.1.$0.$0.1.$0.2" style="border-color: rgb(255, 255, 128);">
+                                                            <div class="axe-wrapper" data-reactid=".4.1.$0.$0.1.$0.2.0">
+                                                                <div class="axe" data-reactid=".4.1.$0.$0.1.$0.2.0.0"></div>
+                                                                <div class="slider" data-value="1" data-min-value="0" data-max-value="1" data-reactid=".4.1.$0.$0.1.$0.2.0.1" style="bottom: 100%;">
+                                                                    <div class="slider-title" data-reactid=".4.1.$0.$0.1.$0.2.0.1.0">
+                                                                        <div class="content" data-reactid=".4.1.$0.$0.1.$0.2.0.1.0.0">LTP</div>
+                                                                    </div>
+                                                                    <div class="slider-middle-line" data-reactid=".4.1.$0.$0.1.$0.2.0.1.1">
+                                                                        <div class="content" data-reactid=".4.1.$0.$0.1.$0.2.0.1.1.0">100%</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$0.1.$0.3" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 0);">
+                                                            <div class="indicator left" data-reactid=".4.1.$0.$0.1.$0.3.0"></div>
+                                                            <div class="indicator right" data-reactid=".4.1.$0.$0.1.$0.3.1"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$0.1.$0.3.2"><span data-reactid=".4.1.$0.$0.1.$0.3.2.0"> </span><span data-reactid=".4.1.$0.$0.1.$0.3.2.1">Flash</span><span data-reactid=".4.1.$0.$0.1.$0.3.2.2"> </span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="playbacks_item-block_section" data-colspan="1" data-reactid=".4.1.$0.$1">
+                                                <div class="playbacks_executor-button playbacks_executor-button__short" data-reactid=".4.1.$0.$1.0" style="border-color: rgb(255, 255, 128);">
+                                                    <div class="top" data-reactid=".4.1.$0.$1.0.0" style="background-color: rgb(0, 0, 0);">
+                                                        <div class="status" data-reactid=".4.1.$0.$1.0.0.0">
+                                                            <div class="status-index" data-reactid=".4.1.$0.$1.0.0.0.0" style="color: rgb(192, 192, 192);">
+                                                                <div class="content" data-reactid=".4.1.$0.$1.0.0.0.0.0">2</div>
+                                                            </div>
+                                                            <div class="object-type" data-reactid=".4.1.$0.$1.0.0.0.1" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$1.0.0.0.1.0"><img class="special-symbols" data-reactid=".4.1.$0.$1.0.0.0.1.0.0" style="display: none;"><span data-reactid=".4.1.$0.$1.0.0.0.1.0.1">LT</span></div>
+                                                            </div>
+                                                            <div class="object-index" data-reactid=".4.1.$0.$1.0.0.0.2" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$1.0.0.0.2.0">2</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="title" data-reactid=".4.1.$0.$1.0.0.1" style="color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$1.0.0.1.0">Sequ</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cues" data-reactid=".4.1.$0.$1.0.1" style="background-color: rgb(63, 63, 32);">
+                                                        <div class="cue" data-reactid=".4.1.$0.$1.0.1.$0" style="color: rgb(255, 255, 255);">
+                                                            <div class="progress-bar" data-reactid=".4.1.$0.$1.0.1.$0.0" style="width: 0%;"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$1.0.1.$0.1"> 1 Cue</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="executor-blocks" data-reactid=".4.1.$0.$1.1">
+                                                    <div class="executor-block" data-reactid=".4.1.$0.$1.1.$0">
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$1.1.$0.0" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$1.1.$0.0.0"><span data-reactid=".4.1.$0.$1.1.$0.0.0.0"> </span><span data-reactid=".4.1.$0.$1.1.$0.0.0.1">Go</span><span data-reactid=".4.1.$0.$1.1.$0.0.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$1.1.$0.1" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$1.1.$0.1.0"><span data-reactid=".4.1.$0.$1.1.$0.1.0.0"> </span><span data-reactid=".4.1.$0.$1.1.$0.1.0.1">Swop</span><span data-reactid=".4.1.$0.$1.1.$0.1.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="fader" data-reactid=".4.1.$0.$1.1.$0.2" style="border-color: rgb(255, 255, 128);">
+                                                            <div class="axe-wrapper" data-reactid=".4.1.$0.$1.1.$0.2.0">
+                                                                <div class="axe" data-reactid=".4.1.$0.$1.1.$0.2.0.0"></div>
+                                                                <div class="slider" data-value="1" data-min-value="0" data-max-value="1" data-reactid=".4.1.$0.$1.1.$0.2.0.1" style="bottom: 100%;">
+                                                                    <div class="slider-title" data-reactid=".4.1.$0.$1.1.$0.2.0.1.0">
+                                                                        <div class="content" data-reactid=".4.1.$0.$1.1.$0.2.0.1.0.0">LTP</div>
+                                                                    </div>
+                                                                    <div class="slider-middle-line" data-reactid=".4.1.$0.$1.1.$0.2.0.1.1">
+                                                                        <div class="content" data-reactid=".4.1.$0.$1.1.$0.2.0.1.1.0">100%</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$1.1.$0.3" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 0);">
+                                                            <div class="indicator left" data-reactid=".4.1.$0.$1.1.$0.3.0"></div>
+                                                            <div class="indicator right" data-reactid=".4.1.$0.$1.1.$0.3.1"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$1.1.$0.3.2"><span data-reactid=".4.1.$0.$1.1.$0.3.2.0"> </span><span data-reactid=".4.1.$0.$1.1.$0.3.2.1">Flash</span><span data-reactid=".4.1.$0.$1.1.$0.3.2.2"> </span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="playbacks_item-block_section" data-colspan="1" data-reactid=".4.1.$0.$2">
+                                                <div class="playbacks_executor-button playbacks_executor-button__short" data-reactid=".4.1.$0.$2.0" style="border-color: rgb(255, 255, 128);">
+                                                    <div class="top" data-reactid=".4.1.$0.$2.0.0" style="background-color: rgb(0, 0, 0);">
+                                                        <div class="status" data-reactid=".4.1.$0.$2.0.0.0">
+                                                            <div class="status-index" data-reactid=".4.1.$0.$2.0.0.0.0" style="color: rgb(192, 192, 192);">
+                                                                <div class="content" data-reactid=".4.1.$0.$2.0.0.0.0.0">3</div>
+                                                            </div>
+                                                            <div class="object-type" data-reactid=".4.1.$0.$2.0.0.0.1" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$2.0.0.0.1.0"><img class="special-symbols" data-reactid=".4.1.$0.$2.0.0.0.1.0.0" style="display: none;"><span data-reactid=".4.1.$0.$2.0.0.0.1.0.1">LT</span></div>
+                                                            </div>
+                                                            <div class="object-index" data-reactid=".4.1.$0.$2.0.0.0.2" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$2.0.0.0.2.0">3</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="title" data-reactid=".4.1.$0.$2.0.0.1" style="color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$2.0.0.1.0">Sequ</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cues" data-reactid=".4.1.$0.$2.0.1" style="background-color: rgb(63, 63, 32);">
+                                                        <div class="cue" data-reactid=".4.1.$0.$2.0.1.$0" style="color: rgb(255, 255, 255);">
+                                                            <div class="progress-bar" data-reactid=".4.1.$0.$2.0.1.$0.0" style="width: 0%;"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$2.0.1.$0.1"> 1 Cue</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="executor-blocks" data-reactid=".4.1.$0.$2.1">
+                                                    <div class="executor-block" data-reactid=".4.1.$0.$2.1.$0">
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$2.1.$0.0" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$2.1.$0.0.0"><span data-reactid=".4.1.$0.$2.1.$0.0.0.0"> </span><span data-reactid=".4.1.$0.$2.1.$0.0.0.1">Go</span><span data-reactid=".4.1.$0.$2.1.$0.0.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$2.1.$0.1" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$2.1.$0.1.0"><span data-reactid=".4.1.$0.$2.1.$0.1.0.0"> </span><span data-reactid=".4.1.$0.$2.1.$0.1.0.1">Swop</span><span data-reactid=".4.1.$0.$2.1.$0.1.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="fader" data-reactid=".4.1.$0.$2.1.$0.2" style="border-color: rgb(255, 255, 128);">
+                                                            <div class="axe-wrapper" data-reactid=".4.1.$0.$2.1.$0.2.0">
+                                                                <div class="axe" data-reactid=".4.1.$0.$2.1.$0.2.0.0"></div>
+                                                                <div class="slider" data-value="1" data-min-value="0" data-max-value="1" data-reactid=".4.1.$0.$2.1.$0.2.0.1" style="bottom: 100%;">
+                                                                    <div class="slider-title" data-reactid=".4.1.$0.$2.1.$0.2.0.1.0">
+                                                                        <div class="content" data-reactid=".4.1.$0.$2.1.$0.2.0.1.0.0">LTP</div>
+                                                                    </div>
+                                                                    <div class="slider-middle-line" data-reactid=".4.1.$0.$2.1.$0.2.0.1.1">
+                                                                        <div class="content" data-reactid=".4.1.$0.$2.1.$0.2.0.1.1.0">100%</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$2.1.$0.3" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 0);">
+                                                            <div class="indicator left" data-reactid=".4.1.$0.$2.1.$0.3.0"></div>
+                                                            <div class="indicator right" data-reactid=".4.1.$0.$2.1.$0.3.1"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$2.1.$0.3.2"><span data-reactid=".4.1.$0.$2.1.$0.3.2.0"> </span><span data-reactid=".4.1.$0.$2.1.$0.3.2.1">Flash</span><span data-reactid=".4.1.$0.$2.1.$0.3.2.2"> </span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="playbacks_item-block_section" data-colspan="1" data-reactid=".4.1.$0.$3">
+                                                <div class="playbacks_executor-button playbacks_executor-button__short" data-reactid=".4.1.$0.$3.0" style="border-color: rgb(255, 255, 128);">
+                                                    <div class="top" data-reactid=".4.1.$0.$3.0.0" style="background-color: rgb(0, 0, 0);">
+                                                        <div class="status" data-reactid=".4.1.$0.$3.0.0.0">
+                                                            <div class="status-index" data-reactid=".4.1.$0.$3.0.0.0.0" style="color: rgb(192, 192, 192);">
+                                                                <div class="content" data-reactid=".4.1.$0.$3.0.0.0.0.0">4</div>
+                                                            </div>
+                                                            <div class="object-type" data-reactid=".4.1.$0.$3.0.0.0.1" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$3.0.0.0.1.0"><img class="special-symbols" data-reactid=".4.1.$0.$3.0.0.0.1.0.0" style="display: none;"><span data-reactid=".4.1.$0.$3.0.0.0.1.0.1">LT</span></div>
+                                                            </div>
+                                                            <div class="object-index" data-reactid=".4.1.$0.$3.0.0.0.2" style="color: rgb(255, 255, 255);">
+                                                                <div class="content" data-reactid=".4.1.$0.$3.0.0.0.2.0">4</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="title" data-reactid=".4.1.$0.$3.0.0.1" style="color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$3.0.0.1.0">Sequ</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cues" data-reactid=".4.1.$0.$3.0.1" style="background-color: rgb(63, 63, 32);">
+                                                        <div class="cue" data-reactid=".4.1.$0.$3.0.1.$0" style="color: rgb(255, 255, 255);">
+                                                            <div class="progress-bar" data-reactid=".4.1.$0.$3.0.1.$0.0" style="width: 100%; background-color: rgb(0, 0, 255);"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$3.0.1.$0.1"> 1 Cue</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="executor-blocks" data-reactid=".4.1.$0.$3.1">
+                                                    <div class="executor-block" data-reactid=".4.1.$0.$3.1.$0">
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$3.1.$0.0" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$3.1.$0.0.0"><span data-reactid=".4.1.$0.$3.1.$0.0.0.0"> </span><span data-reactid=".4.1.$0.$3.1.$0.0.0.1">Go</span><span data-reactid=".4.1.$0.$3.1.$0.0.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$3.1.$0.1" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 255);">
+                                                            <div class="content" data-reactid=".4.1.$0.$3.1.$0.1.0"><span data-reactid=".4.1.$0.$3.1.$0.1.0.0"> </span><span data-reactid=".4.1.$0.$3.1.$0.1.0.1">Swop</span><span data-reactid=".4.1.$0.$3.1.$0.1.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="fader" data-reactid=".4.1.$0.$3.1.$0.2" style="border-color: rgb(255, 255, 128);">
+                                                            <div class="axe-wrapper" data-reactid=".4.1.$0.$3.1.$0.2.0">
+                                                                <div class="axe" data-reactid=".4.1.$0.$3.1.$0.2.0.0"></div>
+                                                                <div class="slider" data-value="0.694" data-min-value="0" data-max-value="1" data-reactid=".4.1.$0.$3.1.$0.2.0.1" style="bottom: 69.4%;">
+                                                                    <div class="slider-title" data-reactid=".4.1.$0.$3.1.$0.2.0.1.0">
+                                                                        <div class="content" data-reactid=".4.1.$0.$3.1.$0.2.0.1.0.0">LTP</div>
+                                                                    </div>
+                                                                    <div class="slider-middle-line" data-reactid=".4.1.$0.$3.1.$0.2.0.1.1">
+                                                                        <div class="content" data-reactid=".4.1.$0.$3.1.$0.2.0.1.1.0">69%</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$3.1.$0.3" style="border-color: rgb(255, 255, 128); color: rgb(255, 255, 0);">
+                                                            <div class="indicator left" data-reactid=".4.1.$0.$3.1.$0.3.0"></div>
+                                                            <div class="indicator right" data-reactid=".4.1.$0.$3.1.$0.3.1"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$3.1.$0.3.2"><span data-reactid=".4.1.$0.$3.1.$0.3.2.0"> </span><span data-reactid=".4.1.$0.$3.1.$0.3.2.1">Flash</span><span data-reactid=".4.1.$0.$3.1.$0.3.2.2"> </span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="playbacks_item-block_section" data-colspan="1" data-reactid=".4.1.$0.$4">
+                                                <div class="playbacks_executor-button playbacks_executor-button__short" data-reactid=".4.1.$0.$4.0" style="border-color: rgb(61, 61, 61);">
+                                                    <div class="top" data-reactid=".4.1.$0.$4.0.0" style="background-color: rgb(64, 64, 64);">
+                                                        <div class="status" data-reactid=".4.1.$0.$4.0.0.0">
+                                                            <div class="status-index" data-reactid=".4.1.$0.$4.0.0.0.0" style="color: rgb(0, 0, 0);">
+                                                                <div class="content" data-reactid=".4.1.$0.$4.0.0.0.0.0">5</div>
+                                                            </div>
+                                                            <div class="object-type" data-reactid=".4.1.$0.$4.0.0.0.1">
+                                                                <div class="content" data-reactid=".4.1.$0.$4.0.0.0.1.0"><img class="special-symbols" data-reactid=".4.1.$0.$4.0.0.0.1.0.0" style="display: none;"><span data-reactid=".4.1.$0.$4.0.0.0.1.0.1"></span></div>
+                                                            </div>
+                                                            <div class="object-index" data-reactid=".4.1.$0.$4.0.0.0.2">
+                                                                <div class="content" data-reactid=".4.1.$0.$4.0.0.0.2.0"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="title" data-reactid=".4.1.$0.$4.0.0.1">
+                                                            <div class="content" data-reactid=".4.1.$0.$4.0.0.1.0"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cues" data-reactid=".4.1.$0.$4.0.1">
+                                                        <div class="playbacks_executor-button_cues__empty" data-reactid=".4.1.$0.$4.0.1.0"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="executor-blocks" data-reactid=".4.1.$0.$4.1">
+                                                    <div class="executor-block" data-reactid=".4.1.$0.$4.1.$0">
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$4.1.$0.0" style="color: rgb(128, 128, 128);">
+                                                            <div class="content" data-reactid=".4.1.$0.$4.1.$0.0.0"><span data-reactid=".4.1.$0.$4.1.$0.0.0.0"> </span><span data-reactid=".4.1.$0.$4.1.$0.0.0.1">Empty</span><span data-reactid=".4.1.$0.$4.1.$0.0.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$4.1.$0.1" style="color: rgb(128, 128, 128);">
+                                                            <div class="content" data-reactid=".4.1.$0.$4.1.$0.1.0"><span data-reactid=".4.1.$0.$4.1.$0.1.0.0"> </span><span data-reactid=".4.1.$0.$4.1.$0.1.0.1">Empty</span><span data-reactid=".4.1.$0.$4.1.$0.1.0.2"> </span></div>
+                                                        </div>
+                                                        <div class="fader" data-reactid=".4.1.$0.$4.1.$0.2">
+                                                            <div class="axe-wrapper" data-reactid=".4.1.$0.$4.1.$0.2.0">
+                                                                <div class="axe" data-reactid=".4.1.$0.$4.1.$0.2.0.0"></div>
+                                                                <div class="slider" data-value="0" data-min-value="0" data-max-value="0" data-reactid=".4.1.$0.$4.1.$0.2.0.1" style="bottom: 0%;">
+                                                                    <div class="slider-title" data-reactid=".4.1.$0.$4.1.$0.2.0.1.0">
+                                                                        <div class="content" data-reactid=".4.1.$0.$4.1.$0.2.0.1.0.0"></div>
+                                                                    </div>
+                                                                    <div class="slider-middle-line" data-reactid=".4.1.$0.$4.1.$0.2.0.1.1">
+                                                                        <div class="content" data-reactid=".4.1.$0.$4.1.$0.2.0.1.1.0"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="exec-button" data-reactid=".4.1.$0.$4.1.$0.3" style="color: rgb(128, 128, 128);">
+                                                            <div class="indicator left" data-reactid=".4.1.$0.$4.1.$0.3.0"></div>
+                                                            <div class="indicator right" data-reactid=".4.1.$0.$4.1.$0.3.1"></div>
+                                                            <div class="content" data-reactid=".4.1.$0.$4.1.$0.3.2"><span data-reactid=".4.1.$0.$4.1.$0.3.2.0"> </span><span data-reactid=".4.1.$0.$4.1.$0.3.2.1">Empty</span><span data-reactid=".4.1.$0.$4.1.$0.3.2.2"> </span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-right hidden">
+                    <div class="wheel dimmer-wheel">
+                        <div class="commonWheelHolder wheelHolder">
+                            <div class="wheelStripe">
+                                <div class="wheelStripeInner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-controls hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom footer line hidden">
+            <div class="commandbutton line-element" data-pos="fixed"><span class="content">Previous</span></div>
+            <div class="commandbutton line-element" data-pos="fixed"><span class="content">Set</span></div>
+            <div class="commandbutton line-element" data-pos="fixed"><span class="content">Next</span></div>
+        </div>
+    </div>
+
+    <div id="disconnectedPanel" style="">Disconnected from console</div>
+    <div class="selectionOverlay" style="display: none;"></div>
+
+    <div class="debug"></div>
+
+    <script type="text/javascript" src="./js/main.js"></script>
+    <div id="popupOverlay"></div>
+    <div id="alertOverlay"></div>
+    <div id="commonOverlay"></div>
+    <div id="loginOverlay" rel="overlay" class="loginForm" style="display: none;">
+        <div class="loginForm" rel="container" style="z-index: 100; display: none;">
+            <div class="loginForm" rel="title-bar">
+                <div class="loginForm" rel="title">Login</div>
+                <div class="loginForm" rel="close-button"></div>
+            </div>
+            <div class="loginForm" rel="content">
+                <form class="loginForm" rel="form"><label class="loginForm" rel="label" for="loginUsername">            Name:        </label> <input class="loginForm" rel="text" type="text" id="loginUsername" value="" tabindex="100" data-focus="true" onfocus="this.setSelectionRange(0, this.value.length)"
+                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><label class="loginForm" rel="label" for="loginPassword">            Password:        </label> <input class="loginForm" rel="password" type="password" id="loginPassword"
+                        value="" tabindex="101" data-focus="false">
+                    <ul class="loginForm" rel="buttons">
+                        <li class="loginForm" rel="buttonWrapper" style="width: 100%;"> <button class="loginForm commandbutton" rel="button" data-role="submit" tabindex="102" id="loginSubmit" data-focus="false" name="">                Login            </button> </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="display:none" id="wheel_animation_images"><img src="./images/wheelAnimation0.png"><img src="./images/wheelAnimation1.png"><img src="./images/wheelAnimation2.png"><img src="./images/wheelAnimation3.png"><img src="./images/wheelAnimation4.png"><img src="./images/wheelAnimation5.png"><img src="./images/wheelAnimation6.png">
+        <img src="./images/wheelAnimation7.png"></div>
+</body>

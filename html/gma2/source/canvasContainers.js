@@ -1,5 +1,5 @@
-window.uiTypes.canvas.CanvasContainerWindow = (function(){
-    var CanvasContainerWindow = function (parentElement, renderer, rect, dispatcher) {
+window.uiTypes.canvas.CanvasContainerWindow = (function() {
+    var CanvasContainerWindow = function(parentElement, renderer, rect, dispatcher) {
         CanvasContainerWindow.superclass.constructor.call(this, parentElement, renderer, rect, dispatcher);
 
         $.extend(this.m_defaultSettings, {
@@ -40,14 +40,14 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
 
         this.m_wheelStartPoint = 0;
 
-        this.GetLassoBorders = function () {
+        this.GetLassoBorders = function() {
             var lassoBorder = this.GetContentRect();
             lassoBorder.top += this.m_containerSettings.cellRenderHeight * this.m_defaultSettings.titleRows;
             lassoBorder.height -= this.m_containerSettings.cellRenderHeight * this.m_defaultSettings.titleRows;
             return lassoBorder;
         }
 
-        this.SetColsCount = function (value) {
+        this.SetColsCount = function(value) {
             if (this.m_containerSettings.colsCount != value) {
                 this.m_containerSettings.colsCount = value;
                 this.SyncHOffset();
@@ -55,7 +55,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
         }
 
         //#region Scroll
-        this.wheelStart = function () {
+        this.wheelStart = function() {
             window.generic.statusLogging("wheel Start");
             this.m_wheelStartPoint = { focusX: this.m_focusPos.x, focusY: this.m_focusPos.y, offsetX: this.m_containerOffset.x, offsetY: this.m_containerOffset.y };
             if (this.m_focusPos.x < 0) {
@@ -63,10 +63,10 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
                 this.setOffset({ x: 0 });
             }
         }
-        this.wheelEnd = function () {
+        this.wheelEnd = function() {
             this.m_wheelStartPoint = 0;
         }
-        this.hStep = function (direction) {
+        this.hStep = function(direction) {
             if (direction === "forward") {
                 var actualColsOnPage = Math.min(this.GetVisibleColsCount(), this.m_containerSettings.colsCount);
                 if (this.m_focusPos.x < actualColsOnPage - 1) {
@@ -77,13 +77,12 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             } else if (direction === "back") {
                 if ((this.m_focusPos.x == 0) && (this.m_containerOffset.x > 0)) {
                     this.setOffset({ x: this.m_containerOffset.x - 1 });
-                }
-                else if (this.m_focusPos.x > -this.m_defaultSettings.fixedColumnsCount) {
+                } else if (this.m_focusPos.x > -this.m_defaultSettings.fixedColumnsCount) {
                     this.setFocus({ x: this.m_focusPos.x - 1 });
                 }
             }
         }
-        this.hStepPage = function (direction) {
+        this.hStepPage = function(direction) {
             if (direction === "forward") {
                 return 10;
             } else if (direction === "back") {
@@ -91,7 +90,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             }
             return 0;
         }
-        this.hWheel = function (offset) {
+        this.hWheel = function(offset) {
             //window.generic.statusLogging(offset);
             //window.generic.statusLogging("start.x: " + this.m_wheelStartPoint.focusX);
             if (!offset) {
@@ -134,7 +133,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             }
             //window.generic.statusLogging("focus.x: " + this.m_focusPos.x);
         }
-        this.SyncHOffset = function () {
+        this.SyncHOffset = function() {
             var hScroll = this.GetHScroll();
             if (hScroll.GetVisible()) {
                 var colsCount = this.m_containerSettings.colsCount;
@@ -146,7 +145,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
                 }
             }
         }
-        this.vStep = function (direction) {
+        this.vStep = function(direction) {
             if (direction === "forward") {
                 var actualRowsOnPage = Math.min(this.GetVisibleRowsCount(), this.GetRowsCount());
                 if (this.m_focusPos.y < actualRowsOnPage - 1) {
@@ -163,16 +162,15 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
                 this.SyncVOffset();
             }
         }
-        this.vStepPage = function (direction) {
+        this.vStepPage = function(direction) {
             if (direction === "forward") {
                 return 10;
-            }
-            else if (direction === "back") {
+            } else if (direction === "back") {
                 return -10;
             }
             return 0;
         }
-        this.vWheel = function (offset) {
+        this.vWheel = function(offset) {
             //window.generic.statusLogging(offset);
             //window.generic.statusLogging("start.x: " + this.m_wheelStartPoint.focusX);
             if (!offset) {
@@ -210,38 +208,38 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             //window.generic.statusLogging("focus.y: " + this.m_focusPos.y);
             this.SyncVOffset();
         }
-        this.SyncVOffset = function () {
-            var vScroll = this.GetVScroll();
-            if (vScroll.GetVisible()) {
-                var rowsCount = this.GetRowsCount();
-                if (rowsCount <= 1) {
-                    vScroll.SetOffset(0);
-                } else {
-                    vScroll.SetOffset((this.m_focusPos.y + this.m_containerOffset.y) / (rowsCount - 1));
+        this.SyncVOffset = function() {
+                var vScroll = this.GetVScroll();
+                if (vScroll.GetVisible()) {
+                    var rowsCount = this.GetRowsCount();
+                    if (rowsCount <= 1) {
+                        vScroll.SetOffset(0);
+                    } else {
+                        vScroll.SetOffset((this.m_focusPos.y + this.m_containerOffset.y) / (rowsCount - 1));
+                    }
                 }
             }
-        }
-        //#endregion
+            //#endregion
 
-        this.GetFocus = function () {
+        this.GetFocus = function() {
             return this.m_focusPos;
         }
-        this.GetOffset = function () {
+        this.GetOffset = function() {
             return this.m_containerOffset;
         }
 
-        this.ResetFocusAndOffset = function () {
+        this.ResetFocusAndOffset = function() {
             this.setFocus({ x: -this.m_defaultSettings.fixedColumnsCount, y: 0 });
             this.setOffset({ x: 0, y: 0 });
         };
 
         // Commands
-        this.GetCommandState = function(commandType){
+        this.GetCommandState = function(commandType) {
             var state = this.m_defaultSettings.storage.Load(commandType.id, commandType.default);
             return state.value ? state : commandType.default;
         };
 
-        this.SetCommandState = function(commandType, newValue){
+        this.SetCommandState = function(commandType, newValue) {
             return this.m_defaultSettings.storage.Save(commandType.id, newValue, true);
         };
 
@@ -249,7 +247,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
         this.itemSelectedEvent = "itemSelected";
     }
     window.generic.extend(CanvasContainerWindow, window.uiTypes.canvas.MA2Window);
-    CanvasContainerWindow.prototype.init = function () {
+    CanvasContainerWindow.prototype.init = function() {
         CanvasContainerWindow.superclass.init.call(this);
 
         this.SetHScrollVisible(this.m_defaultSettings.hScrollVisible);
@@ -260,7 +258,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
         window.generic.globs.selectionOverlay.setBorders(this.GetLassoBorders());
         window.generic.globs.selectionOverlay.setParent(this.m_parent);
     }
-    CanvasContainerWindow.prototype.setFontSize = function () {
+    CanvasContainerWindow.prototype.setFontSize = function() {
         var size = utility.getDefaultFontSize();
         this.m_defaultSettings.cellFontSize = size;
         this.m_defaultSettings.pixelPerEm = size / 1;
@@ -270,7 +268,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
 
         this.m_redrawWholeCanvas = true;
     }
-    CanvasContainerWindow.prototype.setFocus = function (data, forceUpdate) {
+    CanvasContainerWindow.prototype.setFocus = function(data, forceUpdate) {
         if (!data) {
             return;
         }
@@ -291,7 +289,7 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             this.m_defaultSettings.storage.Save("focus", this.m_focusPos);
         }
     }
-    CanvasContainerWindow.prototype.setOffset = function (data, forceUpdate) {
+    CanvasContainerWindow.prototype.setOffset = function(data, forceUpdate) {
         if (!data) {
             return;
         }
@@ -319,39 +317,39 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
             this.m_defaultSettings.storage.Save("offset", this.m_containerOffset);
         }
     }
-    CanvasContainerWindow.prototype.getFocusAndOffset = function () { return { focus: { x: 0, y: 0 }, offset: { x: 0, y: 0} }; }
-    CanvasContainerWindow.prototype.resize = function (rect, _init) {
-        CanvasContainerWindow.superclass.resize.call(this, rect, _init);
+    CanvasContainerWindow.prototype.getFocusAndOffset = function() { return { focus: { x: 0, y: 0 }, offset: { x: 0, y: 0 } }; }
+    CanvasContainerWindow.prototype.resize = function(rect, _init) {
+            CanvasContainerWindow.superclass.resize.call(this, rect, _init);
 
-        this.SetColsCount(this.GetVisibleColsCount());
+            this.SetColsCount(this.GetVisibleColsCount());
 
-        var result = _init ? { focus: this.GetFocus(), offset: this.GetOffset() } : this.getFocusAndOffset();
-        this.setFocus(result.focus, true);
-        this.setOffset(result.offset, true);
+            var result = _init ? { focus: this.GetFocus(), offset: this.GetOffset() } : this.getFocusAndOffset();
+            this.setFocus(result.focus, true);
+            this.setOffset(result.offset, true);
 
-        window.generic.globs.selectionOverlay.setBorders(this.GetLassoBorders());
-    }
-    //#region Interface to scrollbars
-    CanvasContainerWindow.prototype.GetVisibleScrollableWidth = function () {
+            window.generic.globs.selectionOverlay.setBorders(this.GetLassoBorders());
+        }
+        //#region Interface to scrollbars
+    CanvasContainerWindow.prototype.GetVisibleScrollableWidth = function() {
         return this.GetContentRect().width;
     }
-    CanvasContainerWindow.prototype.GetVisibleScrollableHeight = function () {
+    CanvasContainerWindow.prototype.GetVisibleScrollableHeight = function() {
         return this.GetContentRect().height - this.m_containerSettings.cellHeight * this.m_defaultSettings.titleRows; // minus scrollbar at the bottom and header
     }
-    CanvasContainerWindow.prototype.GetFullScrollableHeight = function () {
+    CanvasContainerWindow.prototype.GetFullScrollableHeight = function() {
         return this.GetRowsCount() * this.m_containerSettings.cellHeight;
     }
-    CanvasContainerWindow.prototype.GetFullScrollableWidth = function () { return 0; }
-    //#endregion
-    //#region Parent class uses this
-    CanvasContainerWindow.prototype.GetVisibleRowsCount = function () {
+    CanvasContainerWindow.prototype.GetFullScrollableWidth = function() { return 0; }
+        //#endregion
+        //#region Parent class uses this
+    CanvasContainerWindow.prototype.GetVisibleRowsCount = function() {
         return parseInt(this.GetContentRect().height / this.m_containerSettings.cellHeight) - this.m_defaultSettings.titleRows; // 1st Row is the Column Titles
     }
-    CanvasContainerWindow.prototype.GetDataOffsetX = function () {
-        return this.m_containerOffset.x + this.m_defaultSettings.fixedColumnsCount;
-    }
-    //#endregion
-    CanvasContainerWindow.prototype.hitTest = function (point, event) {
+    CanvasContainerWindow.prototype.GetDataOffsetX = function() {
+            return this.m_containerOffset.x + this.m_defaultSettings.fixedColumnsCount;
+        }
+        //#endregion
+    CanvasContainerWindow.prototype.hitTest = function(point, event) {
         var result = CanvasContainerWindow.superclass.hitTest.call(this, point, event);
         if (result || event.up) {
             if (this.m_defaultSettings.lassoEnabled) {
@@ -413,20 +411,20 @@ window.uiTypes.canvas.CanvasContainerWindow = (function(){
 
 
     // Events
-    CanvasContainerWindow.prototype.onItemSelected = function(args){
+    CanvasContainerWindow.prototype.onItemSelected = function(args) {
         $(this).triggerHandler(this.itemSelectedEvent, args);
     };
     return CanvasContainerWindow;
-}) ();
+})();
 
-window.uiTypes.canvas.CanvasGrid = (function(){
-    var CanvasGrid = function (parentElement, renderer, rect, dispatcher) {
+window.uiTypes.canvas.CanvasGrid = (function() {
+    var CanvasGrid = function(parentElement, renderer, rect, dispatcher) {
         CanvasGrid.superclass.constructor.call(this, parentElement, renderer, rect, dispatcher);
 
         $.extend(this.m_containerSettings, { columnWidth: [] });
     }
     window.generic.extend(CanvasGrid, window.uiTypes.canvas.CanvasContainerWindow);
-    CanvasGrid.prototype.getFocusAndOffset = function () {
+    CanvasGrid.prototype.getFocusAndOffset = function() {
         return getFocusAndOffsetFromCellIndex(this.GetVisibleRowsCount(), this.GetVisibleColsCount(), this.GetRowsCount(), this.m_containerSettings.colsCount, this.m_containerOffset, this.m_focusPos);
     }
     var getFocusAndOffsetFromCellIndex = function(visibleRowsCount, visibleColsCount, rowsCount, colsCount, currentOffset, currentFocus) {
@@ -481,50 +479,52 @@ window.uiTypes.canvas.CanvasGrid = (function(){
 
         return result;
     }
-    CanvasGrid.prototype.GetFullScrollableWidth = function () {
+    CanvasGrid.prototype.GetFullScrollableWidth = function() {
         var result = 0;
         for (var i = 0; i < this.m_containerSettings.columnWidth.length; i++) {
             result += this.m_containerSettings.columnWidth[i];
         }
         return result;
     }
-    CanvasGrid.prototype.GetMaxVisibleColsCount = function () {
-        var result = 0;
-        var visibleWidth = this.GetContentRect().width;
-        for (var i = 0; (i < this.m_defaultSettings.fixedColumnsCount) && (i < this.m_containerSettings.columnWidth.length) ; i++) {
-            visibleWidth -= this.m_containerSettings.columnWidth[i];
-            if (visibleWidth < 0) {
-                break;
+    CanvasGrid.prototype.GetMaxVisibleColsCount = function() {
+            var result = 0;
+            var visibleWidth = this.GetContentRect().width;
+            for (var i = 0;
+                (i < this.m_defaultSettings.fixedColumnsCount) && (i < this.m_containerSettings.columnWidth.length); i++) {
+                visibleWidth -= this.m_containerSettings.columnWidth[i];
+                if (visibleWidth < 0) {
+                    break;
+                }
+                ++result;
             }
-            ++result;
-        }
-        for (var i = this.m_defaultSettings.fixedColumnsCount + this.m_containerOffset.x; i < this.m_containerSettings.columnWidth.length; i++) {
-            visibleWidth -= this.m_containerSettings.columnWidth[i];
-            if (visibleWidth < 0) {
-                break;
+            for (var i = this.m_defaultSettings.fixedColumnsCount + this.m_containerOffset.x; i < this.m_containerSettings.columnWidth.length; i++) {
+                visibleWidth -= this.m_containerSettings.columnWidth[i];
+                if (visibleWidth < 0) {
+                    break;
+                }
+                ++result;
             }
-            ++result;
-        }
 
-        while (visibleWidth >= this.m_containerSettings.cellWidth) {
-            visibleWidth -= this.m_containerSettings.cellWidth;
-            ++result;
+            while (visibleWidth >= this.m_containerSettings.cellWidth) {
+                visibleWidth -= this.m_containerSettings.cellWidth;
+                ++result;
+            }
+
+            return result;
         }
-        
-        return result;
-    }
-    //#region Parent class uses this
-    CanvasGrid.prototype.GetVisibleColsCount = function () {
+        //#region Parent class uses this
+    CanvasGrid.prototype.GetVisibleColsCount = function() {
         var result = this.GetVisibleColsArray().length - this.m_defaultSettings.fixedColumnsCount;
         if (result <= 0) {
             result = this.GetMaxVisibleColsCount();
         }
         return result;
     }
-    CanvasGrid.prototype.GetVisibleColsArray = function () {
+    CanvasGrid.prototype.GetVisibleColsArray = function() {
         var result = [];
         var visibleWidth = this.GetContentRect().width;
-        for (var i = 0; (i < this.m_defaultSettings.fixedColumnsCount) && (i < this.m_containerSettings.columnWidth.length); i++) {
+        for (var i = 0;
+            (i < this.m_defaultSettings.fixedColumnsCount) && (i < this.m_containerSettings.columnWidth.length); i++) {
             visibleWidth -= this.m_containerSettings.columnWidth[i];
             if (visibleWidth < 0) {
                 break;
@@ -543,20 +543,20 @@ window.uiTypes.canvas.CanvasGrid = (function(){
         //         window.generic.statusLogging("GetVisibleColsArray: " + result);
         return result;
     }
-    CanvasGrid.prototype.GetDataOffsetY = function () {
-        return this.m_containerOffset.y;
-    }
-    //#endregion
-    CanvasGrid.prototype.GetRowsCount = function () {
+    CanvasGrid.prototype.GetDataOffsetY = function() {
+            return this.m_containerOffset.y;
+        }
+        //#endregion
+    CanvasGrid.prototype.GetRowsCount = function() {
         return this.m_containerSettings.rowsCount;
     }
-    CanvasGrid.prototype.SetColsCount = function (value) {
+    CanvasGrid.prototype.SetColsCount = function(value) {
         if (this.m_containerSettings.colsCount != value) {
             this.m_containerSettings.colsCount = value;
             this.SyncHOffset();
         }
     }
-    CanvasGrid.prototype.GetCellIndicesFromPoint = function (point) {
+    CanvasGrid.prototype.GetCellIndicesFromPoint = function(point) {
         var result = { col: -1, row: -1 };
         var contentRect = this.GetContentRect();
 
@@ -583,7 +583,7 @@ window.uiTypes.canvas.CanvasGrid = (function(){
 
         return result;
     }
-    CanvasGrid.prototype.SetRowsCount = function (value) {
+    CanvasGrid.prototype.SetRowsCount = function(value) {
         if (this.m_containerSettings.rowsCount != value) {
             this.m_containerSettings.rowsCount = value;
             this.SyncVOffset();
@@ -593,7 +593,7 @@ window.uiTypes.canvas.CanvasGrid = (function(){
     return CanvasGrid;
 })();
 
-window.uiTypes.canvas.CanvasBlockBox = (function(){
+window.uiTypes.canvas.CanvasBlockBox = (function() {
     var CanvasBlockBox = function(parentElement, renderer, rect) {
         CanvasBlockBox.superclass.constructor.call(this, parentElement, renderer, rect);
 
@@ -601,7 +601,7 @@ window.uiTypes.canvas.CanvasBlockBox = (function(){
 
         $.extend(this.m_containerSettings, { itemsCount: 0 });
 
-        this.Stretch = function () {
+        this.Stretch = function() {
             var contentRect = this.GetContentRect();
 
             var columnsCount = parseInt(contentRect.width / this.m_containerSettings.cellWidth);
@@ -629,7 +629,7 @@ window.uiTypes.canvas.CanvasBlockBox = (function(){
         }
     }
     window.generic.extend(CanvasBlockBox, window.uiTypes.canvas.CanvasContainerWindow);
-    CanvasBlockBox.prototype.setFocus = function (data, forceUpdate) {
+    CanvasBlockBox.prototype.setFocus = function(data, forceUpdate) {
         CanvasBlockBox.superclass.setFocus.call(this, data, forceUpdate);
 
         if (!data) {
@@ -638,7 +638,7 @@ window.uiTypes.canvas.CanvasBlockBox = (function(){
 
         this.m_selectedItemIndex = (this.m_focusPos.y + this.m_containerOffset.y) * this.GetVisibleColsCount() + this.m_focusPos.x;
     }
-    CanvasBlockBox.prototype.setOffset = function (data, forceUpdate) {
+    CanvasBlockBox.prototype.setOffset = function(data, forceUpdate) {
         CanvasBlockBox.superclass.setOffset.call(this, data, forceUpdate);
 
         if (!data) {
@@ -647,7 +647,7 @@ window.uiTypes.canvas.CanvasBlockBox = (function(){
 
         this.m_selectedItemIndex = (this.m_focusPos.y + this.m_containerOffset.y) * this.GetVisibleColsCount() + this.m_focusPos.x;
     }
-    CanvasBlockBox.prototype.getFocusAndOffset = function () {
+    CanvasBlockBox.prototype.getFocusAndOffset = function() {
         return getFocusAndOffsetFromItemIndex(this.m_selectedItemIndex, this.GetVisibleRowsCount(), this.GetVisibleColsCount(), this.GetRowsCount(), this.GetVisibleColsCount(), this.m_containerOffset);
     }
     var getFocusAndOffsetFromItemIndex = function(index, visibleRowsCount, visibleColsCount, rowsCount, colsCount, currentOffset) {
@@ -705,36 +705,36 @@ window.uiTypes.canvas.CanvasBlockBox = (function(){
 
         return result;
     }
-    CanvasBlockBox.prototype.GetFullScrollableWidth = function () {
+    CanvasBlockBox.prototype.GetFullScrollableWidth = function() {
         return this.GetVisibleScrollableWidth();
     }
-    CanvasBlockBox.prototype.GetVisibleRowsCount = function () {
-        return Math.min(Math.floor(this.GetContentRect().height / this.m_containerSettings.cellHeight), Math.ceil(this.GetItemsCount() / this.GetVisibleColsCount())); // -this.m_defaultSettings.titleRows; // 1st Row is the Column Titles
-    }
-    //#region Parent class uses this
-    CanvasBlockBox.prototype.GetVisibleColsCount = function () {
+    CanvasBlockBox.prototype.GetVisibleRowsCount = function() {
+            return Math.min(Math.floor(this.GetContentRect().height / this.m_containerSettings.cellHeight), Math.ceil(this.GetItemsCount() / this.GetVisibleColsCount())); // -this.m_defaultSettings.titleRows; // 1st Row is the Column Titles
+        }
+        //#region Parent class uses this
+    CanvasBlockBox.prototype.GetVisibleColsCount = function() {
         return parseInt(this.GetContentRect().width / this.m_containerSettings.cellWidth) - this.m_defaultSettings.fixedColumnsCount;
     }
-    CanvasBlockBox.prototype.GetVisibleItemsCount = function () {
+    CanvasBlockBox.prototype.GetVisibleItemsCount = function() {
         return this.GetVisibleColsCount() * this.GetVisibleRowsCount();
     }
-    CanvasBlockBox.prototype.GetDataOffsetY = function () {
-        return this.m_containerOffset.y * this.GetVisibleColsCount();
-    }
-    //#endregion
+    CanvasBlockBox.prototype.GetDataOffsetY = function() {
+            return this.m_containerOffset.y * this.GetVisibleColsCount();
+        }
+        //#endregion
 
-    CanvasBlockBox.prototype.GetRowsCount = function () {
+    CanvasBlockBox.prototype.GetRowsCount = function() {
         return Math.ceil(this.m_containerSettings.itemsCount / this.GetVisibleColsCount());
     }
-    CanvasBlockBox.prototype.GetItemsCount = function () {
+    CanvasBlockBox.prototype.GetItemsCount = function() {
         return this.m_containerSettings.itemsCount;
     }
-    CanvasBlockBox.prototype.SetItemsCount = function (value) {
+    CanvasBlockBox.prototype.SetItemsCount = function(value) {
         this.m_containerSettings.itemsCount = value;
 
         this.SyncVOffset();
     }
-    CanvasBlockBox.prototype.GetCellIndicesFromPoint = function (point) {
+    CanvasBlockBox.prototype.GetCellIndicesFromPoint = function(point) {
         var result = { col: -1, row: -1 };
         var contentRect = this.GetContentRect();
 
