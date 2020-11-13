@@ -1,7 +1,8 @@
 const char *host = "console";
 
-int clientn = -1;
-int list[8] = {-1, -1, -1, -1, -1, -1, -1, -1}; // client
+#define MAX_CLIENT 8
+int clientn = 0;
+bool list[MAX_CLIENT] = {false, false, false, false, false, false, false, false}; // client
 
 const uint8_t Master = 9;
 float Mast[Master];

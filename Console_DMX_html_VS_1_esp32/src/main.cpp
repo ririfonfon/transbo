@@ -104,9 +104,9 @@ void setup()
 
   if (MDNS.begin(host))
   {
-#ifdef DEBUG
-    Serial.println("MDNS responder started");
-#endif
+    #ifdef DEBUG
+        Serial.println("MDNS responder started");
+    #endif
   }
 
 // handle index
@@ -116,7 +116,12 @@ void setup()
 
   //Serveur
   server.on("/set", srv_handle_set);
-  server.serveStatic("/", SPIFFS, "/console.html");
+  server.serveStatic("/",             SPIFFS, "/console.html");
+  server.serveStatic("/special",      SPIFFS, "/special.html");
+  
+  server.serveStatic("/main.js",      SPIFFS, "/main.js");
+  server.serveStatic("/main.css",     SPIFFS, "/main.css");
+  server.serveStatic("/favicon.ico",  SPIFFS, "/favicon.ico");
   server.begin();
 
   MDNS.addService("http", "tcp", 80);
