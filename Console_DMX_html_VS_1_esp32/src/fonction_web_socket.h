@@ -18,7 +18,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         clientn -= 1;
         list[num] = false;
 
-#ifdef DEBUGsocket
+#ifdef DEBUG
         Serial.println("Disconnected!");
         Serial.print("num : ");
         Serial.println(num);
@@ -31,7 +31,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         clientn += 1;
         list[num] = true;
 
-#ifdef DEBUGsocket
+#ifdef DEBUG
         Serial.println("Client connected!");
         Serial.print("num : ");
         Serial.println(num);
