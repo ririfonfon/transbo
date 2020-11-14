@@ -56,10 +56,10 @@ void setup()
   //init dmx
   init_dmx_out();
 
-#ifdef DEBUG
+  #ifdef DEBUG
   Serial.begin(115200);
   Serial.println();
-#endif
+  #endif
 
   //////////////////////////////////////////////////// connect to WiFi
   WiFi.setHostname(host);
@@ -110,9 +110,9 @@ void setup()
   }
 
 // handle index
-#ifdef DEBUG
+  #ifdef DEBUG
   Serial.println("HTTP server setup");
-#endif
+  #endif
 
   //Serveur
   server.on("/set", srv_handle_set);
@@ -133,7 +133,7 @@ void setup()
   /*EEPROM*/
   init_eeprom();
 
-#ifdef DEBUG
+  #ifdef DEBUG
   Serial.println("HTTP server started.");
   Serial.println("ready!");
   Serial.println();
@@ -141,7 +141,7 @@ void setup()
   Serial.println("AP IP address: ");
   Serial.println(myIP);
   Serial.println("HTTP server OK");
-#endif
+  #endif
 
 } //setup
 
