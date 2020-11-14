@@ -22,18 +22,21 @@
 
 #include <variable.h>
 
-struct Led {
-    // state variables
-    uint8_t pin;
-    bool    on;
+struct Led
+{
+  // state variables
+  uint8_t pin;
+  bool on;
 
-    // methods
-    void update() {
-        digitalWrite(pin, on ? HIGH : LOW);
-    }
+  // methods
+  void update()
+  {
+    digitalWrite(pin, on ? HIGH : LOW);
+  }
 };
 
-Led    onboard_led = { 2, false };
+Led onboard_led = {2, false};
+
 WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -56,15 +59,19 @@ void setup()
   //init dmx
   init_dmx_out();
 
-  #ifdef DEBUG
+#ifdef DEBUG
   Serial.begin(115200);
   Serial.println();
-  #endif
+#endif
 
   //////////////////////////////////////////////////// connect to WiFi
-  WiFi.setHostname(host);
+  // WiFi.setHostname(host);
   WiFi.mode(WIFI_AP);
-  WiFi.softAP(ssid, password, 10, 1);
+  WiFi.softAPsetHostname(host);
+  WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
+  IPAddress Ip(192, 168, 4, 1);
+  IPAddress NMask(255, 255, 255, 0);
+  WiFi.softAPConfig(Ip, Ip, NMask);
   IPAddress myIP = WiFi.softAPIP();
 
   //////////////////////////////////////////////////// SPIFFS
@@ -104,24 +111,24 @@ void setup()
 
   if (MDNS.begin(host))
   {
-    #ifdef DEBUG
-        Serial.println("MDNS responder started");
-    #endif
+#ifdef DEBUG
+    Serial.println("MDNS responder started");
+#endif
   }
 
-// handle index
-  #ifdef DEBUG
+  // handle index
+#ifdef DEBUG
   Serial.println("HTTP server setup");
-  #endif
+#endif
 
   //Serveur
   server.on("/set", srv_handle_set);
-  server.serveStatic("/",             SPIFFS, "/console.html");
-  server.serveStatic("/special",      SPIFFS, "/special.html");
-  
-  server.serveStatic("/main.js",      SPIFFS, "/main.js");
-  server.serveStatic("/main.css",     SPIFFS, "/main.css");
-  server.serveStatic("/favicon.ico",  SPIFFS, "/favicon.ico");
+  server.serveStatic("/", SPIFFS, "/console.html");
+  server.serveStatic("/special", SPIFFS, "/special.html");
+
+  server.serveStatic("/main.js", SPIFFS, "/main.js");
+  server.serveStatic("/main.css", SPIFFS, "/main.css");
+  server.serveStatic("/favicon.ico", SPIFFS, "/favicon.ico");
   server.begin();
 
   MDNS.addService("http", "tcp", 80);
@@ -133,7 +140,7 @@ void setup()
   /*EEPROM*/
   init_eeprom();
 
-  #ifdef DEBUG
+#ifdef DEBUG
   Serial.println("HTTP server started.");
   Serial.println("ready!");
   Serial.println();
@@ -141,7 +148,7 @@ void setup()
   Serial.println("AP IP address: ");
   Serial.println(myIP);
   Serial.println("HTTP server OK");
-  #endif
+#endif
 
 } //setup
 
