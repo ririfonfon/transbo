@@ -1,8 +1,15 @@
 const char *host = "console";
 
+// WiFi network settings
+
+const char *ssid = "esptransbo";
+const char *password = "esptransbo";
+
 #define MAX_CLIENT 8
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false, false, false}; // client
+
+uint8_t NUM;
 
 const uint8_t Master = 9;
 float Mast[Master];
@@ -143,11 +150,6 @@ float ccluwhite;
 float crered;
 float cregreen;
 float creblue;
-
-// WiFi network settings
-
-const char *ssid = "esptransbo";
-const char *password = "esptransbo";
 
 //defo white
 float defowhite = 127;
