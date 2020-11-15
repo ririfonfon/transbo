@@ -1,11 +1,4 @@
-const char *host = "console";
 
-// WiFi network settings
-
-const char *ssid = "esptransbo";
-const char *password = "esptransbo";
-
-#define MAX_CLIENT 8
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false, false, false}; // client
 

@@ -20,7 +20,7 @@
 #include <EEPROM.h>
 #define EEPROM_SIZE 64
 
-#include <variable.h>
+#include <wifi_variable.h>
 
 struct Led
 {
@@ -43,6 +43,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 // dmx
 #include <LXESP32DMX.h>
 
+#include <a_mem_value.h>
 #include <fonction_void.h>
 
 #include <fonction_web_socket.h>
@@ -133,11 +134,12 @@ void setup()
   //Serveur
   server.on("/set", srv_handle_set);
   server.serveStatic("/", SPIFFS, "/console.html");
-  server.serveStatic("/special", SPIFFS, "/special.html");
-
   server.serveStatic("/main.js", SPIFFS, "/main.js");
   server.serveStatic("/main.css", SPIFFS, "/main.css");
   server.serveStatic("/favicon.ico", SPIFFS, "/favicon.ico");
+  server.serveStatic("/special.html", SPIFFS, "/special.html");
+  server.serveStatic("/special.js", SPIFFS, "/special.js");
+  server.serveStatic("/special.css", SPIFFS, "/special.css");
   server.begin();
 
   MDNS.addService("http", "tcp", 80);

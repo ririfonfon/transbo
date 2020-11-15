@@ -64,6 +64,10 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
     case WStype_TEXT:
         //  is the start for this data
+
+        Serial.print("payload[0] == ");
+        Serial.println(payload[0]);
+        
         if (payload[0] == 'a')
         {
 #ifdef DEBUGsocket
@@ -337,7 +341,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
         } //payload[0] == *
         else if (payload[0] == 'm')
-        {   
+        {
             char *pEnd;
             int check = strtol((const char *)&payload[1], &pEnd, 10);
 
@@ -345,44 +349,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 1;
                 feedback(num, "m:1");
-                //grp rgb Led
-                lred = 255;
-                lgreen = 0;
-                lblue = 255;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(1);
                 send_Auto_off();
                 send_rvb6(); // all
             }                //mem1 mauve
@@ -391,43 +358,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 2;
                 feedback(num, "m:2");
-                lred = 255;
-                lgreen = 0;
-                lblue = 0;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(2);
                 send_Auto_off();
                 send_rvb6(); // all
             }                //mem2 rouge
@@ -436,43 +367,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 3;
                 feedback(num, "m:3");
-                lred = 0;
-                lgreen = 255;
-                lblue = 0;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(3);
                 send_Auto_off();
                 send_rvb6(); // all
             }                //mem3 vert
@@ -481,43 +376,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 4;
                 feedback(num, "m:4");
-                lred = 0;
-                lgreen = 0;
-                lblue = 255;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(4);
                 send_Auto_off();
                 send_rvb6(); // all
             }                //mem4 bleu
@@ -526,43 +385,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 5;
                 feedback(num, "m:5");
-                lred = 255;
-                lgreen = 127;
-                lblue = 0;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(5);
                 send_Auto_off();
                 send_rvb6(); // all
             }                //mem5 orange
@@ -572,39 +395,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mem = 6;
                 feedback(num, "m:6");
                 eeprom_read();
-
-                //grp rgb comptoire
-                cred = ccred;
-                cgreen = ccgreen;
-                cblue = ccblue;
-
-                lred = clured;
-                lgreen = clgreen;
-                lblue = clblue;
-
-                tred = ctred;
-                tgreen = ctgreen;
-                tblue = ctblue;
-
-                ttred = cttred;
-                ttgreen = cttgreen;
-                ttblue = cttblue;
-                ttwhite = cttwhite;
-
-                lored = clored;
-                logreen = clogreen;
-                loblue = cloblue;
-                lowhite = clowhite;
-
-                clured = cclured;
-                clugreen = cclugreen;
-                clublue = cclublue;
-                cluwhite = ccluwhite;
-
-                rered = crered;
-                regreen = cregreen;
-                reblue = creblue;
-
+                mem_value(6);
                 send_Auto_off();
                 send_rvb6();
             } //mem6 special
@@ -621,43 +412,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 8;
                 feedback(num, "m:8");
-                lred = 255;
-                lgreen = 255;
-                lblue = 0;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(8);
                 send_Auto_off();
                 send_rvb6(); // all
 
@@ -667,43 +422,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 9;
                 feedback(num, "m:9");
-                lred = 255;
-                lgreen = 0;
-                lblue = 255;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(9);
                 send_Auto_off();
                 send_rvb6(); // all
 
@@ -713,43 +432,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 10;
                 feedback(num, "m:10");
-                lred = 0;
-                lgreen = 255;
-                lblue = 255;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = defowhite;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = defowhite;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(10);
                 send_Auto_off();
                 send_rvb6(); // all
 
@@ -759,43 +442,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 11;
                 feedback(num, "m:11");
-                lred = 0;
-                lgreen = 0;
-                lblue = 0;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = 0;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = 0;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 0;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(11);
                 send_Auto_off();
                 send_rvb6(); // all
 
@@ -805,48 +452,31 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 Mem = 12;
                 feedback(num, "m:12");
-                lred = 255;
-                lgreen = 255;
-                lblue = 255;
-
-                //grp rgb Transbo 1
-                tred = lred;
-                tgreen = lgreen;
-                tblue = lblue;
-
-                //grp rgbw Transbo 2
-                ttred = lred;
-                ttgreen = lgreen;
-                ttblue = lblue;
-                ttwhite = 255;
-
-                //grp rgb comptoire
-                cred = lred;
-                cgreen = lgreen;
-                cblue = lblue;
-
-                //grp rgbw logo
-                lored = lred;
-                logreen = lgreen;
-                loblue = lblue;
-                lowhite = 255;
-
-                //grp rgbw club
-                clured = lred;
-                clugreen = lgreen;
-                clublue = lblue;
-                cluwhite = 255;
-
-                //grp rgb regie
-                rered = lred;
-                regreen = lgreen;
-                reblue = lblue;
-
+                mem_value(12);
                 send_Auto_off();
                 send_rvb6(); // all
 
             } // mem12 SERVICE
-        }
+        }     //payload[0] == 'm'
+        else if (payload[0] == 'l')
+        {
+            char *pEnd;
+            int LMem = strtol((const char *)&payload[1], &pEnd, 10);
+#ifdef DEBUG
+            Serial.print("Lmem=");
+            Serial.println(LMem);
+#endif
+            if (LMem == 0)
+            {
+                load_spec();
+            } //if(Mem==0){
+
+            else if (LMem == 1)
+            {
+
+                save_spec();
+            } //if(Mem==1){
+        }     //payload[0] == 'l'
         break;
     } //type
 } //web socket
