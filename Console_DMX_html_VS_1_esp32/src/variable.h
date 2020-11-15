@@ -9,8 +9,6 @@ const char *password = "esptransbo";
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false, false, false}; // client
 
-uint8_t NUM;
-
 const uint8_t Master = 9;
 float Mast[Master];
 uint8_t Mem = 1;
