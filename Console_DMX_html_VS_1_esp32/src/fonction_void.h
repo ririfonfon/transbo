@@ -70,42 +70,42 @@ void eeprom_write()
 void load_spec()
 {
     eeprom_read();
-    for (int i = 0; i <= clientn; i++)
+    for (int i = 0; i < MAX_CLIENT; i++)
     {
 
-        if (list[i] != -1)
+        if (list[i])
         {
 
-            webSocket.sendTXT(list[i], "ba:" + String(lround(ccred)));
-            webSocket.sendTXT(list[i], "bb:" + String(lround(ccgreen)));
-            webSocket.sendTXT(list[i], "bc:" + String(lround(ccblue)));
+            webSocket.sendTXT(i, "ba:" + String(lround(ccred)));
+            webSocket.sendTXT(i, "bb:" + String(lround(ccgreen)));
+            webSocket.sendTXT(i, "bc:" + String(lround(ccblue)));
 
-            webSocket.sendTXT(list[i], "bd:" + String(lround(clured)));
-            webSocket.sendTXT(list[i], "be:" + String(lround(clgreen)));
-            webSocket.sendTXT(list[i], "bf:" + String(lround(clblue)));
+            webSocket.sendTXT(i, "bd:" + String(lround(clured)));
+            webSocket.sendTXT(i, "be:" + String(lround(clgreen)));
+            webSocket.sendTXT(i, "bf:" + String(lround(clblue)));
 
-            webSocket.sendTXT(list[i], "bg:" + String(lround(ctred)));
-            webSocket.sendTXT(list[i], "bh:" + String(lround(ctgreen)));
-            webSocket.sendTXT(list[i], "bi:" + String(lround(ctblue)));
+            webSocket.sendTXT(i, "bg:" + String(lround(ctred)));
+            webSocket.sendTXT(i, "bh:" + String(lround(ctgreen)));
+            webSocket.sendTXT(i, "bi:" + String(lround(ctblue)));
 
-            webSocket.sendTXT(list[i], "bj:" + String(lround(cttred)));
-            webSocket.sendTXT(list[i], "bk:" + String(lround(cttgreen)));
-            webSocket.sendTXT(list[i], "bl:" + String(lround(cttblue)));
-            webSocket.sendTXT(list[i], "bm:" + String(lround(cttwhite)));
+            webSocket.sendTXT(i, "bj:" + String(lround(cttred)));
+            webSocket.sendTXT(i, "bk:" + String(lround(cttgreen)));
+            webSocket.sendTXT(i, "bl:" + String(lround(cttblue)));
+            webSocket.sendTXT(i, "bm:" + String(lround(cttwhite)));
 
-            webSocket.sendTXT(list[i], "bn:" + String(lround(clored)));
-            webSocket.sendTXT(list[i], "bo:" + String(lround(clogreen)));
-            webSocket.sendTXT(list[i], "bp:" + String(lround(cloblue)));
-            webSocket.sendTXT(list[i], "bq:" + String(lround(clowhite)));
+            webSocket.sendTXT(i, "bn:" + String(lround(clored)));
+            webSocket.sendTXT(i, "bo:" + String(lround(clogreen)));
+            webSocket.sendTXT(i, "bp:" + String(lround(cloblue)));
+            webSocket.sendTXT(i, "bq:" + String(lround(clowhite)));
 
-            webSocket.sendTXT(list[i], "br:" + String(lround(cclured)));
-            webSocket.sendTXT(list[i], "bs:" + String(lround(cclugreen)));
-            webSocket.sendTXT(list[i], "bt:" + String(lround(cclublue)));
-            webSocket.sendTXT(list[i], "bu:" + String(lround(ccluwhite)));
+            webSocket.sendTXT(i, "br:" + String(lround(cclured)));
+            webSocket.sendTXT(i, "bs:" + String(lround(cclugreen)));
+            webSocket.sendTXT(i, "bt:" + String(lround(cclublue)));
+            webSocket.sendTXT(i, "bu:" + String(lround(ccluwhite)));
 
-            webSocket.sendTXT(list[i], "bv:" + String(lround(crered)));
-            webSocket.sendTXT(list[i], "bw:" + String(lround(cregreen)));
-            webSocket.sendTXT(list[i], "bx:" + String(lround(creblue)));
+            webSocket.sendTXT(i, "bv:" + String(lround(crered)));
+            webSocket.sendTXT(i, "bw:" + String(lround(cregreen)));
+            webSocket.sendTXT(i, "bx:" + String(lround(creblue)));
 
         } // if (list[i] !=0)
 
