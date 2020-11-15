@@ -228,6 +228,9 @@ function handle_M_B_S(e) {
         e.target.classList.add('active');
     }
     submitVal(name, val);
+    var data = name + val;
+    console.log('iiii Data: ' + data);
+    connection.send(data);
 } //handle_M_B_S
 
 
