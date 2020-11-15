@@ -43,14 +43,19 @@ void srv_handle_set()
         if (server.argName(i) == "m")
         {
             Mem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
+#ifdef DEBUG
+            Serial.println("server.argName(i) ==  m ");
+            Serial.print("  Mem : ");
+            Serial.println(Mem);
+#endif
 
-            for (int i = 0; i <= clientn; i++)
+            for (int i = 0; i < MAX_CLIENT; i++)
             {
-                if (list[i] != -1)
+                if (list[i] && i != NUM)
                 {
-                    webSocket.sendTXT(list[i], "m:" + String(Mem));
+                    webSocket.sendTXT(i, "m:" + String(Mem));
                 }
-            } //for (int i = 0; i <= clientn; i++)
+            } //for (int i = 0; i < MAX_CLIENT; i++)
 
             if (Mem == 1)
             {
