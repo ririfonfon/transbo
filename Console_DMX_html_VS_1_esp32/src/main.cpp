@@ -7,7 +7,7 @@
 // #define DEBUGDMX 1
 // #define DEBUGRVB 1
 // #define DEBUGcolor 1
-// #define DEBUGsocket 1
+#define DEBUGsocket 1
 #define DEBUGSPEC 1
 
 #include <Arduino.h>
@@ -44,8 +44,10 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 #include <LXESP32DMX.h>
 
 #include <fonction_void.h>
-#include <fonction_srv_handle_set.h>
+
 #include <fonction_web_socket.h>
+#include <fonction_srv_handle_set.h>
+
 #include <fonction_spiffs.h>
 
 //////////////////////////////////////////////////// S E T U P
@@ -66,12 +68,12 @@ void setup()
 
   //////////////////////////////////////////////////// connect to WiFi
   // WiFi.setHostname(host);
-  WiFi.mode(WIFI_AP);
-  WiFi.softAPsetHostname(host);
-  WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
   IPAddress Ip(192, 168, 4, 1);
   IPAddress NMask(255, 255, 255, 0);
   WiFi.softAPConfig(Ip, Ip, NMask);
+  // WiFi.mode(WIFI_AP);
+  WiFi.softAPsetHostname(host);
+  WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
   IPAddress myIP = WiFi.softAPIP();
 
   //////////////////////////////////////////////////// SPIFFS
