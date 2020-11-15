@@ -49,23 +49,23 @@ void srv_handle_set()
             Serial.print("mem=");
 #endif
 
-            Mem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
+            int LMem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
 
-            if (Mem == 0)
+            if (LMem == 0)
             {
 
 #ifdef DEBUGSPEC
                 Serial.print("mem=");
-                Serial.println(Mem);
+                Serial.println(LMem);
 #endif
                 load_spec();
             } //if(Mem==0){
 
-            if (Mem == 1)
+            if (LMem == 1)
             {
 #ifdef DEBUGSPEC
                 Serial.print("mem=");
-                Serial.println(Mem);
+                Serial.println(LMem);
 #endif
                 save_spec();
             } //if(Mem==1){
