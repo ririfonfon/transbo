@@ -65,9 +65,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     case WStype_TEXT:
         //  is the start for this data
 
-        Serial.print("payload[0] == ");
-        Serial.println(payload[0]);
-        
         if (payload[0] == 'a')
         {
 #ifdef DEBUGsocket
@@ -91,16 +88,13 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     Serial.print(num);
                     Serial.print("   ======   ");
                     Serial.print("  list[i] : ");
-                    Serial.println(list[i]); /* code */
+                    Serial.println(list[i]); 
                 }
 
-            } //for (int i = 0; i < clientn; i++)
+            } //for (int i = 0; i < MAX_CLIENT; i++)
 #endif
             if (payload[1] == 'a')
             {
-#ifdef DDEBUGsocket
-                Serial.println("payload[1] == 'a'");
-#endif
                 char *pEnd;
                 Mast[1] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(1);
