@@ -68,10 +68,17 @@ void setup()
 
   //////////////////////////////////////////////////// connect to WiFi
   // WiFi.setHostname(host);
-  IPAddress Ip(192, 168, 4, 1);
+  IPAddress Ip(192, 168, 10, 1);
+  IPAddress Ipgate(192, 168, 10, 254);
   IPAddress NMask(255, 255, 255, 0);
-  WiFi.softAPConfig(Ip, Ip, NMask);
-  // WiFi.mode(WIFI_AP);
+
+  WiFi.mode(WIFI_OFF);
+  delay(1000);
+  WiFi.mode(WIFI_AP);
+  delay(1000);
+
+  WiFi.softAPConfig(Ip, Ipgate, NMask);
+  
   WiFi.softAPsetHostname(host);
   WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
   IPAddress myIP = WiFi.softAPIP();
