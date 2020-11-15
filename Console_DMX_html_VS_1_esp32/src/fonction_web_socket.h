@@ -1,17 +1,19 @@
 /////// send to all but not origin !
-void feedback(uint8_t num, String txt) {
+void feedback(uint8_t num, String txt)
+{
     for (int i = 0; i < MAX_CLIENT; i++)
     {
         if (list[i] && i != num)
         {
             webSocket.sendTXT(i, txt);
-        } //if (i != num) {
+        } //if (list[i] && i != num)
     }
 }
 
 //////////////////////////////////////////websocket///////////////////////////////////////////////
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 {
+    NUM = num;
     switch (type)
     {
     case WStype_DISCONNECTED:
@@ -38,6 +40,27 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         Serial.print("clientn : ");
         Serial.println(clientn);
 #endif
+
+        for (int i = 0; i < MAX_CLIENT; i++)
+        {
+            if (list[i] && i != num)
+            {
+#ifdef DEBUG
+                Serial.println("WStype_CONNECTED == '*LOAD*'");
+#endif
+                webSocket.sendTXT(i, "aa:" + String(lround(Mast[1])));
+                webSocket.sendTXT(i, "ab:" + String(lround(Mast[2])));
+                webSocket.sendTXT(i, "ac:" + String(lround(Mast[3])));
+                webSocket.sendTXT(i, "ad:" + String(lround(Mast[4])));
+                webSocket.sendTXT(i, "ae:" + String(lround(Mast[5])));
+                webSocket.sendTXT(i, "af:" + String(lround(Mast[6])));
+                webSocket.sendTXT(i, "ag:" + String(lround(Mast[7])));
+                webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
+                webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
+                webSocket.sendTXT(i, "az:" + String(lround(M)));
+                webSocket.sendTXT(i, "m:" + String(Mem));
+            } //if (i != num) {
+        }     //for (int i = 0; i < clientn; i++)
         break;
 
     case WStype_TEXT:
@@ -79,7 +102,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[1] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(1);
                 feedback(num, "aa:" + String(lround(Mast[1])));
-            }         //a
+            } //a
 
             if (payload[1] == 'b')
             {
@@ -87,8 +110,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[2] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(2);
                 feedback(num, "ab:" + String(lround(Mast[2])));
-                
-            }         //b
+
+            } //b
 
             if (payload[1] == 'c')
             {
@@ -96,8 +119,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[3] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(3);
                 feedback(num, "ac:" + String(lround(Mast[3])));
-                
-            }         //c
+
+            } //c
 
             if (payload[1] == 'd')
             {
@@ -105,8 +128,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[4] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_rvb4();
                 feedback(num, "ad:" + String(lround(Mast[4])));
-                
-            }         //d
+
+            } //d
 
             if (payload[1] == 'e')
             {
@@ -114,8 +137,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[5] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(5);
                 feedback(num, "ae:" + String(lround(Mast[5])));
-                
-            }         //e
+
+            } //e
 
             if (payload[1] == 'f')
             {
@@ -123,8 +146,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[6] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(6);
                 feedback(num, "af:" + String(lround(Mast[6])));
-                
-            }         //f
+
+            } //f
 
             if (payload[1] == 'g')
             {
@@ -132,8 +155,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[7] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(7);
                 feedback(num, "ag:" + String(lround(Mast[7])));
-                
-            }         //g
+
+            } //g
 
             if (payload[1] == 'h')
             {
@@ -141,8 +164,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[8] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(8);
                 feedback(num, "ah:" + String(lround(Mast[8])));
-                
-            }         //h
+
+            } //h
 
             if (payload[1] == 'i')
             {
@@ -150,8 +173,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[9] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(9);
                 feedback(num, "ai:" + String(lround(Mast[9])));
-                
-            }         //i
+
+            } //i
 
             if (payload[1] == 'z')
             {
@@ -159,8 +182,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 M = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(0);
                 feedback(num, "az:" + String(lround(M)));
-            }         //z
-        }             //payload[0] = A
+            } //z
+        }     //payload[0] = A
 
         else if (payload[0] == 'b')
         {
@@ -297,19 +320,19 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 #endif
             for (int i = 0; i < MAX_CLIENT; i++)
             {
-                if (list[i] != -1)
+                if (list[i] && i != num)
                 {
-                    webSocket.sendTXT(list[i], "aa:" + String(lround(Mast[1])));
-                    webSocket.sendTXT(list[i], "ab:" + String(lround(Mast[2])));
-                    webSocket.sendTXT(list[i], "ac:" + String(lround(Mast[3])));
-                    webSocket.sendTXT(list[i], "ad:" + String(lround(Mast[4])));
-                    webSocket.sendTXT(list[i], "ae:" + String(lround(Mast[5])));
-                    webSocket.sendTXT(list[i], "af:" + String(lround(Mast[6])));
-                    webSocket.sendTXT(list[i], "ag:" + String(lround(Mast[7])));
-                    webSocket.sendTXT(list[i], "ah:" + String(lround(Mast[8])));
-                    webSocket.sendTXT(list[i], "ai:" + String(lround(Mast[9])));
-                    webSocket.sendTXT(list[i], "az:" + String(lround(M)));
-                    webSocket.sendTXT(list[i], "m:" + String(Mem));
+                    webSocket.sendTXT(i, "aa:" + String(lround(Mast[1])));
+                    webSocket.sendTXT(i, "ab:" + String(lround(Mast[2])));
+                    webSocket.sendTXT(i, "ac:" + String(lround(Mast[3])));
+                    webSocket.sendTXT(i, "ad:" + String(lround(Mast[4])));
+                    webSocket.sendTXT(i, "ae:" + String(lround(Mast[5])));
+                    webSocket.sendTXT(i, "af:" + String(lround(Mast[6])));
+                    webSocket.sendTXT(i, "ag:" + String(lround(Mast[7])));
+                    webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
+                    webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
+                    webSocket.sendTXT(i, "az:" + String(lround(M)));
+                    webSocket.sendTXT(i, "m:" + String(Mem));
                 } //if (i != num) {
             }     //for (int i = 0; i < clientn; i++)
 
