@@ -44,6 +44,7 @@ void mem_value(int a)
     }
     else if (a == 2)
     {
+        //grp rgb Led
         lred = 255;
         lgreen = 0;
         lblue = 0;
@@ -83,6 +84,7 @@ void mem_value(int a)
     }
     else if (a == 3)
     {
+        //grp rgb Led
         lred = 0;
         lgreen = 255;
         lblue = 0;
@@ -122,6 +124,7 @@ void mem_value(int a)
     }
     else if (a == 4)
     {
+        //grp rgb Led
         lred = 0;
         lgreen = 0;
         lblue = 255;
@@ -161,6 +164,7 @@ void mem_value(int a)
     }
     else if (a == 5)
     {
+        //grp rgb Led
         lred = 255;
         lgreen = 127;
         lblue = 0;
@@ -204,36 +208,37 @@ void mem_value(int a)
         cred = ccred;
         cgreen = ccgreen;
         cblue = ccblue;
-
+        //grp rgb Led
         lred = clured;
         lgreen = clgreen;
         lblue = clblue;
-
+        //grp rgb Transbo 1
         tred = ctred;
         tgreen = ctgreen;
         tblue = ctblue;
-
+        //grp rgb Transbo 2
         ttred = cttred;
         ttgreen = cttgreen;
         ttblue = cttblue;
         ttwhite = cttwhite;
-
+        //grp rgbw logo
         lored = clored;
         logreen = clogreen;
         loblue = cloblue;
         lowhite = clowhite;
-
+        //grp rgbw club
         clured = cclured;
         clugreen = cclugreen;
         clublue = cclublue;
         cluwhite = ccluwhite;
-
+        //grp rgb regie
         rered = crered;
         regreen = cregreen;
         reblue = creblue;
     }
     else if (a == 8)
     {
+        //grp rgb Led
         lred = 255;
         lgreen = 255;
         lblue = 0;
@@ -273,6 +278,7 @@ void mem_value(int a)
     }
     else if (a == 9)
     {
+        //grp rgb Led
         lred = 255;
         lgreen = 0;
         lblue = 255;
@@ -312,6 +318,7 @@ void mem_value(int a)
     }
     else if (a == 10)
     {
+        //grp rgb Led
         lred = 0;
         lgreen = 255;
         lblue = 255;
@@ -351,6 +358,7 @@ void mem_value(int a)
     }
     else if (a == 11)
     {
+        //grp rgb Led
         lred = 0;
         lgreen = 0;
         lblue = 0;
@@ -390,6 +398,7 @@ void mem_value(int a)
     }
     else if (a == 12)
     {
+        //grp rgb Led
         lred = 255;
         lgreen = 255;
         lblue = 255;
