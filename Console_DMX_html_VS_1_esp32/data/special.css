@@ -70,8 +70,9 @@ h1 {
 }
 
 .noscroll {
-    overflow: hidden;
-    position: fixed;
+    /* overflow: hidden; */
+    overflow: visible;
+    /* position: fixed; */
 }
 
 #colorbar {
