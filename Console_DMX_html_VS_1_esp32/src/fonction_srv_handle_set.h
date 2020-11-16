@@ -40,36 +40,32 @@ void srv_handle_set()
         }
 
         //////////////////////////////////////////memoire///////////////////////////////////////////////
-        
 
         //////////////////////////////////////////special mem///////////////////////////////////////////
         if (server.argName(i) == "mem")
         {
+            int LMem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
 #ifdef DEBUGSPEC
             Serial.print("mem=");
+            Serial.println(LMem);
 #endif
-
-            int LMem = (uint8_t)strtol(server.arg(i).c_str(), NULL, 10);
 
             if (LMem == 0)
             {
-
-#ifdef DEBUGSPEC
-                Serial.print("mem=");
-                Serial.println(LMem);
-#endif
                 load_spec();
             } //if(Mem==0){
 
             if (LMem == 1)
             {
-#ifdef DEBUGSPEC
-                Serial.print("mem=");
-                Serial.println(LMem);
-#endif
                 save_spec();
             } //if(Mem==1){
-        }     //serveur mem
+            else if (LMem == 2)
+            {
+                mem_value(6);
+                send_Auto_off();
+                send_rvb6(); // all
+            }
+        } //serveur mem
 
     } //serveur args
     server.send(200, "text/plain", "OK");
