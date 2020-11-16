@@ -190,7 +190,6 @@ function comptoirePicker() {
     prepareVar1()
     prepareVar2()
     prepareVar3()
-    // console.log(color.r, color.g, color.b)
 }
 
 function setComptoirePicker() {
@@ -202,10 +201,78 @@ function setComptoirePicker() {
     document.getElementById('Comptoire').value = colorHex
 }
 
+function LedPicker() {
+    var picker = document.getElementById('Led')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc4').value = color.r
+    document.getElementById('cc5').value = color.g
+    document.getElementById('cc6').value = color.b
+
+    prepareVar4()
+    prepareVar5()
+    prepareVar6()
+}
+
+function setLedPicker() {
+    var red = document.getElementById('cc4').value
+    var green = document.getElementById('cc5').value
+    var blue = document.getElementById('cc6').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Led').value = colorHex
+}
+
+function Trans1Picker() {
+    var picker = document.getElementById('Trans1')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc7').value = color.r
+    document.getElementById('cc8').value = color.g
+    document.getElementById('cc9').value = color.b
+
+    prepareVar7()
+    prepareVar8()
+    prepareVar9()
+}
+
+function setTrans1Picker() {
+    var red = document.getElementById('cc7').value
+    var green = document.getElementById('cc8').value
+    var blue = document.getElementById('cc9').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Trans1').value = colorHex
+}
+
+function Trans2Picker() {
+    var picker = document.getElementById('Trans2')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc10').value = color.r
+    document.getElementById('cc11').value = color.g
+    document.getElementById('cc12').value = color.b
+
+    prepareVar10()
+    prepareVar11()
+    prepareVar12()
+}
+
+function setTrans2Picker() {
+    var red = document.getElementById('cc10').value
+    var green = document.getElementById('cc11').value
+    var blue = document.getElementById('cc12').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Trans2').value = colorHex
+}
+
+
+
 function prepareVar1() {
-    var ba = parseInt(document.getElementById('cc1').value).toString(8);
-    if (ba.length < 2) { ba = '0' + ba; }
-    values = ba;
+    var a = parseInt(document.getElementById('cc1').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
     var data = "ba" + values;
     setComptoirePicker()
     console.log('eData: ' + data);
@@ -213,9 +280,9 @@ function prepareVar1() {
 } //prepare 1
 
 function prepareVar2() {
-    var bb = parseInt(document.getElementById('cc2').value).toString(8);
-    if (bb.length < 2) { bb = '0' + bb; }
-    values = bb;
+    var a = parseInt(document.getElementById('cc2').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
     var data = "bb" + values;
     setComptoirePicker()
     console.log('fData: ' + data);
@@ -223,9 +290,9 @@ function prepareVar2() {
 } //prepare 2
 
 function prepareVar3() {
-    var bc = parseInt(document.getElementById('cc3').value).toString(8);
-    if (bc.length < 2) { bc = '0' + bc; }
-    values = bc;
+    var a = parseInt(document.getElementById('cc3').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
     var data = "bc" + values;
     setComptoirePicker()
     console.log('gData: ' + data);
@@ -237,6 +304,7 @@ function prepareVar4() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bd" + values;
+    setLedPicker()
     console.log('hData: ' + data);
     connection.send(data);
 } //prepare 4
@@ -246,6 +314,7 @@ function prepareVar5() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "be" + values;
+    setLedPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 5
@@ -255,6 +324,7 @@ function prepareVar6() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bf" + values;
+    setLedPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 6
@@ -264,6 +334,7 @@ function prepareVar7() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bg" + values;
+    setTrans1Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 7
@@ -273,6 +344,7 @@ function prepareVar8() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bh" + values;
+    setTrans1Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 8
@@ -282,6 +354,7 @@ function prepareVar9() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bi" + values;
+    setTrans1Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 9
@@ -291,6 +364,7 @@ function prepareVar10() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bj" + values;
+    setTrans2Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 10
@@ -300,6 +374,7 @@ function prepareVar11() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bk" + values;
+    setTrans2Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 11
@@ -309,6 +384,7 @@ function prepareVar12() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bl" + values;
+    setTrans2Picker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 12
