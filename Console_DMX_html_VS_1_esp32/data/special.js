@@ -267,6 +267,72 @@ function setTrans2Picker() {
     document.getElementById('Trans2').value = colorHex
 }
 
+function LogoPicker() {
+    var picker = document.getElementById('Logo')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc14').value = color.r
+    document.getElementById('cc15').value = color.g
+    document.getElementById('cc16').value = color.b
+
+    prepareVar14()
+    prepareVar15()
+    prepareVar16()
+}
+
+function setLogoPicker() {
+    var red = document.getElementById('cc14').value
+    var green = document.getElementById('cc15').value
+    var blue = document.getElementById('cc16').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Logo').value = colorHex
+}
+
+function ClubPicker() {
+    var picker = document.getElementById('Club')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc18').value = color.r
+    document.getElementById('cc19').value = color.g
+    document.getElementById('cc20').value = color.b
+
+    prepareVar18()
+    prepareVar19()
+    prepareVar20()
+}
+
+function setClubPicker() {
+    var red = document.getElementById('cc18').value
+    var green = document.getElementById('cc19').value
+    var blue = document.getElementById('cc20').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Club').value = colorHex
+}
+
+function RegiePicker() {
+    var picker = document.getElementById('Regie')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc22').value = color.r
+    document.getElementById('cc23').value = color.g
+    document.getElementById('cc24').value = color.b
+
+    prepareVar22()
+    prepareVar23()
+    prepareVar24()
+}
+
+function setRegiePicker() {
+    var red = document.getElementById('cc22').value
+    var green = document.getElementById('cc23').value
+    var blue = document.getElementById('cc24').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Regie').value = colorHex
+}
+
 
 
 function prepareVar1() {
@@ -403,6 +469,7 @@ function prepareVar14() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bn" + values;
+    setLogoPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 14
@@ -412,6 +479,7 @@ function prepareVar15() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bo" + values;
+    setLogoPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 15
@@ -421,6 +489,7 @@ function prepareVar16() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bp" + values;
+    setLogoPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 16
@@ -439,6 +508,7 @@ function prepareVar18() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "br" + values;
+    setClubPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 18
@@ -448,6 +518,7 @@ function prepareVar19() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bs" + values;
+    setClubPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 19
@@ -457,6 +528,7 @@ function prepareVar20() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bt" + values;
+    setClubPicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 20
@@ -475,6 +547,7 @@ function prepareVar22() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bv" + values;
+    setRegiePicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 22
@@ -484,6 +557,7 @@ function prepareVar23() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bw" + values;
+    setRegiePicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 23
@@ -493,6 +567,7 @@ function prepareVar24() {
     if (a.length < 2) { a = '0' + a; }
     values = a;
     var data = "bx" + values;
+    setRegiePicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 24
@@ -565,7 +640,7 @@ function setup() {
 
 }
 
-function RGBToHex(r,g,b) {
+function RGBToHex(r, g, b) {
     if (r.length == 0) r = "00"
     if (g.length == 0) g = "00"
     if (b.length == 0) b = "00"
@@ -573,37 +648,37 @@ function RGBToHex(r,g,b) {
     r = parseInt(r).toString(16);
     g = parseInt(g).toString(16);
     b = parseInt(b).toString(16);
-    
+
     if (r.length == 1) r = "0" + r;
     if (g.length == 1) g = "0" + g;
     if (b.length == 1) b = "0" + b;
 
-    return "#" + r + g + b ;
-  }
+    return "#" + r + g + b;
+}
 
-  function RGBAToHexA(r,g,b,a) {
+function RGBAToHexA(r, g, b, a) {
     r = r.toString(16);
     g = g.toString(16);
     b = b.toString(16);
     a = Math.round(a * 255).toString(16);
-  
-    if (r.length == 1)
-      r = "0" + r;
-    if (g.length == 1)
-      g = "0" + g;
-    if (b.length == 1)
-      b = "0" + b;
-    if (a.length == 1)
-      a = "0" + a;
-  
-    return "#" + r + g + b + a;
-  }
 
-  function hexToRGB(hex) {
+    if (r.length == 1)
+        r = "0" + r;
+    if (g.length == 1)
+        g = "0" + g;
+    if (b.length == 1)
+        b = "0" + b;
+    if (a.length == 1)
+        a = "0" + a;
+
+    return "#" + r + g + b + a;
+}
+
+function hexToRGB(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
     } : null;
-  }
+}
