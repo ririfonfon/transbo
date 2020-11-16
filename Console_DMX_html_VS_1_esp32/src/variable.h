@@ -2,7 +2,7 @@
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false, false, false}; // client
 
-const uint8_t Master = 9;
+const uint8_t Master = 10;
 float Mast[Master];
 uint8_t Mem = 1;
 int M;              // grand master
