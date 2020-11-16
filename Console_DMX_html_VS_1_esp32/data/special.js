@@ -1,10 +1,10 @@
 window.addEventListener('load', setup);
 
-var connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+var connection;
 
 function connect() {
     console.log('connect()');
-    // connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
+    connection = new WebSocket('ws://' + location.hostname + ':81/', ['arduino']);
 
     connection.onopen = function() {
         connection.send('Connect ' + new Date());
@@ -179,29 +179,55 @@ connect();
 id_array = new Array('cc1');
 values = new Array(id_array.length);
 
+function comptoirePicker() {
+    var picker = document.getElementById('Comptoire')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc1').value = color.r
+    document.getElementById('cc2').value = color.g
+    document.getElementById('cc3').value = color.b
+
+    prepareVar1()
+    prepareVar2()
+    prepareVar3()
+    // console.log(color.r, color.g, color.b)
+}
+
+function setComptoirePicker() {
+    var red = document.getElementById('cc1').value
+    var green = document.getElementById('cc2').value
+    var blue = document.getElementById('cc3').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Comptoire').value = colorHex
+}
+
 function prepareVar1() {
-    var a = parseInt(document.getElementById('cc1').value).toString(8);
-    if (a.length < 2) { a = '0' + a; }
-    values = a;
+    var ba = parseInt(document.getElementById('cc1').value).toString(8);
+    if (ba.length < 2) { ba = '0' + ba; }
+    values = ba;
     var data = "ba" + values;
+    setComptoirePicker()
     console.log('eData: ' + data);
     connection.send(data);
 } //prepare 1
 
 function prepareVar2() {
-    var a = parseInt(document.getElementById('cc2').value).toString(8);
-    if (a.length < 2) { a = '0' + a; }
-    values = a;
+    var bb = parseInt(document.getElementById('cc2').value).toString(8);
+    if (bb.length < 2) { bb = '0' + bb; }
+    values = bb;
     var data = "bb" + values;
+    setComptoirePicker()
     console.log('fData: ' + data);
     connection.send(data);
 } //prepare 2
 
 function prepareVar3() {
-    var a = parseInt(document.getElementById('cc3').value).toString(8);
-    if (a.length < 2) { a = '0' + a; }
-    values = a;
+    var bc = parseInt(document.getElementById('cc3').value).toString(8);
+    if (bc.length < 2) { bc = '0' + bc; }
+    values = bc;
     var data = "bc" + values;
+    setComptoirePicker()
     console.log('gData: ' + data);
     connection.send(data);
 } //prepare 3
@@ -462,3 +488,46 @@ function setup() {
     connect();
 
 }
+
+function RGBToHex(r,g,b) {
+    if (r.length == 0) r = "00"
+    if (g.length == 0) g = "00"
+    if (b.length == 0) b = "00"
+
+    r = parseInt(r).toString(16);
+    g = parseInt(g).toString(16);
+    b = parseInt(b).toString(16);
+    
+    if (r.length == 1) r = "0" + r;
+    if (g.length == 1) g = "0" + g;
+    if (b.length == 1) b = "0" + b;
+
+    return "#" + r + g + b ;
+  }
+
+  function RGBAToHexA(r,g,b,a) {
+    r = r.toString(16);
+    g = g.toString(16);
+    b = b.toString(16);
+    a = Math.round(a * 255).toString(16);
+  
+    if (r.length == 1)
+      r = "0" + r;
+    if (g.length == 1)
+      g = "0" + g;
+    if (b.length == 1)
+      b = "0" + b;
+    if (a.length == 1)
+      a = "0" + a;
+  
+    return "#" + r + g + b + a;
+  }
+
+  function hexToRGB(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
