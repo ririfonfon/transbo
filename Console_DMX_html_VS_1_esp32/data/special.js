@@ -31,61 +31,73 @@ function connect() {
             if (e.data.charAt(1) == 'a') {
                 var data = e.data.split(':');
                 document.getElementById('cc1').value = data[1];
+                setComptoirePicker()
             } //if a
 
             if (e.data.charAt(1) == 'b') {
                 var data = e.data.split(':');
                 document.getElementById('cc2').value = data[1];
+                setComptoirePicker()
             } //if b
 
             if (e.data.charAt(1) == 'c') {
                 var data = e.data.split(':');
                 document.getElementById('cc3').value = data[1];
+                setComptoirePicker()
             } //if c
 
             if (e.data.charAt(1) == 'd') {
                 var data = e.data.split(':');
                 document.getElementById('cc4').value = data[1];
+                setLedPicker()
             } //if d
 
             if (e.data.charAt(1) == 'e') {
                 var data = e.data.split(':');
                 document.getElementById('cc5').value = data[1];
+                setLedPicker()
             } //if e
 
             if (e.data.charAt(1) == 'f') {
                 var data = e.data.split(':');
                 document.getElementById('cc6').value = data[1];
+                setLedPicker()
             } //if f
 
             if (e.data.charAt(1) == 'g') {
                 var data = e.data.split(':');
                 document.getElementById('cc7').value = data[1];
+                setTrans1Picker()
             } //if g
 
             if (e.data.charAt(1) == 'h') {
                 var data = e.data.split(':');
                 document.getElementById('cc8').value = data[1];
+                setTrans1Picker()
             } //if h
 
             if (e.data.charAt(1) == 'i') {
                 var data = e.data.split(':');
                 document.getElementById('cc9').value = data[1];
+                setTrans1Picker()
             } //if i
 
             if (e.data.charAt(1) == 'j') {
                 var data = e.data.split(':');
                 document.getElementById('cc10').value = data[1];
+                setTrans2Picker()
             } //if j
 
             if (e.data.charAt(1) == 'k') {
                 var data = e.data.split(':');
                 document.getElementById('cc11').value = data[1];
+                setTrans2Picker()
             } //if k
 
             if (e.data.charAt(1) == 'l') {
                 var data = e.data.split(':');
                 document.getElementById('cc12').value = data[1];
+                setTrans2Picker()
             } //if l
 
             if (e.data.charAt(1) == 'm') {
@@ -96,16 +108,19 @@ function connect() {
             if (e.data.charAt(1) == 'n') {
                 var data = e.data.split(':');
                 document.getElementById('cc14').value = data[1];
+                setLogoPicker()
             } //if n
 
             if (e.data.charAt(1) == 'o') {
                 var data = e.data.split(':');
                 document.getElementById('cc15').value = data[1];
+                setLogoPicker()
             } //if p
 
             if (e.data.charAt(1) == 'p') {
                 var data = e.data.split(':');
                 document.getElementById('cc16').value = data[1];
+                setLogoPicker()
             } //if p
 
             if (e.data.charAt(1) == 'q') {
@@ -116,17 +131,20 @@ function connect() {
             if (e.data.charAt(1) == 'r') {
                 var data = e.data.split(':');
                 document.getElementById('cc18').value = data[1];
+                setClubPicker()
             } //if r
 
             if (e.data.charAt(1) == 's') {
                 var data = e.data.split(':');
                 document.getElementById('cc19').value = data[1];
+                setClubPicker()
             } //if s
 
 
             if (e.data.charAt(1) == 't') {
                 var data = e.data.split(':');
                 document.getElementById('cc20').value = data[1];
+                setClubPicker()
             } //if t
 
 
@@ -139,18 +157,21 @@ function connect() {
             if (e.data.charAt(1) == 'v') {
                 var data = e.data.split(':');
                 document.getElementById('cc22').value = data[1];
+                setRegiePicker()
             } //if v
 
 
             if (e.data.charAt(1) == 'w') {
                 var data = e.data.split(':');
                 document.getElementById('cc23').value = data[1];
+                setRegiePicker()
             } //if w
 
 
             if (e.data.charAt(1) == 'x') {
                 var data = e.data.split(':');
                 document.getElementById('cc24').value = data[1];
+                setRegiePicker()
             } //if x
 
         } //if a
