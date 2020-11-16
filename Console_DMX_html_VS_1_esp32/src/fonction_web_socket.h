@@ -88,7 +88,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     Serial.print(num);
                     Serial.print("   ======   ");
                     Serial.print("  list[i] : ");
-                    Serial.println(list[i]); 
+                    Serial.println(list[i]);
                 }
 
             } //for (int i = 0; i < MAX_CLIENT; i++)
@@ -467,10 +467,15 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
             else if (LMem == 1)
             {
-
                 save_spec();
             } //if(Mem==1){
-        }     //payload[0] == 'l'
+            else if (LMem == 2)
+            {
+                mem_value(6);
+                send_Auto_off();
+                send_rvb6(); // all
+            }
+        } //payload[0] == 'l'
         break;
     } //type
 } //web socket
