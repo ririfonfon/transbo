@@ -218,7 +218,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 char *pEnd;
                 clblue = strtol((const char *)&payload[2], &pEnd, 8);
             } //f
-            else if (payload[1] == 'j')
+            else if (payload[1] == 'g')
             {
                 char *pEnd;
                 ctred = strtol((const char *)&payload[2], &pEnd, 8);
@@ -452,30 +452,30 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
             } // mem12 SERVICE
         }     //payload[0] == 'm'
-        else if (payload[0] == 'l')
-        {
-            char *pEnd;
-            int LMem = strtol((const char *)&payload[1], &pEnd, 10);
-#ifdef DEBUG
-            Serial.print("Lmem=");
-            Serial.println(LMem);
-#endif
-            if (LMem == 0)
-            {
-                load_spec();
-            } //if(Mem==0){
+//         else if (payload[0] == 'l')
+//         {
+//             char *pEnd;
+//             int LMem = strtol((const char *)&payload[1], &pEnd, 10);
+// #ifdef DEBUG
+//             Serial.print("Lmem=");
+//             Serial.println(LMem);
+// #endif
+//             if (LMem == 0)
+//             {
+//                 load_spec();
+//             } //if(Mem==0){
 
-            else if (LMem == 1)
-            {
-                save_spec();
-            } //if(Mem==1){
-            else if (LMem == 2)
-            {
-                mem_value(6);
-                send_Auto_off();
-                send_rvb6(); // all
-            }
-        } //payload[0] == 'l'
+//             else if (LMem == 1)
+//             {
+//                 save_spec();
+//             } //if(Mem==1){
+//             else if (LMem == 2)
+//             {
+//                 mem_value(6);
+//                 send_Auto_off();
+//                 send_rvb6(); // all
+//             }
+//         } //payload[0] == 'l'
         break;
     } //type
 } //web socket
