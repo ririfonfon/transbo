@@ -11,7 +11,7 @@ function connect() {
     connection.onopen = function() {
         connection.send('Connect ' + new Date());
         console.log('connection.send.');
-        connection.send("*LOAD*");
+        // connection.send("*LOAD*");
     };
 
     connection.onmessage = function(e) {
