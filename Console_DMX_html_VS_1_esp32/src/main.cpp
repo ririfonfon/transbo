@@ -7,11 +7,14 @@
 // #define DEBUGDMX 1
 // #define DEBUGRVB 1
 // #define DEBUGcolor 1
-#define DEBUGsocket 1
-#define DEBUGSPEC 1
+// #define DEBUGsocket 1
+// #define DEBUGSPEC 1
 
 #include <Arduino.h>
 #include <WiFi.h>
+#include <WiFiAP.h>
+#include <WiFiClientSecure.h>
+
 #include <WebSocketsServer.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
@@ -69,19 +72,27 @@ void setup()
 
   //////////////////////////////////////////////////// connect to WiFi
   // WiFi.setHostname(host);
-  IPAddress Ip(192, 168, 10, 1);
+  // IPAddress Ip(202, 208, 210, 1);
+  // IPAddress NMask(255, 255, 255, 0);
+
+  // WiFi.mode(WIFI_OFF);
+  // delay(1000);
+  // WiFi.mode(WIFI_AP);
+  // delay(1000);
+
+  // WiFi.softAPConfig(Ip, Ip, NMask);
+
+  // WiFi.softAPsetHostname(host);
+  // WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
+  // WiFi.begin();
+  // IPAddress myIP = WiFi.softAPIP();
+
+  IPAddress Ip(192, 168, 0, 101);
   IPAddress NMask(255, 255, 255, 0);
-
-  WiFi.mode(WIFI_OFF);
+  WiFi.config(Ip, Ip, NMask);
+  WiFi.begin(ssid, password);
   delay(1000);
-  WiFi.mode(WIFI_AP);
-  delay(1000);
-
-  WiFi.softAPConfig(Ip, Ip, NMask);
-  
-  WiFi.softAPsetHostname(host);
-  WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
-  IPAddress myIP = WiFi.softAPIP();
+  IPAddress myIP = WiFi.localIP();
 
   //////////////////////////////////////////////////// SPIFFS
   SPIFFS.begin();
@@ -165,8 +176,8 @@ void setup()
 //////////////////////////////////////////////////// loop
 void loop()
 {
-  webSocket.loop();
   server.handleClient();
+  webSocket.loop();
   onboard_led.on = millis() % 2000 < 1000;
   onboard_led.update();
 } // loop()
