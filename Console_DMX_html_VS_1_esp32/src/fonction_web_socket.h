@@ -13,6 +13,8 @@ void feedback(uint8_t num, String txt)
 //////////////////////////////////////////websocket///////////////////////////////////////////////
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 {
+    IPAddress client_ip = webSocket.remoteIP(num);
+
     switch (type)
     {
     case WStype_DISCONNECTED:
@@ -20,33 +22,27 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         list[num] = false;
 
 #ifdef DEBUG
-        Serial.println("Disconnected!");
-        Serial.print("num : ");
-        Serial.println(num);
-        Serial.print("clientn : ");
-        Serial.println(clientn);
+        Serial.print(" nombre de clients : ");
+        Serial.print(clientn);
+        Serial.printf(" [%u] Disconnected from %d.%d.%d.%d url: %s\n", num, client_ip[0], client_ip[1], client_ip[2], client_ip[3], payload);
 #endif
         break;
 
     case WStype_CONNECTED:
+    {
         clientn += 1;
         list[num] = true;
-
+        
 #ifdef DEBUG
-        Serial.println("Client connected!");
-        Serial.print("num : ");
-        Serial.println(num);
-        Serial.print("clientn : ");
-        Serial.println(clientn);
+        Serial.print(" nombre de clients : ");
+        Serial.print(clientn);
+        Serial.printf(" [%u] Connected from %d.%d.%d.%d url: %s\n", num, client_ip[0], client_ip[1], client_ip[2], client_ip[3], payload);
 #endif
 
         for (int i = 0; i < MAX_CLIENT; i++)
         {
-            if (list[i])
+            if (list[i] && i == num)
             {
-#ifdef DEBUG
-                Serial.println("WStype_CONNECTED == '*LOAD*'");
-#endif
                 webSocket.sendTXT(i, "aa:" + String(lround(Mast[1])));
                 webSocket.sendTXT(i, "ab:" + String(lround(Mast[2])));
                 webSocket.sendTXT(i, "ac:" + String(lround(Mast[3])));
@@ -60,7 +56,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 webSocket.sendTXT(i, "m:" + String(Mem));
             } //if (i != num) {
         }     //for (int i = 0; i < clientn; i++)
-        break;
+    }
+    break;
 
     case WStype_TEXT:
         //  is the start for this data
@@ -452,30 +449,30 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
             } // mem12 SERVICE
         }     //payload[0] == 'm'
-//         else if (payload[0] == 'l')
-//         {
-//             char *pEnd;
-//             int LMem = strtol((const char *)&payload[1], &pEnd, 10);
-// #ifdef DEBUG
-//             Serial.print("Lmem=");
-//             Serial.println(LMem);
-// #endif
-//             if (LMem == 0)
-//             {
-//                 load_spec();
-//             } //if(Mem==0){
+              //         else if (payload[0] == 'l')
+              //         {
+              //             char *pEnd;
+              //             int LMem = strtol((const char *)&payload[1], &pEnd, 10);
+              // #ifdef DEBUG
+              //             Serial.print("Lmem=");
+              //             Serial.println(LMem);
+              // #endif
+              //             if (LMem == 0)
+              //             {
+              //                 load_spec();
+              //             } //if(Mem==0){
 
-//             else if (LMem == 1)
-//             {
-//                 save_spec();
-//             } //if(Mem==1){
-//             else if (LMem == 2)
-//             {
-//                 mem_value(6);
-//                 send_Auto_off();
-//                 send_rvb6(); // all
-//             }
-//         } //payload[0] == 'l'
+        //             else if (LMem == 1)
+        //             {
+        //                 save_spec();
+        //             } //if(Mem==1){
+        //             else if (LMem == 2)
+        //             {
+        //                 mem_value(6);
+        //                 send_Auto_off();
+        //                 send_rvb6(); // all
+        //             }
+        //         } //payload[0] == 'l'
         break;
     } //type
 } //web socket
