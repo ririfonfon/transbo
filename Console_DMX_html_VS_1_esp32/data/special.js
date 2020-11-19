@@ -657,8 +657,6 @@ function setup() {
         // el.addEventListener('touchstart', handle_M_B_S, false);
         el.addEventListener('click', handle_M_B_S, false);
     });
-    connect();
-
 }
 
 function RGBToHex(r, g, b) {
