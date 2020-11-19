@@ -13,7 +13,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiAP.h>
-#include <WiFiClientSecure.h>
 
 #include <WebSocketsServer.h>
 #include <WebServer.h>
@@ -128,6 +127,7 @@ void setup()
   // start webSocket server
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
+  webSocket.enableHeartbeat(15000, 3000, 2);
 
   if (MDNS.begin(host))
   {
@@ -176,8 +176,8 @@ void setup()
 //////////////////////////////////////////////////// loop
 void loop()
 {
-  server.handleClient();
   webSocket.loop();
+  server.handleClient();
   onboard_led.on = millis() % 2000 < 1000;
   onboard_led.update();
 } // loop()

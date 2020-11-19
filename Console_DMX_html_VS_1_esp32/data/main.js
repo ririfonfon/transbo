@@ -109,15 +109,10 @@ function connect() {
     connection.onerror = function(err) {
         console.error('Socket encountered error: ', err.message, 'Closing socket');
         connection.close();
-        setTimeout(function() {
-            connect();
-        }, 1000);
     };
 }
 
-// connect();
-
-
+connect();
 
 id_array = new Array('c1');
 values = new Array(id_array.length);
@@ -392,5 +387,4 @@ function setup() {
     // can.addEventListener('touchstart', Touch, false);
     can.addEventListener('click', Click, false);
     can2.addEventListener('click', Click2, false);
-    connect();
 }

@@ -24,7 +24,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 #ifdef DEBUG
         Serial.print(" nombre de clients : ");
         Serial.print(clientn);
-        Serial.printf(" [%u] Disconnected from %d.%d.%d.%d url: %s\n", num, client_ip[0], client_ip[1], client_ip[2], client_ip[3], payload);
+        Serial.printf(" [%u] Disconnected \n", num);
 #endif
         break;
 
@@ -32,7 +32,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     {
         clientn += 1;
         list[num] = true;
-        
+
 #ifdef DEBUG
         Serial.print(" nombre de clients : ");
         Serial.print(clientn);
@@ -60,6 +60,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     break;
 
     case WStype_TEXT:
+    {
         //  is the start for this data
 
         if (payload[0] == 'a')
@@ -449,30 +450,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
             } // mem12 SERVICE
         }     //payload[0] == 'm'
-              //         else if (payload[0] == 'l')
-              //         {
-              //             char *pEnd;
-              //             int LMem = strtol((const char *)&payload[1], &pEnd, 10);
-              // #ifdef DEBUG
-              //             Serial.print("Lmem=");
-              //             Serial.println(LMem);
-              // #endif
-              //             if (LMem == 0)
-              //             {
-              //                 load_spec();
-              //             } //if(Mem==0){
-
-        //             else if (LMem == 1)
-        //             {
-        //                 save_spec();
-        //             } //if(Mem==1){
-        //             else if (LMem == 2)
-        //             {
-        //                 mem_value(6);
-        //                 send_Auto_off();
-        //                 send_rvb6(); // all
-        //             }
-        //         } //payload[0] == 'l'
-        break;
+    }         //WStype_TEXT:
+    break;
     } //type
 } //web socket
