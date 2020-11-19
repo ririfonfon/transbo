@@ -1,14 +1,14 @@
 html {
     display: block;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     height: 100%;
     max-height: 900px;
 }
 
 body {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     height: 100%;
     max-height: 900px;
     background-color: #101010;
@@ -17,9 +17,9 @@ body {
 }
 
 .content {
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
-    /*  border: 1px solid green;*/
+    /* border: 1px solid green; */
 }
 
 
@@ -212,6 +212,11 @@ input[type=range]:focus::-ms-fill-upper {
 .gmslider-box {
     /*  border: 1px solid white;*/
     display: inline-block;
+    width: 600px;
+    height: 100px;
+    padding: 0px 3px;
+    margin: 5px;
+    transform-origin: 0px 0px;
 }
 
 
@@ -220,9 +225,9 @@ input[type=range]:focus::-ms-fill-upper {
 .gmslider-wrapper {
     display: block;
     width: 300px;
-    height: 50px;
+    height: 56px;
     padding: 0px 3px;
-    margin: 5px;
+    margin-left: 150px;
     transform-origin: 0px 0px;
 }
 
@@ -321,4 +326,68 @@ ul li a {
 ul li a.active {
     border: 2px solid #BBBBBB;
     color: #FFFFFF;
+}
+
+ul#go {
+    display: inline-block;
+    /* width: auto%; */
+    padding-left: 10px;
+}
+
+vul#live liv {
+    display: inline-block;
+    width: 15%;
+}
+
+vul#brightness liv,
+vul#speed liv {
+    display: inline-block;
+    width: 15%;
+}
+
+vul liv g {
+    display: block;
+    /* width: 90px; */
+    height: 50px;
+    margin: 3px;
+    padding: 10px 5px;
+    border: 2px solid #454545;
+    border-radius: 5px;
+    color: #454545;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+vul liv g.active {
+    border: 2px solid #BBBBBB;
+    color: #FFFFFF;
+}
+
+vul#live liv {
+    display: inline-block;
+    width: 15%;
+}
+
+vul liv g {
+    display: block;
+    margin: 3px;
+    padding: 10px 10px;
+    border: 2px solid #454545;
+    border-radius: 5px;
+    color: #aab415;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+vul liv g.active {
+    border: 2px solid #fffb00;
+    color: #FFFFFF;
+}
+
+vul {
+    text-align: center;
+    padding: 0;
+    position: relative;
+    top: -75px;
+    left: 0px;
 }
