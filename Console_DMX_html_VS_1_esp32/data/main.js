@@ -33,6 +33,15 @@ function connect() {
             document.getElementById(val).classList.add('active');
         } //if (e.data.charAt(0) == 'm')
 
+        if (e.data.charAt(0) == 'g') {
+            var vval = e.data.split(':')[1];
+            var velems = document.querySelectorAll('#live liv g');
+            [].forEach.call(velems, function(vel) {
+                vel.classList.remove('active');
+            });
+            document.getElementById(vval).classList.add('active');
+        } //if (e.data.charAt(0) == 'g')
+
         if (e.data.charAt(0) == 'a') {
 
             if (e.data.charAt(1) == 'a') {
@@ -222,6 +231,14 @@ function handle_M_B_S(e) {
         });
         e.target.classList.add('active');
     }
+    if (e.target.className.indexOf('g') > -1) {
+        velems = document.querySelectorAll('#live liv g');
+        [].forEach.call(velems, function(vel) {
+            vel.classList.remove('active');
+            name = e.target.className;
+        });
+        e.target.classList.add('active');
+    }
     submitVal(name, val);
     var data = name + val;
     console.log('iiii Data: ' + data);
@@ -371,6 +388,12 @@ function setup() {
     [].forEach.call(elems, function(el) {
         // el.addEventListener('touchstart', handle_M_B_S, false);
         el.addEventListener('click', handle_M_B_S, false);
+    });
+
+    velems = document.querySelectorAll('vul liv g'); // adds listener
+    [].forEach.call(velems, function(vel) {
+        // el.addEventListener('touchstart', handle_M_B_S, false);
+        vel.addEventListener('click', handle_M_B_S, false);
     });
 
 

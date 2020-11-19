@@ -1,15 +1,3 @@
-/////// send to all but not origin !
-void feedback(uint8_t num, String txt)
-{
-    for (int i = 0; i < MAX_CLIENT; i++)
-    {
-        if (list[i] && i != num)
-        {
-            webSocket.sendTXT(i, txt);
-        } //if (list[i] && i != num)
-    }
-}
-
 //////////////////////////////////////////websocket///////////////////////////////////////////////
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 {
@@ -54,6 +42,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
                 webSocket.sendTXT(i, "az:" + String(lround(M)));
                 webSocket.sendTXT(i, "m:" + String(Mem));
+                webSocket.sendTXT(i, "g:" + String(etat_live));
             } //if (i != num) {
         }     //for (int i = 0; i < clientn; i++)
     }
@@ -328,6 +317,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
                     webSocket.sendTXT(i, "az:" + String(lround(M)));
                     webSocket.sendTXT(i, "m:" + String(Mem));
+                    webSocket.sendTXT(i, "g:" + String(etat_live));
                 } //if (i != num) {
             }     //for (int i = 0; i < clientn; i++)
 
@@ -450,7 +440,26 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 
             } // mem12 SERVICE
         }     //payload[0] == 'm'
-    }         //WStype_TEXT:
+        else if (payload[0] == 'g')
+        {
+            char *pEnd;
+            int check = strtol((const char *)&payload[1], &pEnd, 10);
+
+            if (check == 21)
+            {
+                etat_live = 21;
+                feedback(num, "g:21");
+                live();
+            } //live
+
+            else if (check == 22)
+            {
+                etat_live = 22;
+                feedback(num, "g:22");
+                bar();
+            } //bar
+        }
+    } //WStype_TEXT:
     break;
     } //type
 } //web socket

@@ -1,4 +1,16 @@
 //////////////////////////////////////////V O I D////////////////////////////////////////
+/////// send to all but not origin !
+void feedback(uint8_t num, String txt)
+{
+    for (int i = 0; i < MAX_CLIENT; i++)
+    {
+        if (list[i] && i != num)
+        {
+            webSocket.sendTXT(i, txt);
+        } //if (list[i] && i != num)
+    }
+}
+
 void eeprom_read()
 {
     ccred = EEPROM.read(1);
@@ -723,3 +735,44 @@ void init_led()
 {
     pinMode(onboard_led.pin, OUTPUT);
 } //init_led
+
+void live()
+{
+    int count = M;
+    bool count_clock;
+    while (count > 0)
+    {
+        count_clock = millis() % 40 < 1;
+        onboard_led.on = millis() % 1000 < 500;
+        onboard_led.update();
+
+        if (count_clock)
+        {
+            count -= 1;
+            M = count;
+            send_Mast(0);
+            feedback(12, "az:" + String(lround(M)));
+        }
+    }
+} //live
+
+void bar()
+{
+    int count = M;
+    bool count_clock;
+    while (count < 255)
+    {
+        count_clock = millis() % 40 < 1;
+        onboard_led.on = millis() % 1000 < 500;
+        onboard_led.update();
+
+        if (count_clock)
+        {
+            count += 1;
+            M = count;
+            send_Mast(0);
+            feedback(12, "az:" + String(lround(M)));
+        }
+    }
+
+} //bar

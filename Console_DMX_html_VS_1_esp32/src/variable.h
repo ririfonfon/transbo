@@ -5,7 +5,8 @@ bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
 const uint8_t Master = 10;
 float Mast[Master];
 uint8_t Mem = 1;
-int M;              // grand master
+uint8_t etat_live = 22;
+int M = 255;              // grand master
 int M1[] = {0, 41, 42};             // access
 int M2[] = {0, 43, 44};             // vest
 int M3[] = {0, 51, 61, 71, 81, 91}; // compt
