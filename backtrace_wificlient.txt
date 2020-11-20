@@ -1,0 +1,13 @@
+Backtrace: 0x400d6694:0x3ffb1e80 0x400d6ae2:0x3ffb1ea0 0x40159d36:0x3ffb1ed0 0x400de9a5:0x3ffb1f00 0x400dea3d:0x3ffb1f20 0x400d8ed1:0x3ffb1f40 0x400d8f71:0x3ffb1f70 0x400d647a:0x3ffb1f90 0x400e0561:0x3ffb1fb0 0x40088c99:0x3ffb1fd0
+
+stack:
+0x400d6694: WiFiClientRxBuffer::read(unsigned char*, unsigned int) at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\libraries\WiFi\src/WiFiClient.cpp:564
+0x400d6ae2: WiFiClient::read(unsigned char*, unsigned int) at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\libraries\WiFi\src/WiFiClient.cpp:564        
+0x40159d36: WiFiClient::read() at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\libraries\WiFi\src/WiFiClient.cpp:564
+0x400de9a5: Stream::timedRead() at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\cores\esp32/Stream.cpp:76
+0x400dea3d: Stream::readStringUntil(char) at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\cores\esp32/Stream.cpp:76
+0x400d8ed1: WebSocketsServer::handleClientData() at F:\github\transbo\Console_DMX_html_VS_1_esp32/.pio\libdeps\esp32\WebSockets\src/WebSocketsServer.cpp:175
+0x400d8f71: WebSocketsServer::loop() at F:\github\transbo\Console_DMX_html_VS_1_esp32/.pio\libdeps\esp32\WebSockets\src/WebSocketsServer.cpp:175
+0x400d647a: loop() at F:\github\transbo\Console_DMX_html_VS_1_esp32/src/main.cpp:179
+0x400e0561: loopTask(void*) at C:\Users\ririf\.platformio\packages\framework-arduinoespressif32\cores\esp32/main.cpp:19
+0x40088c99: vPortTaskWrapper at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/freertos/port.c:355 (discriminator 1)
