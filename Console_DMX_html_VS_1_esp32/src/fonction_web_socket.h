@@ -111,6 +111,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 char *pEnd;
                 Mast[4] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_rvb4();
+                send_Mast(4);
                 feedback(num, "ad:" + String(lround(Mast[4])));
 
             } //d
@@ -174,7 +175,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 #ifdef DEBUGsocket
             Serial.println("payload[0] == 'b'");
 #endif
-            //  wvu tsr qpo nml kji //
             if (payload[1] == 'a')
             {
                 char *pEnd;
@@ -296,7 +296,25 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 creblue = strtol((const char *)&payload[2], &pEnd, 8);
             } //x
 
-        } //payload[0] == B
+        } //payload[0] == b
+        else if (payload[0] == 'e')
+        {
+            if (payload[1] == 'a')
+            {
+                char *pEnd;
+                csred = strtol((const char *)&payload[2], &pEnd, 8);
+            } //a
+            else if (payload[1] == 'b')
+            {
+                char *pEnd;
+                csgreen = strtol((const char *)&payload[2], &pEnd, 8);
+            } //b
+            else if (payload[1] == 'c')
+            {
+                char *pEnd;
+                csblue = strtol((const char *)&payload[2], &pEnd, 8);
+            } //c
+        }     //payload[0] == e
         else if (payload[0] == '*')
         {
 #ifdef DEBUG

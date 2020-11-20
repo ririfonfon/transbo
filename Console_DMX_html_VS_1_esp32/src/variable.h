@@ -6,11 +6,11 @@ const uint8_t Master = 10;
 float Mast[Master];
 uint8_t Mem = 1;
 uint8_t etat_live = 22;
-int M = 255;              // grand master
-int M1[] = {0, 41, 42};             // access
-int M2[] = {0, 43, 44};             // vest
-int M3[] = {0, 51, 61, 71, 81, 91}; // compt
-//int M4[] ={};// Led
+int M = 255;                             // grand master
+int M1[] = {0, 41, 42};                  // access
+int M2[] = {0, 43, 44};                  // vest
+int M3[] = {0, 51, 61, 71, 81, 91};      // compt
+int M4[] = {0, 31};                      // Led
 int M5[] = {0, 121, 131, 141, 151, 161}; // trans 1
 int M6[] = {0, 171, 179};                // trans 2
 int M7[] = {0, 187};                     // logo
@@ -22,6 +22,9 @@ int Speedfull[] = {0, 58, 68, 78, 88, 98, 129, 139, 149, 159, 169}; // 127
 
 int Soundnicols[] = {0, 177, 185, 193, 201}; // 253
 int Speednicols[] = {0, 178, 186, 194, 202}; // 127
+
+int Soundcob[] = {0, 36}; // 110 cut 160 fade 210 in&out 
+int Speedcob[] = {0, 37}; // 127
 
 uint8_t start_dmx = 1;
 const int end_dmx = 300;
@@ -65,6 +68,11 @@ int RRRRRRR[] = {0, 102, 112};
 int GGGGGGG[] = {0, 103, 113};
 int BBBBBBB[] = {0, 104, 114};
 
+//grp sandwich
+int RRRRRRRR[] = {0, 32};
+int GGGGGGGG[] = {0, 33};
+int BBBBBBBB[] = {0, 34};
+
 //grp rgb Led
 float lred;
 float lgreen;
@@ -102,6 +110,11 @@ float cluwhite;
 float rered;
 float regreen;
 float reblue;
+
+//grp sandwich
+float sred;
+float sgreen;
+float sblue;
 
 ///////////////////memoire 6 /////////////////////
 
@@ -142,6 +155,11 @@ float ccluwhite;
 float crered;
 float cregreen;
 float creblue;
+
+//grp sandwich
+float csred;
+float csgreen;
+float csblue;
 
 //defo white
 float defowhite = 127;

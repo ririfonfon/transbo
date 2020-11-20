@@ -55,16 +55,96 @@
 
                 </div>
 
+                <div class="slider-group"></div>
+
+                <div>
+                    <input type="color" id="Sandwich" name="Sandwich" value="#000000" oninput="SandwichPicker()">
+                    <label for="Sandwich">Sandwich</label>
+                </div>
+                <br />
+
+                <div class="slider-box">
+                    <div class="num-wrapper">
+                        <input id='cc25' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar25(); ">
+                    </div>
+
+                    <div class="slider-title">
+                        <p style="color:#ff0000">Red</p>
+                    </div>
+                </div>
+
+                <div class="slider-box">
+                    <div class="num-wrapper">
+                        <input id='cc26' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar26()">
+                    </div>
+
+                    <div class="slider-title">
+                        <p style="color:#00ff00">Green</p>
+                    </div>
+                </div>
+
+                <div class="slider-box">
+                    <div class="num-wrapper">
+                        <input id='cc27' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar27()">
+                    </div>
+
+                    <div class="slider-title">
+                        <p style="color:#0099ff">Blue</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slider-title">
+                <div class="slider-group">
+                    <div>
+                        <input type="color" id="Led" name="Led" value="#000000" oninput="LedPicker()">
+                        <label for="Comptoire">Led</label>
+                    </div>
+                    <br />
+                    <div class="slider-box">
+                        <div class="num-wrapper">
+                            <input id='cc4' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar4(); ">
+                        </div>
+
+                        <div class="slider-title">
+                            <p style="color:#ff0000">Red</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-box">
+                        <div class="num-wrapper">
+                            <input id='cc5' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar5()">
+                        </div>
+
+                        <div class="slider-title">
+                            <p style="color:#00ff00">Green</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-box">
+                        <div class="num-wrapper">
+                            <input id='cc6' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar6()">
+                        </div>
+
+                        <div class="slider-title">
+                            <p style="color:#0099ff">Blue</p>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="slider-title">
                     <div class="slider-group">
                         <div>
-                            <input type="color" id="Led" name="Led" value="#000000" oninput="LedPicker()">
-                            <label for="Comptoire">Led</label>
+                            <input type="color" id="Trans1" name="Trans1" value="#000000" oninput="Trans1Picker()">
+                            <label for="Trans1">Trans 1</label>
                         </div>
                         <br />
+
                         <div class="slider-box">
                             <div class="num-wrapper">
-                                <input id='cc4' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar4(); ">
+                                <input id='cc7' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar7(); ">
                             </div>
 
                             <div class="slider-title">
@@ -74,7 +154,7 @@
 
                         <div class="slider-box">
                             <div class="num-wrapper">
-                                <input id='cc5' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar5()">
+                                <input id='cc8' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar8()">
                             </div>
 
                             <div class="slider-title">
@@ -84,7 +164,7 @@
 
                         <div class="slider-box">
                             <div class="num-wrapper">
-                                <input id='cc6' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar6()">
+                                <input id='cc9' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar9()">
                             </div>
 
                             <div class="slider-title">
@@ -94,17 +174,17 @@
 
                     </div>
 
+
                     <div class="slider-title">
                         <div class="slider-group">
                             <div>
-                                <input type="color" id="Trans1" name="Trans1" value="#000000" oninput="Trans1Picker()">
-                                <label for="Trans1">Trans 1</label>
+                                <input type="color" id="Trans2" name="Trans2" value="#000000" oninput="Trans2Picker()">
+                                <label for="Trans2">Trans 2</label>
                             </div>
                             <br />
-
                             <div class="slider-box">
                                 <div class="num-wrapper">
-                                    <input id='cc7' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar7(); ">
+                                    <input id='cc10' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar10(); ">
                                 </div>
 
                                 <div class="slider-title">
@@ -114,7 +194,7 @@
 
                             <div class="slider-box">
                                 <div class="num-wrapper">
-                                    <input id='cc8' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar8()">
+                                    <input id='cc11' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar11()">
                                 </div>
 
                                 <div class="slider-title">
@@ -124,11 +204,21 @@
 
                             <div class="slider-box">
                                 <div class="num-wrapper">
-                                    <input id='cc9' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar9()">
+                                    <input id='cc12' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar12()">
                                 </div>
 
                                 <div class="slider-title">
                                     <p style="color:#0099ff">Blue</p>
+                                </div>
+                            </div>
+
+                            <div class="slider-box">
+                                <div class="num-wrapper">
+                                    <input id='cc13' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar13()">
+                                </div>
+
+                                <div class="slider-title">
+                                    <p style="color:#ffffff">White</p>
                                 </div>
                             </div>
 
@@ -138,13 +228,13 @@
                         <div class="slider-title">
                             <div class="slider-group">
                                 <div>
-                                    <input type="color" id="Trans2" name="Trans2" value="#000000" oninput="Trans2Picker()">
-                                    <label for="Trans2">Trans 2</label>
+                                    <input type="color" id="Logo" name="Logo" value="#000000" oninput="LogoPicker()">
+                                    <label for="Logo">Logo</label>
                                 </div>
                                 <br />
                                 <div class="slider-box">
                                     <div class="num-wrapper">
-                                        <input id='cc10' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar10(); ">
+                                        <input id='cc14' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar14(); ">
                                     </div>
 
                                     <div class="slider-title">
@@ -154,7 +244,7 @@
 
                                 <div class="slider-box">
                                     <div class="num-wrapper">
-                                        <input id='cc11' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar11()">
+                                        <input id='cc15' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar15()">
                                     </div>
 
                                     <div class="slider-title">
@@ -164,7 +254,7 @@
 
                                 <div class="slider-box">
                                     <div class="num-wrapper">
-                                        <input id='cc12' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar12()">
+                                        <input id='cc16' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar16()">
                                     </div>
 
                                     <div class="slider-title">
@@ -174,7 +264,7 @@
 
                                 <div class="slider-box">
                                     <div class="num-wrapper">
-                                        <input id='cc13' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar13()">
+                                        <input id='cc17' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar17()">
                                     </div>
 
                                     <div class="slider-title">
@@ -184,17 +274,16 @@
 
                             </div>
 
-
                             <div class="slider-title">
                                 <div class="slider-group">
                                     <div>
-                                        <input type="color" id="Logo" name="Logo" value="#000000" oninput="LogoPicker()">
-                                        <label for="Logo">Logo</label>
+                                        <input type="color" id="Club" name="Club" value="#000000" oninput="ClubPicker()">
+                                        <label for="Club">Club</label>
                                     </div>
                                     <br />
                                     <div class="slider-box">
                                         <div class="num-wrapper">
-                                            <input id='cc14' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar14(); ">
+                                            <input id='cc18' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar18(); ">
                                         </div>
 
                                         <div class="slider-title">
@@ -204,7 +293,7 @@
 
                                     <div class="slider-box">
                                         <div class="num-wrapper">
-                                            <input id='cc15' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar15()">
+                                            <input id='cc19' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar19()">
                                         </div>
 
                                         <div class="slider-title">
@@ -214,7 +303,7 @@
 
                                     <div class="slider-box">
                                         <div class="num-wrapper">
-                                            <input id='cc16' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar16()">
+                                            <input id='cc20' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar20()">
                                         </div>
 
                                         <div class="slider-title">
@@ -224,7 +313,7 @@
 
                                     <div class="slider-box">
                                         <div class="num-wrapper">
-                                            <input id='cc17' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar17()">
+                                            <input id='cc21' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar21()">
                                         </div>
 
                                         <div class="slider-title">
@@ -237,13 +326,13 @@
                                 <div class="slider-title">
                                     <div class="slider-group">
                                         <div>
-                                            <input type="color" id="Club" name="Club" value="#000000" oninput="ClubPicker()">
-                                            <label for="Club">Club</label>
+                                            <input type="color" id="Regie" name="Regie" value="#000000" oninput="RegiePicker()">
+                                            <label for="Regie">Regie</label>
                                         </div>
                                         <br />
                                         <div class="slider-box">
                                             <div class="num-wrapper">
-                                                <input id='cc18' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar18(); ">
+                                                <input id='cc22' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar22(); ">
                                             </div>
 
                                             <div class="slider-title">
@@ -253,7 +342,7 @@
 
                                         <div class="slider-box">
                                             <div class="num-wrapper">
-                                                <input id='cc19' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar19()">
+                                                <input id='cc23' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar23()">
                                             </div>
 
                                             <div class="slider-title">
@@ -263,7 +352,7 @@
 
                                         <div class="slider-box">
                                             <div class="num-wrapper">
-                                                <input id='cc20' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar20()">
+                                                <input id='cc24' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar24()">
                                             </div>
 
                                             <div class="slider-title">
@@ -271,73 +360,24 @@
                                             </div>
                                         </div>
 
-                                        <div class="slider-box">
-                                            <div class="num-wrapper">
-                                                <input id='cc21' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar21()">
-                                            </div>
-
-                                            <div class="slider-title">
-                                                <p style="color:#ffffff">White</p>
-                                            </div>
-                                        </div>
 
                                     </div>
 
-                                    <div class="slider-title">
-                                        <div class="slider-group">
-                                            <div>
-                                                <input type="color" id="Regie" name="Regie" value="#000000" oninput="RegiePicker()">
-                                                <label for="Regie">Regie</label>
-                                            </div>
-                                            <br />
-                                            <div class="slider-box">
-                                                <div class="num-wrapper">
-                                                    <input id='cc22' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar22(); ">
-                                                </div>
-
-                                                <div class="slider-title">
-                                                    <p style="color:#ff0000">Red</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="slider-box">
-                                                <div class="num-wrapper">
-                                                    <input id='cc23' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar23()">
-                                                </div>
-
-                                                <div class="slider-title">
-                                                    <p style="color:#00ff00">Green</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="slider-box">
-                                                <div class="num-wrapper">
-                                                    <input id='cc24' type='number' placeholder='0' min='0' max='255' step='1' oninput="prepareVar24()">
-                                                </div>
-
-                                                <div class="slider-title">
-                                                    <p style="color:#0099ff">Blue</p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
-                                <div id='controls'>
-                                    <ul id='mode'>
-                                        <li><a class='mem' id='0'>Load</a></li>
-                                        <li><a class='mem' id='1'>Save</a></li>
-                                        <li><a class='mem' id='2'>Output</a></li>
 
-                                    </ul>
-                                </div>
-                                </form>
+
                             </div>
-                            <!--  END CONTENT -->
+                            <div id='controls'>
+                                <ul id='mode'>
+                                    <li><a class='mem' id='0'>Load</a></li>
+                                    <li><a class='mem' id='1'>Save</a></li>
+                                    <li><a class='mem' id='2'>Output</a></li>
+
+                                </ul>
+                            </div>
+                            </form>
+                        </div>
+                        <!--  END CONTENT -->
     </body>
 
 </html>

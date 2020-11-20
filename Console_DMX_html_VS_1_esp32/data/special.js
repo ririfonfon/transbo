@@ -28,6 +28,7 @@ function connect() {
         } //if
 
         if (e.data.charAt(0) == 'b') {
+
             if (e.data.charAt(1) == 'a') {
                 var data = e.data.split(':');
                 document.getElementById('cc1').value = data[1];
@@ -175,6 +176,28 @@ function connect() {
             } //if x
 
         } //if a
+        else if (e.data.charAt(0) == 'e') {
+
+            if (e.data.charAt(1) == 'a') {
+                var data = e.data.split(':');
+                document.getElementById('cc25').value = data[1];
+                setSandwichPicker()
+            } //if a
+
+            if (e.data.charAt(1) == 'b') {
+                var data = e.data.split(':');
+                document.getElementById('cc26').value = data[1];
+                setSandwichPicker()
+            } //if b
+
+            if (e.data.charAt(1) == 'c') {
+                var data = e.data.split(':');
+                document.getElementById('cc27').value = data[1];
+                setSandwichPicker()
+            } //if c
+
+
+        } // if e
 
     }; //function (e)
 
@@ -355,6 +378,30 @@ function setRegiePicker() {
 }
 
 
+
+function SandwichPicker() {
+    var picker = document.getElementById('Sandwich')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc25').value = color.r
+    document.getElementById('cc26').value = color.g
+    document.getElementById('cc27').value = color.b
+
+    prepareVar25()
+    prepareVar26()
+    prepareVar27()
+}
+
+function setSandwichPicker() {
+    var red = document.getElementById('cc25').value
+    var green = document.getElementById('cc26').value
+    var blue = document.getElementById('cc27').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Sandwich').value = colorHex
+}
+
+////////////////////////////////////////////////////////////////prepare
 
 function prepareVar1() {
     var a = parseInt(document.getElementById('cc1').value).toString(8);
@@ -592,6 +639,36 @@ function prepareVar24() {
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 24
+
+function prepareVar25() {
+    var a = parseInt(document.getElementById('cc25').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ea" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 25
+
+function prepareVar26() {
+    var a = parseInt(document.getElementById('cc26').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eb" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 26
+
+function prepareVar27() {
+    var a = parseInt(document.getElementById('cc27').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ec" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 27
 
 
 

@@ -41,6 +41,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 2)
     {
@@ -81,6 +86,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 3)
     {
@@ -121,6 +131,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 4)
     {
@@ -161,6 +176,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 5)
     {
@@ -201,6 +221,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 6)
     {
@@ -235,6 +260,11 @@ void mem_value(int a)
         rered = crered;
         regreen = cregreen;
         reblue = creblue;
+
+        // grp sandwich
+        sred = csred;
+        sgreen = csgreen;
+        sblue = csblue;
     }
     else if (a == 8)
     {
@@ -275,6 +305,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 9)
     {
@@ -315,6 +350,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 10)
     {
@@ -355,6 +395,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 11)
     {
@@ -395,6 +440,11 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
     else if (a == 12)
     {
@@ -435,5 +485,10 @@ void mem_value(int a)
         rered = lred;
         regreen = lgreen;
         reblue = lblue;
+
+        // grp sandwich
+        sred = lred;
+        sgreen = lgreen;
+        sblue = lblue;
     }
 }

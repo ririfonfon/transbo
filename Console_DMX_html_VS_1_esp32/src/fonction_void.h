@@ -37,6 +37,9 @@ void eeprom_read()
     crered = EEPROM.read(22);
     cregreen = EEPROM.read(23);
     creblue = EEPROM.read(24);
+    csred = EEPROM.read(25);
+    csgreen = EEPROM.read(26);
+    csblue = EEPROM.read(27);
 
 #ifdef DEBUG
     Serial.println("EEPROM READ");
@@ -69,6 +72,9 @@ void eeprom_write()
     EEPROM.write(22, crered);
     EEPROM.write(23, cregreen);
     EEPROM.write(24, creblue);
+    EEPROM.write(25, csred);
+    EEPROM.write(26, csgreen);
+    EEPROM.write(27, csblue);
 
     EEPROM.write(62, 'O');
     EEPROM.write(63, 'K');
@@ -118,6 +124,10 @@ void load_spec()
             webSocket.sendTXT(i, "bv:" + String(lround(crered)));
             webSocket.sendTXT(i, "bw:" + String(lround(cregreen)));
             webSocket.sendTXT(i, "bx:" + String(lround(creblue)));
+
+            webSocket.sendTXT(i, "ea:" + String(lround(csred)));
+            webSocket.sendTXT(i, "eb:" + String(lround(csgreen)));
+            webSocket.sendTXT(i, "ec:" + String(lround(csblue)));
 
         } // if (list[i] !=0)
 
@@ -245,21 +255,21 @@ void send_rvb3()
     for (int i = 1; i < (sizeof(RRR) / 4); i++)
     {
         int temp = RRR[i];
-        D[temp] = round((cred / 255) * Mast[3]);
+        D[temp] = cred ;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for RRR
 
     for (int i = 1; i < (sizeof(GGG) / 4); i++)
     {
         int temp = GGG[i];
-        D[temp] = round((cgreen / 255) * Mast[3]);
+        D[temp] = cgreen;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for GGG
 
     for (int i = 1; i < (sizeof(BBB) / 4); i++)
     {
         int temp = BBB[i];
-        D[temp] = round((cblue / 255) * Mast[3]);
+        D[temp] = cblue;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBB
 
@@ -288,6 +298,28 @@ void send_rvb4()
         D[temp] = ((lblue / 255) * Mast[4]);
         ESP32DMX.setSlot(temp, D[temp]);
     } //for B
+
+    //grp sandwich
+    for (int i = 1; i < (sizeof(RRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRR[i];
+        D[temp] = sred ;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGG[i];
+        D[temp] = sgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBB[i];
+        D[temp] = sblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBB
 
 } //send_rvb4
 
@@ -468,6 +500,28 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBBBB
 
+    ///////////////////////////////////////////////////////grp sandwich
+    for (int i = 1; i < (sizeof(RRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRR[i];
+        D[temp] = sred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGG[i];
+        D[temp] = sgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBB[i];
+        D[temp] = sblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBB
+
 } //send_rvb6
 
 void send_Mast(int Mas)
@@ -497,6 +551,15 @@ void send_Mast(int Mas)
         {
             int temp = M3[i];
             D[temp] = Mast[3];
+            ESP32DMX.setSlot(temp, D[temp]);
+        } //for M3
+    }
+    if (Mas == 4)
+    {
+        for (int i = 1; i < (sizeof(M4) / 4); i++)
+        {
+            int temp = M4[i];
+            D[temp] = Mast[4];
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M3
     }
@@ -579,6 +642,18 @@ void send_Auto_on()
         D[temp] = 127;
         ESP32DMX.setSlot(temp, D[temp]);
     }
+    for (int i = 1; i < (sizeof(Soundcob) / 4); i++)
+    {
+        int temp = Soundcob[i];
+        D[temp] = 160;// 110 cut 160 fade 210 in&out 
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speedcob) / 4); i++)
+    {
+        int temp = Speedcob[i];
+        D[temp] = 180;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
 } //send_Auto_on
 
 void send_Auto_off()
@@ -604,6 +679,18 @@ void send_Auto_off()
     for (int i = 1; i < (sizeof(Speednicols) / 4); i++)
     {
         int temp = Speednicols[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Soundcob) / 4); i++)
+    {
+        int temp = Soundcob[i];
+        D[temp] = 0;
+        ESP32DMX.setSlot(temp, D[temp]);
+    }
+    for (int i = 1; i < (sizeof(Speedcob) / 4); i++)
+    {
+        int temp = Speedcob[i];
         D[temp] = 0;
         ESP32DMX.setSlot(temp, D[temp]);
     }
@@ -667,6 +754,10 @@ void defo_dmx()
     regreen = 127;
     reblue = 0;
 
+    sred = 255; //sandwich
+    sgreen = 70;
+    sblue = 200;
+
     send_rvb6();
 } //defo_dmx
 
@@ -720,6 +811,10 @@ void init_eeprom()
         crered = 0; // regie
         cregreen = 0;
         creblue = 0;
+
+        csred = 0; // sandwich
+        csgreen = 0;
+        csblue = 0;
 
         eeprom_write();
 
