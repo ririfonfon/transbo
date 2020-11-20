@@ -6,6 +6,16 @@ html {
     max-height: 900px;
 }
 
+
+/* HEAD NAME */
+
+h1 {
+    margin: auto;
+    margin-bottom: 20px;
+    color: #454545;
+    text-align: center;
+}
+
 body {
     width: 100%;
     max-width: 800px;
@@ -22,12 +32,27 @@ body {
     /* border: 1px solid green; */
 }
 
-
-/* memories *6 */
-
 form {
     text-align: center;
 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.noscroll {
+    /* overflow: hidden; */
+    overflow: visible;
+    /* position: fixed; */
+}
+
+
+/******************************* SLIDERS *********************************/
 
 input[type=range] {
     -webkit-appearance: none;
@@ -238,8 +263,6 @@ input[type=range]:focus::-ms-fill-upper {
     width: 300px;
     height: 75px;
     margin: 0px;
-    /* transform-origin: 100px 100px; */
-    /* transform: rotate(-90deg); */
 }
 
 
@@ -251,31 +274,15 @@ input[type=range]:focus::-ms-fill-upper {
     color: #000000;
 }
 
-h1 {
-    margin: auto;
-    margin-bottom: 20px;
-    color: #454545;
-    text-align: center;
-}
+
+/******************************* SLIDERS *********************************/
+
+
+/******************************* COLORPICKER *****************************/
 
 .colorbar-title {
     display: block;
     padding: 0px 3px;
-}
-
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.noscroll {
-    /* overflow: hidden; */
-    overflow: visible;
-    /* position: fixed; */
 }
 
 #colorbar {
@@ -289,6 +296,12 @@ h1 {
     /* width: 360px;
     height: 100px; */
 }
+
+
+/******************************* COLORPICKER *****************************/
+
+
+/********************************** MEMORY *******************************/
 
 ul#controls {
     display: inline-block;
@@ -333,6 +346,12 @@ ul#go {
     /* width: auto%; */
     padding-left: 10px;
 }
+
+
+/********************************** MEMORY *******************************/
+
+
+/******************************** LIVE & BAR *****************************/
 
 vul#live liv {
     display: inline-block;
@@ -391,3 +410,6 @@ vul {
     top: -75px;
     left: 0px;
 }
+
+
+/******************************** LIVE & BAR *****************************/
