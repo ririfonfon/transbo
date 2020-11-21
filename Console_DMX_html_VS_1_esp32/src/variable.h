@@ -41,9 +41,9 @@ int GG[] = {0, 123, 133, 143, 153, 163};
 int BB[] = {0, 124, 134, 144, 154, 164};
 
 //grp Comptoire
-int RRR[] = {0, 21, 24, 27};
-int GGG[] = {0, 22, 25, 28};
-int BBB[] = {0, 23, 26, 29};
+int RRR[] = {0, 52, 62, 72, 82, 92};
+int GGG[] = {0, 53, 63, 73, 83, 93};
+int BBB[] = {0, 54, 64, 74, 84, 94};
 
 //grp trans 2
 int RRRR[] = {0, 172, 180};
@@ -58,10 +58,10 @@ int BBBBB[] = {0, 190};
 int WWWWW[] = {0, 191};
 
 //grp club
-int RRRRRR[] = {0, 195};
-int GGGGGG[] = {0, 196};
-int BBBBBB[] = {0, 197};
-int WWWWWW[] = {0, 198};
+int RRRRRR[] = {0, 196};
+int GGGGGG[] = {0, 197};
+int BBBBBB[] = {0, 198};
+int WWWWWW[] = {0, 199};
 
 //grp regie
 int RRRRRRR[] = {0, 102, 112};
