@@ -255,7 +255,7 @@ void send_rvb3()
     for (int i = 1; i < (sizeof(RRR) / 4); i++)
     {
         int temp = RRR[i];
-        D[temp] = cred ;
+        D[temp] = cred;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for RRR
 
@@ -303,7 +303,7 @@ void send_rvb4()
     for (int i = 1; i < (sizeof(RRRRRRRR) / 4); i++)
     {
         int temp = RRRRRRRR[i];
-        D[temp] = sred ;
+        D[temp] = sred;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for RRRRRRRRR
 
@@ -329,21 +329,21 @@ void send_rvb6()
     for (int i = 1; i < (sizeof(R) / 4); i++)
     {
         int temp = R[i];
-        D[temp] = ((lred / 255) * Mast[5]);
+        D[temp] = ((lred / 255) * Mast[4]);
         ESP32DMX.setSlot(temp, D[temp]);
     } //for R
 
     for (int i = 1; i < (sizeof(G) / 4); i++)
     {
         int temp = G[i];
-        D[temp] = ((lgreen / 255) * Mast[5]);
+        D[temp] = ((lgreen / 255) * Mast[4]);
         ESP32DMX.setSlot(temp, D[temp]);
     } //for G
 
     for (int i = 1; i < (sizeof(B) / 4); i++)
     {
         int temp = B[i];
-        D[temp] = ((lblue / 255) * Mast[5]);
+        D[temp] = ((lblue / 255) * Mast[4]);
         ESP32DMX.setSlot(temp, D[temp]);
     } //for B
 
@@ -373,21 +373,21 @@ void send_rvb6()
     for (int i = 1; i < (sizeof(RRR) / 4); i++)
     {
         int temp = RRR[i];
-        D[temp] = round((cred / 255) * Mast[3]);
+        D[temp] = cred;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for RRR
 
     for (int i = 1; i < (sizeof(GGG) / 4); i++)
     {
         int temp = GGG[i];
-        D[temp] = round((cgreen / 255) * Mast[3]);
+        D[temp] = cgreen;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for GGG
 
     for (int i = 1; i < (sizeof(BBB) / 4); i++)
     {
         int temp = BBB[i];
-        D[temp] = round((cblue / 255) * Mast[3]);
+        D[temp] = cblue;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBB
 
@@ -645,7 +645,7 @@ void send_Auto_on()
     for (int i = 1; i < (sizeof(Soundcob) / 4); i++)
     {
         int temp = Soundcob[i];
-        D[temp] = 160;// 110 cut 160 fade 210 in&out 
+        D[temp] = 160; // 110 cut 160 fade 210 in&out
         ESP32DMX.setSlot(temp, D[temp]);
     }
     for (int i = 1; i < (sizeof(Speedcob) / 4); i++)
