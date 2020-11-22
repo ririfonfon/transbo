@@ -351,6 +351,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:1");
                 mem_value(1);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
             }                //mem1 mauve
 
@@ -360,6 +363,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:2");
                 mem_value(2);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
             }                //mem2 rouge
 
@@ -369,6 +375,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:3");
                 mem_value(3);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
             }                //mem3 vert
 
@@ -378,6 +387,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:4");
                 mem_value(4);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
             }                //mem4 bleu
 
@@ -387,6 +399,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:5");
                 mem_value(5);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
             }                //mem5 orange
 
@@ -397,6 +412,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 eeprom_read();
                 mem_value(6);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6();
             } //mem6 special
 
@@ -405,7 +423,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mem = 7;
                 feedback(num, "m:7");
                 send_Auto_on();
-
+                OFF = false;
             } // mem7 audio
 
             else if (check == 8)
@@ -414,6 +432,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:8");
                 mem_value(8);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
 
             } // mem8 yellow
@@ -424,6 +445,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:9");
                 mem_value(9);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
 
             } // mem9 magenta
@@ -434,6 +458,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:10");
                 mem_value(10);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
 
             } // mem10 cyan
@@ -444,6 +471,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:11");
                 mem_value(11);
                 send_Auto_off();
+                OFF = true;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
 
             } // mem11 [   ]
@@ -454,6 +484,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "m:12");
                 mem_value(12);
                 send_Auto_off();
+                OFF = false;
+                send_Mast(1);
+                send_Mast(2);
                 send_rvb6(); // all
 
             } // mem12 SERVICE

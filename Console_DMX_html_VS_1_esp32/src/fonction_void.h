@@ -531,7 +531,14 @@ void send_Mast(int Mas)
         for (int i = 1; i < (sizeof(M1) / 4); i++)
         {
             int temp = M1[i];
-            D[temp] = Mast[1];
+            if (OFF)
+            {
+                D[temp] = 0;
+            }
+            else
+            {
+                D[temp] = Mast[1];
+            }
             ESP32DMX.setSlot(temp, D[temp]);
 
         } //for M1
@@ -541,7 +548,14 @@ void send_Mast(int Mas)
         for (int i = 1; i < (sizeof(M2) / 4); i++)
         {
             int temp = M2[i];
-            D[temp] = Mast[2];
+            if (OFF)
+            {
+                D[temp] = 0;
+            }
+            else
+            {
+                D[temp] = Mast[2];
+            }
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M2
     }

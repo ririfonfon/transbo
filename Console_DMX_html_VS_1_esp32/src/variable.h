@@ -1,6 +1,7 @@
 
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
+bool OFF = false;
 
 const uint8_t Master = 10;
 float Mast[Master];
