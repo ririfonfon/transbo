@@ -86,9 +86,9 @@ void setup()
   // WiFi.begin();
   // IPAddress myIP = WiFi.softAPIP();
 
-  IPAddress Ip(192, 168, 0, 101);
-  IPAddress NMask(255, 255, 255, 0);
-  WiFi.config(Ip, Ip, NMask);
+  // IPAddress Ip(192, 168, 0, 101);
+  // IPAddress NMask(255, 255, 255, 0);
+  // WiFi.config(Ip, Ip, NMask);
   WiFi.begin(ssid, password);
   delay(1000);
   IPAddress myIP = WiFi.localIP();
