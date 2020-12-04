@@ -1,4 +1,6 @@
 
+#define DIA 30
+
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
 bool OFF = false;
@@ -7,7 +9,8 @@ const uint8_t Master = 10;
 float Mast[Master];
 uint8_t Mem = 1;
 uint8_t etat_live = 22;
-int M = 255;                             // grand master
+int M = 255;                             // grand master live
+int MM = 255;                            // grand master bar
 int M1[] = {0, 41, 42};                  // access
 int M2[] = {0, 43, 44};                  // vest
 int M3[] = {0, 51, 61, 71, 81, 91};      // compt
@@ -24,7 +27,7 @@ int Speedfull[] = {0, 58, 68, 78, 88, 98, 129, 139, 149, 159, 169}; // 127
 int Soundnicols[] = {0, 177, 185, 193, 201}; // 253
 int Speednicols[] = {0, 178, 186, 194, 202}; // 127
 
-int Soundcob[] = {0, 36}; // 110 cut 160 fade 210 in&out 
+int Soundcob[] = {0, 36}; // 110 cut 160 fade 210 in&out
 int Speedcob[] = {0, 37}; // 127
 
 uint8_t start_dmx = 1;

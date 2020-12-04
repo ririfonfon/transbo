@@ -559,21 +559,21 @@ void send_Mast(int Mas)
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M2
     }
-    if (Mas == 3)
+    if (Mas == 3 || Mas == 0)
     {
         for (int i = 1; i < (sizeof(M3) / 4); i++)
         {
             int temp = M3[i];
-            D[temp] = Mast[3];
+            D[temp] = (Mast[3] / 225 ) * MM;
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M3
     }
-    if (Mas == 4)
+    if (Mas == 4 || Mas == 0)
     {
         for (int i = 1; i < (sizeof(M4) / 4); i++)
         {
             int temp = M4[i];
-            D[temp] = Mast[4];
+            D[temp] = (Mast[4] / 225 ) * MM;
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M3
     }
@@ -859,6 +859,9 @@ void live()
         {
             count -= 1;
             M = count;
+            MM = M + DIA;
+            if (MM > 255)
+                MM = 255;
             send_Mast(0);
             feedback(12, "az:" + String(lround(M)));
         }
@@ -879,6 +882,9 @@ void bar()
         {
             count += 1;
             M = count;
+            MM = M + DIA;
+            if (MM > 255)
+                MM = 255;
             send_Mast(0);
             feedback(12, "az:" + String(lround(M)));
         }
