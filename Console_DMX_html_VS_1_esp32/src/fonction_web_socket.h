@@ -165,6 +165,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             {
                 char *pEnd;
                 M = strtol((const char *)&payload[2], &pEnd, 8);
+                MM = M + DIA;
+                if (MM > 255)
+                MM = 255;
                 send_Mast(0);
                 feedback(num, "az:" + String(lround(M)));
             } //z
