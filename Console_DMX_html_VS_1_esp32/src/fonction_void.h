@@ -40,6 +40,7 @@ void eeprom_read()
     csred = EEPROM.read(25);
     csgreen = EEPROM.read(26);
     csblue = EEPROM.read(27);
+    DIA = EEPROM.read(28);
 
 #ifdef DEBUG
     Serial.println("EEPROM READ");
@@ -75,6 +76,8 @@ void eeprom_write()
     EEPROM.write(25, csred);
     EEPROM.write(26, csgreen);
     EEPROM.write(27, csblue);
+    EEPROM.write(28, DIA);
+
 
     EEPROM.write(62, 'O');
     EEPROM.write(63, 'K');
@@ -128,6 +131,8 @@ void load_spec()
             webSocket.sendTXT(i, "ea:" + String(lround(csred)));
             webSocket.sendTXT(i, "eb:" + String(lround(csgreen)));
             webSocket.sendTXT(i, "ec:" + String(lround(csblue)));
+
+            webSocket.sendTXT(i, "ed:" + String(lround(DIA)));
 
         } // if (list[i] !=0)
 
@@ -829,6 +834,8 @@ void init_eeprom()
         csred = 0; // sandwich
         csgreen = 0;
         csblue = 0;
+
+        DIA = 30;// niveau bar
 
         eeprom_write();
 

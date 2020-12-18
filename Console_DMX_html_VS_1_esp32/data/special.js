@@ -196,6 +196,12 @@ function connect() {
                 setSandwichPicker()
             } //if c
 
+            if (e.data.charAt(1) == 'd') {
+                var data = e.data.split(':');
+                document.getElementById('cc28').value = data[1];
+                setSandwichPicker()
+            } //if d
+
 
         } // if e
 
@@ -669,6 +675,16 @@ function prepareVar27() {
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 27
+
+function prepareVar28() {
+    var a = parseInt(document.getElementById('cc28').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ed" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 28
 
 
 

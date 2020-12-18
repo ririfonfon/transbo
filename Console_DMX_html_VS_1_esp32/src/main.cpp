@@ -148,6 +148,7 @@ void setup()
   server.serveStatic("/main.css", SPIFFS, "/main.css");
   server.serveStatic("/favicon.ico", SPIFFS, "/favicon.ico");
   server.serveStatic("/special.html", SPIFFS, "/special.html");
+  server.serveStatic("/special", SPIFFS, "/special.html");
   server.serveStatic("/special.js", SPIFFS, "/special.js");
   server.serveStatic("/special.css", SPIFFS, "/special.css");
   server.begin();
@@ -160,6 +161,7 @@ void setup()
 
   /*EEPROM*/
   init_eeprom();
+  eeprom_read();
 
 #ifdef DEBUG
   Serial.println("HTTP server started.");

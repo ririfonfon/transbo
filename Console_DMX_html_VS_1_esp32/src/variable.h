@@ -1,5 +1,5 @@
 
-#define DIA 30
+float DIA ;
 
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client

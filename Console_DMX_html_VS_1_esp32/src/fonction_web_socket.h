@@ -317,6 +317,11 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 char *pEnd;
                 csblue = strtol((const char *)&payload[2], &pEnd, 8);
             } //c
+            else if (payload[1] == 'd')
+            {
+                char *pEnd;
+                DIA = strtol((const char *)&payload[2], &pEnd, 8);
+            } //c
         }     //payload[0] == e
         else if (payload[0] == '*')
         {
