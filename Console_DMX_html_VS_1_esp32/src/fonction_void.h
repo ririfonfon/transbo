@@ -858,7 +858,7 @@ void live()
     bool count_clock;
     while (count > 0)
     {
-        count_clock = millis() % 40 < 1;
+        count_clock = millis() % 15 < 1;
         onboard_led.on = millis() % 1000 < 500;
         onboard_led.update();
 
