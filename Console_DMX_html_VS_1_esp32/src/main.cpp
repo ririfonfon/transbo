@@ -70,9 +70,6 @@ void setup()
 #endif
 
   //////////////////////////////////////////////////// connect to WiFi
-  // WiFi.setHostname(host);
-  // IPAddress Ip(202, 208, 210, 1);
-  // IPAddress NMask(255, 255, 255, 0);
 
   // WiFi.mode(WIFI_OFF);
   // delay(1000);
@@ -88,7 +85,12 @@ void setup()
 
   // IPAddress Ip(192, 168, 0, 101);
   // IPAddress NMask(255, 255, 255, 0);
-  // WiFi.config(Ip, Ip, NMask);
+
+  WiFi.setHostname(host);
+  IPAddress Ip(192, 168, 2, 250);
+  IPAddress NMask(255, 255, 255, 0);
+  WiFi.config(Ip, Ip, NMask);
+
   WiFi.begin(ssid, password);
   delay(1000);
   IPAddress myIP = WiFi.localIP();
