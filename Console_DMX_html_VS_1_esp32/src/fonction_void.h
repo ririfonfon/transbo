@@ -256,7 +256,7 @@ void send_rvb2()
 
 void send_rvb3()
 {
-    //grp Comptoire
+    //grp Colonnes
     for (int i = 1; i < (sizeof(RRR) / 4); i++)
     {
         int temp = RRR[i];
@@ -282,7 +282,7 @@ void send_rvb3()
 
 void send_rvb4()
 {
-    //grp Led
+    //grp Led bar
     for (int i = 1; i < (sizeof(R) / 4); i++)
     {
         int temp = R[i];
@@ -330,7 +330,7 @@ void send_rvb4()
 
 void send_rvb6()
 {
-    ///////////////////////////////////////////////////////grp led
+    ///////////////////////////////////////////////////////grp led bar
     for (int i = 1; i < (sizeof(R) / 4); i++)
     {
         int temp = R[i];
@@ -374,7 +374,7 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BB
 
-    ///////////////////////////////////////////////////////grp comptoire
+    ///////////////////////////////////////////////////////grp colonnes
     for (int i = 1; i < (sizeof(RRR) / 4); i++)
     {
         int temp = RRR[i];
@@ -743,7 +743,7 @@ void defo_dmx()
     }
 
     //defo color
-    lred = 255; //led
+    lred = 255; //led bar
     lgreen = 0;
     lblue = 255;
 
@@ -756,7 +756,7 @@ void defo_dmx()
     ttblue = 0;
     ttwhite = 10;
 
-    cred = 255; //comptoire
+    cred = 255; //colonnes
     cgreen = 0;
     cblue = 255;
 
@@ -800,11 +800,11 @@ void init_eeprom()
         Serial.println("EEPROM content cleared!");
 #endif
 
-        ccred = 0; // comptoire
+        ccred = 0; // colonnes
         ccgreen = 0;
         ccblue = 0;
 
-        clred = 0; // led
+        clred = 0; // led bar
         clgreen = 0;
         clblue = 0;
 
