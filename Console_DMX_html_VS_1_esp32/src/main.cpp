@@ -1,5 +1,7 @@
 // platformio run --target uploadfs // cmd console download spiff
 
+#define VERSION 1
+
 #define DEBUG 1
 // #define DEBUGH 1
 // #define DEBUGC 1
@@ -52,6 +54,9 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 #include <fonction_srv_handle_set.h>
 
 #include <fonction_spiffs.h>
+
+// ota
+#include <ota.h>
 
 //////////////////////////////////////////////////// S E T U P
 void setup()
@@ -161,7 +166,7 @@ void setup()
   //////////////////////////////////////////////////// defo dmx
   defo_dmx();
 
-  /*EEPROM*/
+  //////////////////////////////////////////////////// EEPROM
   init_eeprom();
   eeprom_read();
 
@@ -175,6 +180,9 @@ void setup()
   Serial.println("HTTP server OK");
 #endif
 
+//////////////////////////////////////////////////// ota
+ota_setup();
+
 } //setup
 
 //////////////////////////////////////////////////// loop
@@ -184,4 +192,6 @@ void loop()
   server.handleClient();
   onboard_led.on = millis() % 2000 < 1000;
   onboard_led.update();
+  // OTA
+  ota_loop();
 } // loop()
