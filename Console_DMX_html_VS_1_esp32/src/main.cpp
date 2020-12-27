@@ -2,7 +2,7 @@
 
 #define VERSION 1
 
-#define DEBUG 1
+// #define DEBUG 1
 // #define DEBUGH 1
 // #define DEBUGC 1
 // #define DEBUGMASTER 1
@@ -87,9 +87,6 @@ void setup()
   // WiFi.softAP(ssid, password, 10, 1, MAX_CLIENT);
   // WiFi.begin();
   // IPAddress myIP = WiFi.softAPIP();
-
-  // IPAddress Ip(192, 168, 0, 101);
-  // IPAddress NMask(255, 255, 255, 0);
 
   WiFi.setHostname(host);
   IPAddress Ip(192, 168, 2, 250);
