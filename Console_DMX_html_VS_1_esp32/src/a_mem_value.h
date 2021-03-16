@@ -46,6 +46,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 2)
     {
@@ -91,6 +96,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 3)
     {
@@ -136,6 +146,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 4)
     {
@@ -181,6 +196,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 5)
     {
@@ -226,6 +246,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 6)
     {
@@ -265,6 +290,11 @@ void mem_value(int a)
         sred = csred;
         sgreen = csgreen;
         sblue = csblue;
+
+        // grp bouteille
+        bred = cbred;
+        bgreen = cbgreen;
+        bblue = cbblue;
     }
     else if (a == 8)
     {
@@ -310,6 +340,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 9)
     {
@@ -355,6 +390,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 10)
     {
@@ -400,6 +440,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 11)
     {
@@ -445,6 +490,11 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
     else if (a == 12)
     {
@@ -490,5 +540,10 @@ void mem_value(int a)
         sred = lred;
         sgreen = lgreen;
         sblue = lblue;
+
+        // grp bouteille
+        bred = lred;
+        bgreen = lgreen;
+        bblue = lblue;
     }
 }

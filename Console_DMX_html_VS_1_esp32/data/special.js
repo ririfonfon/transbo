@@ -198,9 +198,26 @@ function connect() {
 
             if (e.data.charAt(1) == 'd') {
                 var data = e.data.split(':');
-                document.getElementById('cc28').value = data[1];
-                setSandwichPicker()
+                document.getElementById('cc29').value = data[1];
+                setBouteillePicker()
             } //if d
+
+            if (e.data.charAt(1) == 'e') {
+                var data = e.data.split(':');
+                document.getElementById('cc30').value = data[1];
+                setBouteillePicker()
+            } //if e
+
+            if (e.data.charAt(1) == 'f') {
+                var data = e.data.split(':');
+                document.getElementById('cc31').value = data[1];
+                setBouteillePicker()
+            } //if f
+
+            if (e.data.charAt(1) == 'g') {
+                var data = e.data.split(':');
+                document.getElementById('cc28').value = data[1];
+            } //if g
 
 
         } // if e
@@ -405,6 +422,28 @@ function setSandwichPicker() {
 
     var colorHex = RGBToHex(red, green, blue)
     document.getElementById('Sandwich').value = colorHex
+}
+
+function BouteillePicker() {
+    var picker = document.getElementById('Bouteille')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc29').value = color.r
+    document.getElementById('cc30').value = color.g
+    document.getElementById('cc31').value = color.b
+
+    prepareVar29()
+    prepareVar30()
+    prepareVar31()
+}
+
+function setBouteillePicker() {
+    var red = document.getElementById('cc29').value
+    var green = document.getElementById('cc30').value
+    var blue = document.getElementById('cc31').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Bouteille').value = colorHex
 }
 
 ////////////////////////////////////////////////////////////////prepare
@@ -680,11 +719,41 @@ function prepareVar28() {
     var a = parseInt(document.getElementById('cc28').value).toString(8);
     if (a.length < 2) { a = '0' + a; }
     values = a;
-    var data = "ed" + values;
+    var data = "eg" + values;
     setRegiePicker()
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 28
+
+function prepareVar29() {
+    var a = parseInt(document.getElementById('cc29').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ed" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 29
+
+function prepareVar30() {
+    var a = parseInt(document.getElementById('cc30').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ee" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 30
+
+function prepareVar31() {
+    var a = parseInt(document.getElementById('cc31').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ef" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 31
 
 
 

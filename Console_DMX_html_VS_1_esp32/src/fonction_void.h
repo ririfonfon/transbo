@@ -40,7 +40,10 @@ void eeprom_read()
     csred = EEPROM.read(25);
     csgreen = EEPROM.read(26);
     csblue = EEPROM.read(27);
-    DIA = EEPROM.read(28);
+    cbred = EEPROM.read(28);
+    cbgreen = EEPROM.read(29);
+    cbblue = EEPROM.read(30);
+    DIA = EEPROM.read(31);
 
 #ifdef DEBUG
     Serial.println("EEPROM READ");
@@ -76,7 +79,10 @@ void eeprom_write()
     EEPROM.write(25, csred);
     EEPROM.write(26, csgreen);
     EEPROM.write(27, csblue);
-    EEPROM.write(28, DIA);
+    EEPROM.write(28, cbred);
+    EEPROM.write(29, cbgreen);
+    EEPROM.write(30, cbblue);
+    EEPROM.write(31, DIA);
 
 
     EEPROM.write(62, 'O');
@@ -132,7 +138,11 @@ void load_spec()
             webSocket.sendTXT(i, "eb:" + String(lround(csgreen)));
             webSocket.sendTXT(i, "ec:" + String(lround(csblue)));
 
-            webSocket.sendTXT(i, "ed:" + String(lround(DIA)));
+            webSocket.sendTXT(i, "ed:" + String(lround(cbred)));
+            webSocket.sendTXT(i, "ee:" + String(lround(cbgreen)));
+            webSocket.sendTXT(i, "ef:" + String(lround(cbblue)));
+
+            webSocket.sendTXT(i, "eg:" + String(lround(DIA)));
 
         } // if (list[i] !=0)
 
@@ -325,6 +335,28 @@ void send_rvb4()
         D[temp] = sblue;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBBBBBBB
+
+    //grp bouteille
+    for (int i = 1; i < (sizeof(RRRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRRR[i];
+        D[temp] = bred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGGG[i];
+        D[temp] = bgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBBB[i];
+        D[temp] = bblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBBB
 
 } //send_rvb4
 
@@ -526,6 +558,28 @@ void send_rvb6()
         D[temp] = sblue;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBBBBBBB
+
+    ///////////////////////////////////////////////////////grp bouteille
+    for (int i = 1; i < (sizeof(RRRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRRR[i];
+        D[temp] = bred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGGG[i];
+        D[temp] = bgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBBB[i];
+        D[temp] = bblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBBB
 
 } //send_rvb6
 
@@ -777,6 +831,10 @@ void defo_dmx()
     sgreen = 70;
     sblue = 200;
 
+    sred = 255; //bouteille
+    sgreen = 200;
+    sblue = 200;
+
     send_rvb6();
 } //defo_dmx
 
@@ -834,6 +892,10 @@ void init_eeprom()
         csred = 0; // sandwich
         csgreen = 0;
         csblue = 0;
+
+        cbred = 0; // bouteille
+        cbgreen = 0;
+        cbblue = 0;
 
         DIA = 30;// niveau bar
 

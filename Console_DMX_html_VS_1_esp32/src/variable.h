@@ -14,7 +14,7 @@ int MM = 255;                            // grand master bar
 int M1[] = {0, 41, 42};                  // access
 int M2[] = {0, 43, 44};                  // vest
 int M3[] = {0, 51, 61, 71, 81, 91};      // colonnes
-int M4[] = {0, 24, 31};                  // Led bar
+int M4[] = {0, 17, 24, 31};              // Led bar
 int M5[] = {0, 121, 131, 141, 151, 161}; // trans 1 face
 int M6[] = {0, 171, 179};                // trans 2 lat
 int M7[] = {0, 187};                     // logo
@@ -27,8 +27,8 @@ int Speedfull[] = {0, 58, 68, 78, 88, 98, 108, 118, 128, 138, 148, 158, 168}; //
 int Soundnicols[] = {0, 177, 185, 193, 201}; // 253
 int Speednicols[] = {0, 178, 186, 194, 202}; // 127
 
-int Soundcob[] = {0, 29, 36}; // 110 cut 160 fade 210 in&out
-int Speedcob[] = {0, 30, 37}; // 127
+int Soundcob[] = {0, 22, 29, 36}; // 110 cut 160 fade 210 in&out
+int Speedcob[] = {0, 23, 30, 37}; // 127
 
 uint8_t start_dmx = 1;
 const int end_dmx = 300;
@@ -77,6 +77,11 @@ int RRRRRRRR[] = {0, 32};
 int GGGGGGGG[] = {0, 33};
 int BBBBBBBB[] = {0, 34};
 
+//grp bouteille
+int RRRRRRRRR[] = {0, 18};
+int GGGGGGGGG[] = {0, 19};
+int BBBBBBBBB[] = {0, 20};
+
 //grp rgb Led bar
 float lred;
 float lgreen;
@@ -119,6 +124,11 @@ float reblue;
 float sred;
 float sgreen;
 float sblue;
+
+//grp bouteille
+float bred;
+float bgreen;
+float bblue;
 
 ///////////////////memoire 6 /////////////////////
 
@@ -164,6 +174,11 @@ float creblue;
 float csred;
 float csgreen;
 float csblue;
+
+//grp bouteille
+float cbred;
+float cbgreen;
+float cbblue;
 
 //defo white
 float defowhite = 127;
