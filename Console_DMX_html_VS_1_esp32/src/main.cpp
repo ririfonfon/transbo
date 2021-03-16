@@ -89,8 +89,7 @@ void setup()
   // IPAddress myIP = WiFi.softAPIP();
 
   WiFi.setHostname(host);
-  // IPAddress Ip(192, 168, 2, 250);
-  IPAddress Ip(192, 168, 0, 250);
+  IPAddress Ip(192, 168, 2, 250);
   IPAddress NMask(255, 255, 255, 0);
   WiFi.config(Ip, Ip, NMask);
 
