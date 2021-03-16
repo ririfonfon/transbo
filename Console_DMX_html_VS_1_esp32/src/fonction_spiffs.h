@@ -56,9 +56,9 @@ String getContentType(String filename)
 
 bool handleFileRead(String path)
 {
- #ifdef DEBUG;
+ #ifdef DEBUG
     Serial.println("handleFileRead: " + path);
- #endif;
+ #endif
     if (path.endsWith("/"))
         path += "index.htm";
     String contentType = getContentType(path);
@@ -85,10 +85,10 @@ void handleFileUpload()
         String filename = upload.filename;
         if (!filename.startsWith("/"))
             filename = "/" + filename;
-#ifdef DEBUG;
+#ifdef DEBUG
         Serial.print("handleFileUpload Name: ");
         Serial.println(filename);
-#endif;
+#endif
         fsUploadFile = SPIFFS.open(filename, "w");
         filename = String();
     }
@@ -102,10 +102,10 @@ void handleFileUpload()
     {
         if (fsUploadFile)
             fsUploadFile.close();
-#ifdef DEBUG;
+#ifdef DEBUG
         Serial.print("handleFileUpload Size: ");
         Serial.println(upload.totalSize);
-#endif;
+#endif
     }
 } //handleFileUpload()
 
@@ -114,7 +114,7 @@ void handleFileDelete()
     if (server.args() == 0)
         return server.send(500, "text/plain", "BAD ARGS");
     String path = server.arg(0);
-#ifdef DEBUG;
+#ifdef DEBUG
     Serial.println("handleFileDelete: " + path);
 #endif
     if (path == "/")
@@ -131,9 +131,9 @@ void handleFileCreate()
     if (server.args() == 0)
         return server.send(500, "text/plain", "BAD ARGS");
     String path = server.arg(0);
-#ifdef DEBUG;
+#ifdef DEBUG
     Serial.println("handleFileCreate: " + path);
-#endif;
+#endif
     if (path == "/")
         return server.send(500, "text/plain", "BAD PATH");
     if (SPIFFS.exists(path))
@@ -156,9 +156,9 @@ void handleFileList()
     }
 
     String path = server.arg("dir");
- #ifdef DEBUG;
+ #ifdef DEBUG
     Serial.println("handleFileList: " + path);
- #endif;
+ #endif
     File dir = SPIFFS.open(path);
     path = String();
 
