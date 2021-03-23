@@ -84,7 +84,6 @@ void eeprom_write()
     EEPROM.write(30, cbblue);
     EEPROM.write(31, DIA);
 
-
     EEPROM.write(62, 'O');
     EEPROM.write(63, 'K');
     EEPROM.commit();
@@ -623,7 +622,7 @@ void send_Mast(int Mas)
         for (int i = 1; i < (sizeof(M3) / 4); i++)
         {
             int temp = M3[i];
-            D[temp] = (Mast[3] / 255 ) * M;
+            D[temp] = (Mast[3] / 255) * M;
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M3
     }
@@ -632,7 +631,7 @@ void send_Mast(int Mas)
         for (int i = 1; i < (sizeof(M4) / 4); i++)
         {
             int temp = M4[i];
-            D[temp] = (Mast[4] / 255 ) * MM;
+            D[temp] = (Mast[4] / 255) * MM;
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M3
     }
@@ -797,45 +796,55 @@ void defo_dmx()
     }
 
     //defo color
-    lred = 255; //led bar
+    //grp rgb Led bar
+    lred = 255;
     lgreen = 0;
     lblue = 255;
 
-    tred = 255; // trans 1
-    tgreen = 127;
-    tblue = 0;
+    //grp rgb Transbo 1
+    tred = lred;
+    tgreen = lgreen;
+    tblue = lblue;
 
-    ttred = 255; //trans 2
-    ttgreen = 0;
-    ttblue = 0;
-    ttwhite = 10;
+    //grp rgbw Transbo 2
+    ttred = lred;
+    ttgreen = lgreen;
+    ttblue = lblue;
+    ttwhite = defowhite;
 
-    cred = 255; //colonnes
-    cgreen = 0;
-    cblue = 255;
+    //grp rgb colonnes
+    cred = lred;
+    cgreen = lgreen;
+    cblue = lblue;
 
-    lored = 255; //logo
-    logreen = 0;
-    loblue = 255;
+    //grp rgbw logo
+    lored = lred;
+    logreen = lgreen;
+    loblue = lblue;
+    lowhite = defowhite;
 
-    clured = 255; //club
-    clugreen = 127;
-    clublue = 0;
-    clowhite = 10;
+    //grp rgbw club
+    clured = lred;
+    clugreen = lgreen;
+    clublue = lblue;
+    cluwhite = 0;
 
-    rered = 255; // regie
-    regreen = 127;
-    reblue = 0;
+    //grp rgb regie
+    rered = lred;
+    regreen = lgreen;
+    reblue = lblue;
 
-    sred = 255; //sandwich
-    sgreen = 70;
-    sblue = 200;
+    // grp sandwich
+    sred = lred;
+    sgreen = lgreen;
+    sblue = lblue;
 
-    sred = 255; //bouteille
-    sgreen = 200;
-    sblue = 200;
-
+    // grp bouteille
+    bred = lred;
+    bgreen = lgreen;
+    bblue = lblue;
     send_rvb6();
+
 } //defo_dmx
 
 void init_eeprom()
@@ -897,7 +906,7 @@ void init_eeprom()
         cbgreen = 0;
         cbblue = 0;
 
-        DIA = 30;// niveau bar
+        DIA = 30; // niveau bar
 
         eeprom_write();
 
@@ -960,3 +969,15 @@ void bar()
     }
 
 } //bar
+
+void defo_master()
+{
+    MM = 0;
+    send_Mast(0);
+
+    for (int i = 3; i > 10; i++)
+    {
+        Mast[i] = 255;
+        send_Mast(i);
+    }
+}

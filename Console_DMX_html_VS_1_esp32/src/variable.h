@@ -7,6 +7,7 @@ bool OFF = false;
 
 const uint8_t Master = 10;
 float Mast[Master];
+
 uint8_t Mem = 1;
 uint8_t etat_live = 22;
 int M = 255;                             // grand master live

@@ -11,7 +11,10 @@ const char *host = "console";
 // const char *ssid = "kxkm-wifi";
 // const char *password = "KOMPLEXKAPHARNAUM";
 
-const char *ssid = "loge transbo";
-const char *password = "experience";
+// const char *ssid = "loge transbo";
+// const char *password = "experience";
+
+const char *ssid = "esp-club";
+const char *password = "lightclub";
 
 #define MAX_CLIENT 6

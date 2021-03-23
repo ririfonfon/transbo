@@ -39,6 +39,8 @@ struct Led
   }
 };
 
+bool master_init = true;
+
 Led onboard_led = {2, false};
 
 WebServer server(80);
@@ -90,7 +92,8 @@ void setup()
 
   WiFi.setHostname(host);
   IPAddress Ip(192, 168, 2, 250);
-  IPAddress NMask(255, 255, 255, 0);
+  // IPAddress Ip(192, 168, 0, 150);
+  IPAddress NMask(255, 0, 0, 0);
   WiFi.config(Ip, Ip, NMask);
 
   WiFi.begin(ssid, password);
@@ -191,4 +194,10 @@ void loop()
   onboard_led.update();
   // OTA
   ota_loop();
+
+  if (master_init)
+  {
+    defo_master();
+    master_init = false;
+  }
 } // loop()
