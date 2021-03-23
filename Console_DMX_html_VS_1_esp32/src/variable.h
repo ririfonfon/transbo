@@ -6,12 +6,12 @@ bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
 bool OFF = false;
 
 const uint8_t Master = 10;
-float Mast[Master];
+float Mast[Master] = {0, 0, 0, 255, 255, 255, 255, 255, 255, 255};
 
 uint8_t Mem = 1;
-uint8_t etat_live = 22;
-int M = 255;                             // grand master live
-int MM = 255;                            // grand master bar
+uint8_t etat_live = 21;                  // 21 = live 22 = bar
+int M = 0;                               // master live -- bar
+int MM = 255;                            // grand master * bar
 int M1[] = {0, 41, 42};                  // access
 int M2[] = {0, 43, 44};                  // vest
 int M3[] = {0, 51, 61, 71, 81, 91};      // colonnes

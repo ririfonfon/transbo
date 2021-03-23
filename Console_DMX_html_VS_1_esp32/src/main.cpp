@@ -1,6 +1,6 @@
 // platformio run --target uploadfs // cmd console download spiff
 
-#define VERSION 2
+#define VERSION 3
 
 // #define DEBUG 1
 // #define DEBUGH 1
@@ -92,7 +92,7 @@ void setup()
 
   WiFi.setHostname(host);
   IPAddress Ip(192, 168, 2, 250);
-  // IPAddress Ip(192, 168, 0, 150);
+  // IPAddress Ip(192, 168, 0, 150);// riri dev
   IPAddress NMask(255, 0, 0, 0);
   WiFi.config(Ip, Ip, NMask);
 

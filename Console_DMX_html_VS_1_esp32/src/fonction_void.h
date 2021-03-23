@@ -972,7 +972,7 @@ void bar()
 
 void defo_master()
 {
-    MM = 0;
+    MM = DIA;
     send_Mast(0);
 
     for (int i = 3; i > 10; i++)
