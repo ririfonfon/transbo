@@ -17,8 +17,7 @@ https://code.visualstudio.com/
 
 ## patch
 
-
-
+https://github.com/ririfonfon/transbo/blob/master/bidouille%20club%20modif%20Steph%20riri%20plus.xlsx
 
             bidouille club modif Steph riri plus.xlsx
           
