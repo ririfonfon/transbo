@@ -9,8 +9,7 @@ https://fr.aliexpress.com/item/1005002674332093.html?UTABTest=aliabtest247346_32
 
 ## wifi setup
 
-ssid "esp-club"
-password "lightclub"
-
-Ip(192, 168, 2, 250);
-NMask(255, 0, 0, 0);
+- ssid "esp-club"
+- password "lightclub"
+- Ip(192, 168, 2, 250);
+- NMask(255, 0, 0, 0);
