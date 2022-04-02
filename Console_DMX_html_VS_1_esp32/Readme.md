@@ -17,6 +17,5 @@ https://code.visualstudio.com/
 
 ## patch
 
-
             bidouille club modif Steph riri plus.xlsx
           
