@@ -14,3 +14,9 @@ https://code.visualstudio.com/
 - password "lightclub"
 - Ip(192, 168, 2, 250);
 - NMask(255, 0, 0, 0);
+
+## patch
+
+
+            bidouille club modif Steph riri plus.xlsx
+          
