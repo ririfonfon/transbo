@@ -281,6 +281,49 @@ void send_rvb2()
         D[temp] = cluwhite;
         ESP32DMX.setSlot(temp, D[temp]);
     } //for WWWW
+
+    ///////////////////////////////////////////////////////escalier
+    for (int i = 1; i < (sizeof(RRRRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRRRR[i];
+        D[temp] = ered;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGGGG[i];
+        D[temp] = egreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBBBB[i];
+        D[temp] = eblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBBBB
+
+    for (int i = 1; i < (sizeof(WWWWWWWWWW) / 4); i++)
+    {
+        int temp = WWWWWWWWWW[i];
+        D[temp] = ewhite;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for WWWWWWWWWW
+
+    for (int i = 1; i < (sizeof(AAAAAAAAAA) / 4); i++)
+    {
+        int temp = AAAAAAAAAA[i];
+        D[temp] = eambre;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for AAAAAAAAAA
+
+    for (int i = 1; i < (sizeof(UUUUUUUUUU) / 4); i++)
+    {
+        int temp = UUUUUUUUUU[i];
+        D[temp] = euv;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for UUUUUUUUUU
 } //send_rvb2
 
 void send_rvb3()

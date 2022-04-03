@@ -35,6 +35,13 @@ void srv_handle_set()
                 clublue = ttblue;
                 cluwhite = ttwhite;
 
+                ered = ttred;
+                egreen = ttgreen;
+                eblue = ttblue;
+                ewhite = defowhite;
+                eambre = 0;
+                euv = 0;
+
                 send_rvb2();
             }
         }
