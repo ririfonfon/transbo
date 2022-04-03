@@ -333,3 +333,47 @@
         left: 0px;
     }
     /******************************** LIVE & BAR *****************************/
+    /********************************** ESCALIER *******************************/
+    
+        sul#esc {
+            display: inline-block;
+            width: 100%;
+            margin: auto;
+            /* padding-left: 0px; */
+        }
+        
+        sul {
+            text-align: center;
+            padding: 0;
+            margin: auto;
+        }
+        
+        sul#escalier lis {
+            display: inline-block;
+            width: 15%;
+            margin: auto;
+        }
+        
+        sul#brightness lis,
+        sul#speed lis {
+            display: inline-block;
+            width: 15%;
+            margin: auto;
+        }
+        
+        sul lis s {
+            display: block;
+            margin: 10px;
+            padding: 10px 3px;
+            border: 2px solid #454545;
+            border-radius: 5px;
+            color: #454545;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        sul lis s.active {
+            border: 2px solid #BBBBBB;
+            color: #FFFFFF;
+        }
+    /********************************** ESCALIER *******************************/

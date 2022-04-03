@@ -40,6 +40,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 webSocket.sendTXT(i, "ag:" + String(lround(Mast[7])));
                 webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
                 webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
+                webSocket.sendTXT(i, "aj:" + String(lround(Mast[10])));
                 webSocket.sendTXT(i, "az:" + String(lround(M)));
                 webSocket.sendTXT(i, "m:" + String(Mem));
                 webSocket.sendTXT(i, "g:" + String(etat_live));
@@ -158,6 +159,15 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 Mast[9] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(9);
                 feedback(num, "ai:" + String(lround(Mast[9])));
+
+            } //i
+
+            if (payload[1] == 'j')
+            {
+                char *pEnd;
+                Mast[10] = strtol((const char *)&payload[2], &pEnd, 8);
+                send_Mast(10);
+                feedback(num, "aj:" + String(lround(Mast[10])));
 
             } //i
 
@@ -335,8 +345,38 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
             else if (payload[1] == 'g')
             {
                 char *pEnd;
+                cered = strtol((const char *)&payload[2], &pEnd, 8);
+            } //g
+            else if (payload[1] == 'h')
+            {
+                char *pEnd;
+                cegreen = strtol((const char *)&payload[2], &pEnd, 8);
+            } //h
+            else if (payload[1] == 'i')
+            {
+                char *pEnd;
+                ceblue = strtol((const char *)&payload[2], &pEnd, 8);
+            } //i
+            else if (payload[1] == 'j')
+            {
+                char *pEnd;
+                cewhite = strtol((const char *)&payload[2], &pEnd, 8);
+            } //j
+            else if (payload[1] == 'k')
+            {
+                char *pEnd;
+                ceambre = strtol((const char *)&payload[2], &pEnd, 8);
+            } //k
+            else if (payload[1] == 'l')
+            {
+                char *pEnd;
+                ceuv = strtol((const char *)&payload[2], &pEnd, 8);
+            } //l
+            else if (payload[1] == 'm')
+            {
+                char *pEnd;
                 DIA = strtol((const char *)&payload[2], &pEnd, 8);
-            } //c
+            } //m
         }     //payload[0] == e
         else if (payload[0] == '*')
         {
@@ -356,6 +396,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     webSocket.sendTXT(i, "ag:" + String(lround(Mast[7])));
                     webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
                     webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
+                    webSocket.sendTXT(i, "aj:" + String(lround(Mast[10])));
                     webSocket.sendTXT(i, "az:" + String(lround(M)));
                     webSocket.sendTXT(i, "m:" + String(Mem));
                     webSocket.sendTXT(i, "g:" + String(etat_live));
@@ -532,6 +573,35 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 feedback(num, "g:22");
                 bar();
             } //bar
+        }
+        else if (payload[0] == 's')
+        {
+            char *pEnd;
+            int check = strtol((const char *)&payload[1], &pEnd, 10);
+
+            if (check == 1)
+            {
+                GAUCHE = true;
+                DROIT = true;
+            } // G&D
+
+            else if (check == 2)
+            {
+                GAUCHE = true;
+                DROIT = false;
+            } // G
+
+            else if (check == 3)
+            {
+                GAUCHE = false;
+                DROIT = true;
+            } // D
+
+            else if (check == 4)
+            {
+                GAUCHE = false;
+                DROIT = false;
+            } // AUCUN
         }
     } //WStype_TEXT:
     break;

@@ -4,9 +4,11 @@ float DIA;
 int clientn = 0;
 bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
 bool OFF = false;
+bool GAUCHE = true;
+bool DROIT = false;
 
-const uint8_t Master = 10;
-float Mast[Master] = {0, 0, 0, 255, 255, 255, 255, 255, 255, 255};
+const uint8_t Master = 11;
+float Mast[Master] = {0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255};
 
 uint8_t Mem = 1;
 uint8_t etat_live = 21;                  // 21 = live 22 = bar
@@ -21,12 +23,13 @@ int M6[] = {0, 171, 179};                // trans 2 lat
 int M7[] = {0, 187};                     // logo
 int M8[] = {0, 195};                     // club
 int M9[] = {0, 101, 111};                // regie
+int M10[] = {0, 203, 213};               // escalier
 
 int Soundfull[] = {0, 57, 67, 77, 87, 97, 107, 117, 127, 137, 147, 157, 167}; // 25 = auto 1
 int Speedfull[] = {0, 58, 68, 78, 88, 98, 108, 118, 128, 138, 148, 158, 168}; // 127
 
-int Soundnicols[] = {0, 177, 185, 193, 201}; // 253
-int Speednicols[] = {0, 178, 186, 194, 202}; // 127
+int Soundnicols[] = {0, 177, 185, 193, 201, 205, 215}; // 253
+int Speednicols[] = {0, 178, 186, 194, 202, 206, 216}; // 127
 
 int Soundcob[] = {0, 22, 29, 36}; // 110 cut 160 fade 210 in&out
 int Speedcob[] = {0, 23, 30, 37}; // 127
@@ -83,6 +86,14 @@ int RRRRRRRRR[] = {0, 18};
 int GGGGGGGGG[] = {0, 19};
 int BBBBBBBBB[] = {0, 20};
 
+//grp escalier
+int RRRRRRRRRR[] = {0, 207, 217};
+int GGGGGGGGGG[] = {0, 208, 218};
+int BBBBBBBBBB[] = {0, 209, 219};
+int WWWWWWWWWW[] = {0, 210, 220};
+int AAAAAAAAAA[] = {0, 211, 221};
+int UUUUUUUUUU[] = {0, 212, 222};
+
 //grp rgb Led bar
 float lred;
 float lgreen;
@@ -130,6 +141,14 @@ float sblue;
 float bred;
 float bgreen;
 float bblue;
+
+//grp escalier
+float ered;
+float egreen;
+float eblue;
+float ewhite;
+float eambre;
+float euv;
 
 ///////////////////memoire 6 /////////////////////
 
@@ -180,6 +199,14 @@ float csblue;
 float cbred;
 float cbgreen;
 float cbblue;
+
+//grp escalier
+float cered;
+float cegreen;
+float ceblue;
+float cewhite;
+float ceambre;
+float ceuv;
 
 //defo white
 float defowhite = 127;

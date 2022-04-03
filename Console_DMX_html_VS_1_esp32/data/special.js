@@ -216,8 +216,44 @@ function connect() {
 
             if (e.data.charAt(1) == 'g') {
                 var data = e.data.split(':');
-                document.getElementById('cc28').value = data[1];
+                document.getElementById('cc32').value = data[1];
+                setBouteillePicker()
             } //if g
+
+            if (e.data.charAt(1) == 'h') {
+                var data = e.data.split(':');
+                document.getElementById('cc33').value = data[1];
+                setBouteillePicker()
+            } //if h
+
+            if (e.data.charAt(1) == 'i') {
+                var data = e.data.split(':');
+                document.getElementById('cc34').value = data[1];
+                setBouteillePicker()
+            } //if i
+
+            if (e.data.charAt(1) == 'j') {
+                var data = e.data.split(':');
+                document.getElementById('cc35').value = data[1];
+                setBouteillePicker()
+            } //if j
+
+            if (e.data.charAt(1) == 'k') {
+                var data = e.data.split(':');
+                document.getElementById('cc36').value = data[1];
+                setBouteillePicker()
+            } //if k
+
+            if (e.data.charAt(1) == 'l') {
+                var data = e.data.split(':');
+                document.getElementById('cc37').value = data[1];
+                setBouteillePicker()
+            } //if l
+
+            if (e.data.charAt(1) == 'm') {
+                var data = e.data.split(':');
+                document.getElementById('cc28').value = data[1];
+            } //if m
 
 
         } // if e
@@ -444,6 +480,28 @@ function setBouteillePicker() {
 
     var colorHex = RGBToHex(red, green, blue)
     document.getElementById('Bouteille').value = colorHex
+}
+
+function EscalierPicker() {
+    var picker = document.getElementById('Escalier')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc32').value = color.r
+    document.getElementById('cc33').value = color.g
+    document.getElementById('cc34').value = color.b
+
+    prepareVar32()
+    prepareVar33()
+    prepareVar34()
+}
+
+function setEscalierPicker() {
+    var red = document.getElementById('cc32').value
+    var green = document.getElementById('cc33').value
+    var blue = document.getElementById('cc34').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Escalier').value = colorHex
 }
 
 ////////////////////////////////////////////////////////////////prepare
@@ -719,7 +777,7 @@ function prepareVar28() {
     var a = parseInt(document.getElementById('cc28').value).toString(8);
     if (a.length < 2) { a = '0' + a; }
     values = a;
-    var data = "eg" + values;
+    var data = "em" + values;
     setRegiePicker()
     console.log('iData: ' + data);
     connection.send(data);
@@ -755,6 +813,65 @@ function prepareVar31() {
     connection.send(data);
 } //prepare 31
 
+function prepareVar32() {
+    var a = parseInt(document.getElementById('cc32').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eg" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 32
+
+function prepareVar33() {
+    var a = parseInt(document.getElementById('cc33').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eh" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 33
+
+function prepareVar34() {
+    var a = parseInt(document.getElementById('cc34').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ei" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 34
+
+function prepareVar35() {
+    var a = parseInt(document.getElementById('cc35').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ej" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 35
+
+function prepareVar36() {
+    var a = parseInt(document.getElementById('cc36').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ek" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 36
+
+function prepareVar37() {
+    var a = parseInt(document.getElementById('cc37').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "el" + values;
+    setRegiePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 37
 
 
 function submitVal(name, val) {

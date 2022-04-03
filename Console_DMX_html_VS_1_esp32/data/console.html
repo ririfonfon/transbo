@@ -26,6 +26,15 @@
                 <canvas id="colorbar2" width="360" height="100"></canvas>
                 <br/>
 
+                <div id='esc'>
+                    <sul id='escalier'>
+                        <lis><s class='s' id='1'>G&D</s></lis>
+                        <lis><s class='s active' id='2'>G</s></lis>
+                        <lis><s class='s' id='3'>D</s></lis>
+                        <lis><s class='s' id='4'>Aucun</s></lis>
+                    </sul>
+                </div>
+
                 <div class="slider-group">
                     <div class="slider-box">
                         <div class="num-wrapper">
@@ -132,6 +141,18 @@
                         </div>
                         <div class="slider-title">
                             Regie
+                        </div>
+                    </div>
+
+                    <div class="slider-box">
+                        <div class="num-wrapper">
+                            <input id='c10_in' type='number' placeholder='255' min='0' max='255' step='1' oninput="this.form.c10.value=this.value; prepareVar10(); ">
+                        </div>
+                        <div class="slider-wrapper">
+                            <input id='c10' type='range' value='255' min='0' max='255' step='1' oninput="this.form.c10_in.value=this.value; prepareVar10(); ">
+                        </div>
+                        <div class="slider-title">
+                            Escalier
                         </div>
                     </div>
 

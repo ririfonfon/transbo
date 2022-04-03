@@ -32,6 +32,15 @@ function connect() {
             document.getElementById(val).classList.add('active');
         } //if (e.data.charAt(0) == 'm')
 
+        if (e.data.charAt(0) == 's') {
+            var val = e.data.split(':')[1];
+            var elems = document.querySelectorAll('#mode lis s');
+            [].forEach.call(elems, function(sel) {
+                el.classList.remove('active');
+            });
+            document.getElementById(sval).classList.add('active');
+        } //if (e.data.charAt(0) == 'm')
+
         if (e.data.charAt(0) == 'g') {
             var vval = e.data.split(':')[1];
             var velems = document.querySelectorAll('#live liv g');
@@ -95,6 +104,12 @@ function connect() {
                 var data = e.data.split(':');
                 document.getElementById('c9').value = data[1];
                 document.getElementById('c9_in').value = data[1];
+            } //if i
+
+            if (e.data.charAt(1) == 'j') {
+                var data = e.data.split(':');
+                document.getElementById('c10').value = data[1];
+                document.getElementById('c10_in').value = data[1];
             } //if i
 
             if (e.data.charAt(1) == 'z') {
@@ -215,12 +230,30 @@ function prepareVar9() {
     connection.send(data);
 } //prepare 9
 
+function prepareVar10() {
+    var a = parseInt(document.getElementById('c10').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "aj" + values;
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 10
+
 function handle_M_B_S(e) {
     e.preventDefault();
     var name = e.target.className;
     var val = e.target.id;
     console.log('name: ' + name);
     console.log('val: ' + val);
+
+    if (e.target.className.indexOf('s') > -1) {
+        elems = document.querySelectorAll('#escalier lis s');
+        [].forEach.call(selems, function(sel) {
+            sel.classList.remove('active');
+            name = e.target.className;
+        });
+        e.target.classList.add('active');
+    }
 
     if (e.target.className.indexOf('m') > -1) {
         elems = document.querySelectorAll('#mode li a');
@@ -387,6 +420,12 @@ function setup() {
     [].forEach.call(elems, function(el) {
         // el.addEventListener('touchstart', handle_M_B_S, false);
         el.addEventListener('click', handle_M_B_S, false);
+    });
+
+    selems = document.querySelectorAll('sul lis s'); // adds listener
+    [].forEach.call(selems, function(sel) {
+        // el.addEventListener('touchstart', handle_M_B_S, false);
+        sel.addEventListener('click', handle_M_B_S, false);
     });
 
     velems = document.querySelectorAll('vul liv g'); // adds listener

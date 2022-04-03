@@ -43,7 +43,13 @@ void eeprom_read()
     cbred = EEPROM.read(28);
     cbgreen = EEPROM.read(29);
     cbblue = EEPROM.read(30);
-    DIA = EEPROM.read(31);
+    cered = EEPROM.read(31);
+    cegreen = EEPROM.read(32);
+    ceblue = EEPROM.read(33);
+    cewhite = EEPROM.read(34);
+    ceambre = EEPROM.read(35);
+    ceuv = EEPROM.read(36);
+    DIA = EEPROM.read(37);
 
 #ifdef DEBUG
     Serial.println("EEPROM READ");
@@ -82,7 +88,13 @@ void eeprom_write()
     EEPROM.write(28, cbred);
     EEPROM.write(29, cbgreen);
     EEPROM.write(30, cbblue);
-    EEPROM.write(31, DIA);
+    EEPROM.write(31, cered);
+    EEPROM.write(32, cegreen);
+    EEPROM.write(33, ceblue);
+    EEPROM.write(34, cewhite);
+    EEPROM.write(35, ceambre);
+    EEPROM.write(36, ceuv);
+    EEPROM.write(37, DIA);
 
     EEPROM.write(62, 'O');
     EEPROM.write(63, 'K');
@@ -141,7 +153,15 @@ void load_spec()
             webSocket.sendTXT(i, "ee:" + String(lround(cbgreen)));
             webSocket.sendTXT(i, "ef:" + String(lround(cbblue)));
 
-            webSocket.sendTXT(i, "eg:" + String(lround(DIA)));
+            webSocket.sendTXT(i, "eg:" + String(lround(cered)));
+            webSocket.sendTXT(i, "eh:" + String(lround(cegreen)));
+            webSocket.sendTXT(i, "ei:" + String(lround(ceblue)));
+            webSocket.sendTXT(i, "ej:" + String(lround(cewhite)));
+            webSocket.sendTXT(i, "ek:" + String(lround(ceambre)));
+            webSocket.sendTXT(i, "el:" + String(lround(ceuv)));
+
+            webSocket.sendTXT(i, "em:" + String(lround(DIA)));
+
 
         } // if (list[i] !=0)
 
@@ -580,6 +600,49 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } //for BBBBBBBBB
 
+    ///////////////////////////////////////////////////////escalier
+    for (int i = 1; i < (sizeof(RRRRRRRRRR) / 4); i++)
+    {
+        int temp = RRRRRRRRRR[i];
+        D[temp] = ered;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for RRRRRRRRRRR
+
+    for (int i = 1; i < (sizeof(GGGGGGGGG) / 4); i++)
+    {
+        int temp = GGGGGGGGGG[i];
+        D[temp] = egreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for GGGGGGGGGG
+
+    for (int i = 1; i < (sizeof(BBBBBBBBBB) / 4); i++)
+    {
+        int temp = BBBBBBBBBB[i];
+        D[temp] = eblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for BBBBBBBBBB
+
+    for (int i = 1; i < (sizeof(WWWWWWWWWW) / 4); i++)
+    {
+        int temp = WWWWWWWWWW[i];
+        D[temp] = ewhite;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for WWWWWWWWWW
+
+    for (int i = 1; i < (sizeof(AAAAAAAAAA) / 4); i++)
+    {
+        int temp = AAAAAAAAAA[i];
+        D[temp] = eambre;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for AAAAAAAAAA
+
+    for (int i = 1; i < (sizeof(UUUUUUUUUU) / 4); i++)
+    {
+        int temp = UUUUUUUUUU[i];
+        D[temp] = euv;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } //for UUUUUUUUUU
+
 } //send_rvb6
 
 void send_Mast(int Mas)
@@ -684,6 +747,39 @@ void send_Mast(int Mas)
             D[temp] = (Mast[9] / 255) * M;
             ESP32DMX.setSlot(temp, D[temp]);
         } //for M9
+    }
+    if (Mas == 10 || Mas == 0)
+    {
+
+        for (int i = 1; i < (sizeof(M10) / 4); i++)
+        {
+            int temp = M10[i];
+            D[temp] = (Mast[10] / 255) * MM;
+            
+            if(i==1)
+            {
+                if (GAUCHE)
+                {
+                ESP32DMX.setSlot(temp, D[temp]);
+                }
+                else
+                {
+                ESP32DMX.setSlot(temp, 0);
+                }
+            }
+            else if(i==2)
+            {
+                if (DROIT)
+                {
+                ESP32DMX.setSlot(temp, D[temp]);
+                }
+                else
+                {
+                ESP32DMX.setSlot(temp, 0);
+                }
+            }
+            
+        } //for M10
     }
 
 } //send_Mast
@@ -843,6 +939,15 @@ void defo_dmx()
     bred = lred;
     bgreen = lgreen;
     bblue = lblue;
+
+    // grp escalier
+    ered = lred;
+    egreen = lgreen;
+    eblue = lblue;
+    ewhite = defowhite;
+    eambre = 0;
+    euv = 0;
+
     send_rvb6();
 
 } //defo_dmx
@@ -905,6 +1010,13 @@ void init_eeprom()
         cbred = 0; // bouteille
         cbgreen = 0;
         cbblue = 0;
+
+        cered = 0;// escalier
+        cegreen = 0;
+        ceblue = 0;
+        cewhite = 0;
+        ceambre = 0;
+        ceuv = 0;
 
         DIA = 30; // niveau bar
 
@@ -975,7 +1087,7 @@ void defo_master()
     MM = DIA;
     send_Mast(0);
 
-    for (int i = 3; i > 10; i++)
+    for (int i = 3; i > 11; i++)
     {
         Mast[i] = 255;
         send_Mast(i);
