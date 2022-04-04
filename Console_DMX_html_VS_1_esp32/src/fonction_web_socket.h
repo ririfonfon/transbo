@@ -596,12 +596,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 GAUCHE = false;
                 DROIT = true;
             } // D
-
-            else if (check == 4)
-            {
-                GAUCHE = false;
-                DROIT = false;
-            } // AUCUN
         }
     } //WStype_TEXT:
     break;
