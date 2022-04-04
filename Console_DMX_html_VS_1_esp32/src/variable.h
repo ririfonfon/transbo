@@ -14,8 +14,8 @@ uint8_t Mem = 1;
 uint8_t etat_live = 21;                  // 21 = live 22 = bar
 int M = 0;                               // master live -- bar
 int MM = 255;                            // grand master * bar
-int M1[] = {0, 41, 42};                  // access
-int M2[] = {0, 43, 44};                  // vest
+int M1[] = {0, 41, 42, 233};                  // access
+int M2[] = {0, 43, 44, 223};                  // vest
 int M3[] = {0, 51, 61, 71, 81, 91};      // colonnes
 int M4[] = {0, 17, 24, 31};              // Led bar
 int M5[] = {0, 121, 131, 141, 151, 161}; // trans 1 face
@@ -28,8 +28,8 @@ int M10[] = {0, 203, 213};               // escalier
 int Soundfull[] = {0, 57, 67, 77, 87, 97, 107, 117, 127, 137, 147, 157, 167}; // 25 = auto 1
 int Speedfull[] = {0, 58, 68, 78, 88, 98, 108, 118, 128, 138, 148, 158, 168}; // 127
 
-int Soundnicols[] = {0, 177, 185, 193, 201, 205, 215}; // 253
-int Speednicols[] = {0, 178, 186, 194, 202, 206, 216}; // 127
+int Soundnicols[] = {0, 177, 185, 193, 201, 205, 215, 225, 235}; // 253
+int Speednicols[] = {0, 178, 186, 194, 202, 206, 216, 226, 236}; // 127
 
 int Soundcob[] = {0, 22, 29, 36}; // 110 cut 160 fade 210 in&out
 int Speedcob[] = {0, 23, 30, 37}; // 127
@@ -87,12 +87,12 @@ int GGGGGGGGG[] = {0, 19};
 int BBBBBBBBB[] = {0, 20};
 
 //grp escalier
-int RRRRRRRRRR[] = {0, 207, 217};
-int GGGGGGGGGG[] = {0, 208, 218};
-int BBBBBBBBBB[] = {0, 209, 219};
-int WWWWWWWWWW[] = {0, 210, 220};
-int AAAAAAAAAA[] = {0, 211, 221};
-int UUUUUUUUUU[] = {0, 212, 222};
+int RRRRRRRRRR[] = {0, 207, 217, 227, 237};
+int GGGGGGGGGG[] = {0, 208, 218, 228, 238};
+int BBBBBBBBBB[] = {0, 209, 219, 229, 239};
+int WWWWWWWWWW[] = {0, 210, 220, 230, 240};
+int AAAAAAAAAA[] = {0, 211, 221, 231, 241};
+int UUUUUUUUUU[] = {0, 212, 222, 232, 242};
 
 //grp rgb Led bar
 float lred;
