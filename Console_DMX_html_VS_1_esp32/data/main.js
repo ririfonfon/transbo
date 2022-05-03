@@ -110,7 +110,13 @@ function connect() {
                 var data = e.data.split(':');
                 document.getElementById('c10').value = data[1];
                 document.getElementById('c10_in').value = data[1];
-            } //if i
+            } //if j
+
+            if (e.data.charAt(1) == 'k') {
+                var data = e.data.split(':');
+                document.getElementById('c11').value = data[1];
+                document.getElementById('c11_in').value = data[1];
+            } //if k
 
             if (e.data.charAt(1) == 'z') {
                 var data = e.data.split(':');
@@ -238,6 +244,15 @@ function prepareVar10() {
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 10
+
+function prepareVar11() {
+    var a = parseInt(document.getElementById('c11').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ak" + values;
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 11
 
 function handle_M_B_S(e) {
     e.preventDefault();
