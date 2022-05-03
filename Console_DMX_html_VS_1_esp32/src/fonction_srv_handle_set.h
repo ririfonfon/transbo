@@ -16,6 +16,13 @@ void srv_handle_set()
                 regreen = tgreen;
                 reblue = tblue;
 
+                rored = tred;
+                rogreen = tgreen;
+                roblue = tblue;
+                rowhite = defowhite;
+                roambre = 0;
+                rouv = 0;
+
                 send_rvb1();
             }
         }
