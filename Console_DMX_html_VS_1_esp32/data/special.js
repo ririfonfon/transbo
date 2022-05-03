@@ -255,6 +255,66 @@ function connect() {
                 document.getElementById('cc28').value = data[1];
             } //if m
 
+            if (e.data.charAt(1) == 'n') {
+                var data = e.data.split(':');
+                document.getElementById('cc38').value = data[1];
+            } //if
+            
+            if (e.data.charAt(1) == 'o') {
+                var data = e.data.split(':');
+                document.getElementById('cc39').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'p') {
+                var data = e.data.split(':');
+                document.getElementById('cc40').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'q') {
+                var data = e.data.split(':');
+                document.getElementById('cc41').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'r') {
+                var data = e.data.split(':');
+                document.getElementById('cc42').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 's') {
+                var data = e.data.split(':');
+                document.getElementById('cc43').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 't') {
+                var data = e.data.split(':');
+                document.getElementById('cc44').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'u') {
+                var data = e.data.split(':');
+                document.getElementById('cc45').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'v') {
+                var data = e.data.split(':');
+                document.getElementById('cc46').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'w') {
+                var data = e.data.split(':');
+                document.getElementById('cc47').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'x') {
+                var data = e.data.split(':');
+                document.getElementById('cc48').value = data[1];
+            } //if
+
+            if (e.data.charAt(1) == 'y') {
+                var data = e.data.split(':');
+                document.getElementById('cc49').value = data[1];
+            } //if
+
 
         } // if e
 
@@ -502,6 +562,50 @@ function setEscalierPicker() {
 
     var colorHex = RGBToHex(red, green, blue)
     document.getElementById('Escalier').value = colorHex
+}
+
+function RoutePicker() {
+    var picker = document.getElementById('Route')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc38').value = color.r
+    document.getElementById('cc39').value = color.g
+    document.getElementById('cc40').value = color.b
+
+    prepareVar38()
+    prepareVar39()
+    prepareVar40()
+}
+
+function setRoutePicker() {
+    var red = document.getElementById('cc38').value
+    var green = document.getElementById('cc39').value
+    var blue = document.getElementById('cc40').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Route').value = colorHex
+}
+
+function MedzaPicker() {
+    var picker = document.getElementById('Medza')
+    var color = hexToRGB(picker.value)
+
+    document.getElementById('cc44').value = color.r
+    document.getElementById('cc45').value = color.g
+    document.getElementById('cc46').value = color.b
+
+    prepareVar44()
+    prepareVar45()
+    prepareVar46()
+}
+
+function setMedzaPicker() {
+    var red = document.getElementById('cc44').value
+    var green = document.getElementById('cc45').value
+    var blue = document.getElementById('cc46').value
+
+    var colorHex = RGBToHex(red, green, blue)
+    document.getElementById('Medza').value = colorHex
 }
 
 ////////////////////////////////////////////////////////////////prepare
@@ -872,6 +976,126 @@ function prepareVar37() {
     console.log('iData: ' + data);
     connection.send(data);
 } //prepare 37
+
+function prepareVar38() {
+    var a = parseInt(document.getElementById('cc38').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "en" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 38
+
+function prepareVar39() {
+    var a = parseInt(document.getElementById('cc39').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eo" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 39
+
+function prepareVar40() {
+    var a = parseInt(document.getElementById('cc40').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ep" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 40
+
+function prepareVar41() {
+    var a = parseInt(document.getElementById('cc41').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eq" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 41
+
+function prepareVar42() {
+    var a = parseInt(document.getElementById('cc42').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "er" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 42
+
+function prepareVar43() {
+    var a = parseInt(document.getElementById('cc43').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "es" + values;
+    setRoutePicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 43
+
+function prepareVar44() {
+    var a = parseInt(document.getElementById('cc44').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "et" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 44
+
+function prepareVar45() {
+    var a = parseInt(document.getElementById('cc45').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "eu" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 45
+
+function prepareVar46() {
+    var a = parseInt(document.getElementById('cc46').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ev" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 46
+
+function prepareVar47() {
+    var a = parseInt(document.getElementById('cc47').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ew" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 47
+
+function prepareVar48() {
+    var a = parseInt(document.getElementById('cc48').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ex" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 48
+
+function prepareVar49() {
+    var a = parseInt(document.getElementById('cc49').value).toString(8);
+    if (a.length < 2) { a = '0' + a; }
+    values = a;
+    var data = "ey" + values;
+    setMedzaPicker()
+    console.log('iData: ' + data);
+    connection.send(data);
+} //prepare 49
 
 
 function submitVal(name, val) {
