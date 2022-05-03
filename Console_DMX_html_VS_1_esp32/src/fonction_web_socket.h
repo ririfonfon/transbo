@@ -41,6 +41,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
                 webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
                 webSocket.sendTXT(i, "aj:" + String(lround(Mast[10])));
+                webSocket.sendTXT(i, "ak:" + String(lround(Mast[10])));
                 webSocket.sendTXT(i, "az:" + String(lround(M)));
                 webSocket.sendTXT(i, "m:" + String(Mem));
                 webSocket.sendTXT(i, "g:" + String(etat_live));
@@ -169,7 +170,16 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 send_Mast(10);
                 feedback(num, "aj:" + String(lround(Mast[10])));
 
-            } //i
+            } //j
+
+            if (payload[1] == 'k')
+            {
+                char *pEnd;
+                Mast[11] = strtol((const char *)&payload[2], &pEnd, 8);
+                send_Mast(11);
+                feedback(num, "aj:" + String(lround(Mast[11])));
+
+            } //j
 
             if (payload[1] == 'z')
             {
@@ -377,6 +387,66 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 char *pEnd;
                 DIA = strtol((const char *)&payload[2], &pEnd, 8);
             } //m
+            else if (payload[1] == 'n')
+            {
+                char *pEnd;
+                crored = strtol((const char *)&payload[2], &pEnd, 8);
+            } //n
+            else if (payload[1] == 'o')
+            {
+                char *pEnd;
+                crogreen = strtol((const char *)&payload[2], &pEnd, 8);
+            } //o
+            else if (payload[1] == 'p')
+            {
+                char *pEnd;
+                croblue = strtol((const char *)&payload[2], &pEnd, 8);
+            } //p
+            else if (payload[1] == 'q')
+            {
+                char *pEnd;
+                crowhite = strtol((const char *)&payload[2], &pEnd, 8);
+            } //q
+            else if (payload[1] == 'r')
+            {
+                char *pEnd;
+                croambre = strtol((const char *)&payload[2], &pEnd, 8);
+            } //r
+            else if (payload[1] == 's')
+            {
+                char *pEnd;
+                crouv = strtol((const char *)&payload[2], &pEnd, 8);
+            } //s
+            else if (payload[1] == 't')
+            {
+                char *pEnd;
+                cmered = strtol((const char *)&payload[2], &pEnd, 8);
+            } //t
+            else if (payload[1] == 'u')
+            {
+                char *pEnd;
+                cmegreen = strtol((const char *)&payload[2], &pEnd, 8);
+            } //u
+            else if (payload[1] == 'v')
+            {
+                char *pEnd;
+                cmeblue = strtol((const char *)&payload[2], &pEnd, 8);
+            } //v
+            else if (payload[1] == 'w')
+            {
+                char *pEnd;
+                cmewhite = strtol((const char *)&payload[2], &pEnd, 8);
+            } //w
+            else if (payload[1] == 'x')
+            {
+                char *pEnd;
+                cmeambre = strtol((const char *)&payload[2], &pEnd, 8);
+            } //x
+            else if (payload[1] == 'y')
+            {
+                char *pEnd;
+                cmeuv = strtol((const char *)&payload[2], &pEnd, 8);
+            } //y
         }     //payload[0] == e
         else if (payload[0] == '*')
         {
@@ -397,6 +467,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
                     webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
                     webSocket.sendTXT(i, "aj:" + String(lround(Mast[10])));
+                    webSocket.sendTXT(i, "ak:" + String(lround(Mast[11])));
                     webSocket.sendTXT(i, "az:" + String(lround(M)));
                     webSocket.sendTXT(i, "m:" + String(Mem));
                     webSocket.sendTXT(i, "g:" + String(etat_live));
