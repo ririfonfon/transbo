@@ -33,13 +33,13 @@ function connect() {
         } //if (e.data.charAt(0) == 'm')
 
         if (e.data.charAt(0) == 's') {
-            var val = e.data.split(':')[1];
-            var elems = document.querySelectorAll('#mode lis s');
-            [].forEach.call(elems, function(sel) {
-                el.classList.remove('active');
+            var sval = e.data.split(':')[1];
+            var selems = document.querySelectorAll('#escalier lis s');
+            [].forEach.call(selems, function(sel) {
+                sel.classList.remove('active');
             });
             document.getElementById(sval).classList.add('active');
-        } //if (e.data.charAt(0) == 'm')
+        } //if (e.data.charAt(0) == 's')
 
         if (e.data.charAt(0) == 'g') {
             var vval = e.data.split(':')[1];
@@ -262,7 +262,7 @@ function handle_M_B_S(e) {
     console.log('val: ' + val);
 
     if (e.target.className.indexOf('s') > -1) {
-        elems = document.querySelectorAll('#escalier lis s');
+        selems = document.querySelectorAll('#escalier lis s');
         [].forEach.call(selems, function(sel) {
             sel.classList.remove('active');
             name = e.target.className;
