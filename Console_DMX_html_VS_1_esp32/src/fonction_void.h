@@ -370,7 +370,7 @@ void send_rvb2()
         ESP32DMX.setSlot(temp, D[temp]);
     } // for RRRRRRRRRRR
 
-    for (int i = 1; i < (sizeof(GGGGGGGGG) / 4); i++)
+    for (int i = 1; i < (sizeof(GGGGGGGGGG) / 4); i++)
     {
         int temp = GGGGGGGGGG[i];
         D[temp] = egreen;
@@ -731,7 +731,7 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } // for RRRRRRRRRRR
 
-    for (int i = 1; i < (sizeof(GGGGGGGGG) / 4); i++)
+    for (int i = 1; i < (sizeof(GGGGGGGGGG) / 4); i++)
     {
         int temp = GGGGGGGGGG[i];
         D[temp] = egreen;
@@ -813,7 +813,7 @@ void send_rvb6()
 
 void send_Mast(int Mas)
 {
-    if (Mas == 1)
+    if (Mas == 1 || Mas == 0)
     {
         for (int i = 1; i < (sizeof(M1) / 4); i++)
         {
@@ -824,13 +824,13 @@ void send_Mast(int Mas)
             }
             else
             {
-                D[temp] = Mast[1];
+                D[temp] = (Mast[1] / 255) * MM;
             }
             ESP32DMX.setSlot(temp, D[temp]);
 
         } // for M1
     }
-    if (Mas == 2)
+    if (Mas == 2 || Mas == 0)
     {
         for (int i = 1; i < (sizeof(M2) / 4); i++)
         {
@@ -841,7 +841,7 @@ void send_Mast(int Mas)
             }
             else
             {
-                D[temp] = Mast[2];
+                D[temp] = (Mast[2] / 255) * MM;
             }
             ESP32DMX.setSlot(temp, D[temp]);
         } // for M2
