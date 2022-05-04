@@ -774,7 +774,7 @@ void send_rvb6()
         ESP32DMX.setSlot(temp, D[temp]);
     } // for RRRRRRRRRRRR
 
-    for (int i = 1; i < (sizeof(GGGGGGGGGG) / 4); i++)
+    for (int i = 1; i < (sizeof(GGGGGGGGGGG) / 4); i++)
     {
         int temp = GGGGGGGGGGG[i];
         D[temp] = egreen;
