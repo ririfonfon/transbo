@@ -6,6 +6,7 @@ bool list[MAX_CLIENT] = {false, false, false, false, false, false}; // client
 bool OFF = false;
 bool GAUCHE = true;
 bool DROIT = false;
+int etat_escalier = 32;
 
 const uint8_t Master = 12;
 float Mast[Master] = {0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255};

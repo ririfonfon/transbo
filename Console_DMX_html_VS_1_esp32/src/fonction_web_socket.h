@@ -41,10 +41,12 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 webSocket.sendTXT(i, "ah:" + String(lround(Mast[8])));
                 webSocket.sendTXT(i, "ai:" + String(lround(Mast[9])));
                 webSocket.sendTXT(i, "aj:" + String(lround(Mast[10])));
-                webSocket.sendTXT(i, "ak:" + String(lround(Mast[10])));
+                webSocket.sendTXT(i, "ak:" + String(lround(Mast[11])));
                 webSocket.sendTXT(i, "az:" + String(lround(M)));
                 webSocket.sendTXT(i, "m:" + String(Mem));
                 webSocket.sendTXT(i, "g:" + String(etat_live));
+                webSocket.sendTXT(i, "s:" + String(etat_escalier));
+
             } //if (i != num) {
         }     //for (int i = 0; i < clientn; i++)
     }
@@ -177,7 +179,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 char *pEnd;
                 Mast[11] = strtol((const char *)&payload[2], &pEnd, 8);
                 send_Mast(11);
-                feedback(num, "aj:" + String(lround(Mast[11])));
+                feedback(num, "ak:" + String(lround(Mast[11])));
 
             } //j
 
@@ -471,6 +473,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                     webSocket.sendTXT(i, "az:" + String(lround(M)));
                     webSocket.sendTXT(i, "m:" + String(Mem));
                     webSocket.sendTXT(i, "g:" + String(etat_live));
+                    webSocket.sendTXT(i, "s:" + String(etat_escalier));
                 } //if (i != num) {
             }     //for (int i = 0; i < clientn; i++)
 
@@ -649,23 +652,27 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
         {
             char *pEnd;
             int check = strtol((const char *)&payload[1], &pEnd, 10);
+            etat_escalier = check;
 
-            if (check == 1)
+            if (check == 31)
             {
                 GAUCHE = true;
                 DROIT = true;
+                feedback(num, "s:31");
             } // G&D
 
-            else if (check == 2)
+            else if (check == 32)
             {
                 GAUCHE = true;
                 DROIT = false;
+                feedback(num, "s:32");
             } // G
 
-            else if (check == 3)
+            else if (check == 33)
             {
                 GAUCHE = false;
                 DROIT = true;
+                feedback(num, "s:33");
             } // D
             send_Mast(0);
         }

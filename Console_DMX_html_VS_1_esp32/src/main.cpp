@@ -2,7 +2,7 @@
 
 #define VERSION 5
 
-// #define DEBUG 1
+#define DEBUG 1
 // #define DEBUGH 1
 // #define DEBUGC 1
 // #define DEBUGMASTER 1
@@ -91,8 +91,8 @@ void setup()
   // IPAddress myIP = WiFi.softAPIP();
 
   WiFi.setHostname(host);
-  IPAddress Ip(192, 168, 2, 250);
   // IPAddress Ip(192, 168, 0, 150);// riri dev
+  IPAddress Ip(192, 168, 2, 250);
   IPAddress NMask(255, 0, 0, 0);
   WiFi.config(Ip, Ip, NMask);
 
@@ -176,7 +176,7 @@ void setup()
   Serial.println();
   Serial.print("Configuring access point...");
   Serial.println("AP IP address: ");
-  Serial.println(myIP);
+  Serial.println(WiFi.localIP());
   Serial.println("HTTP server OK");
 #endif
 
