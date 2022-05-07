@@ -41,68 +41,68 @@ const int end_dmx = 300;
 int D[end_dmx];
 
 //grp Led bar
-int R[] = {0, 4, 7, 10, 13, 25};
-int G[] = {0, 5, 8, 11, 14, 26};
-int B[] = {0, 6, 9, 12, 15, 27};
+int R_bar[] = {0, 4, 7, 10, 13, 25};
+int G_bar[] = {0, 5, 8, 11, 14, 26};
+int B_bar[] = {0, 6, 9, 12, 15, 27};
 
 //grp Trans 1 face , route
-int RR[] = {0, 122, 132, 142, 152, 162};        // colorpicker 1
-int GG[] = {0, 123, 133, 143, 153, 163};        // colorpicker 1
-int BB[] = {0, 124, 134, 144, 154, 164};        // colorpicker 1
+int R_trans_face[] = {0, 122, 132, 142, 152, 162};        // colorpicker 1
+int G_trans_face[] = {0, 123, 133, 143, 153, 163};        // colorpicker 1
+int B_trans_face[] = {0, 124, 134, 144, 154, 164};        // colorpicker 1
 
 //grp colonnes
-int RRR[] = {0, 52, 62, 72, 82, 92};
-int GGG[] = {0, 53, 63, 73, 83, 93};
-int BBB[] = {0, 54, 64, 74, 84, 94};
+int R_colonnes[] = {0, 52, 62, 72, 82, 92};
+int G_colonnes[] = {0, 53, 63, 73, 83, 93};
+int B_colonnes[] = {0, 54, 64, 74, 84, 94};
 
 //grp trans 2 lat
-int RRRR[] = {0, 172, 180};                     // colorpicker 2
-int GGGG[] = {0, 173, 181};                     // colorpicker 2
-int BBBB[] = {0, 174, 182};                     // colorpicker 2
-int WWWW[] = {0, 175, 183};                     // colorpicker 2
+int R_trans_lat[] = {0, 172, 180};                     // colorpicker 2
+int G_trans_lat[] = {0, 173, 181};                     // colorpicker 2
+int B_trans_lat[] = {0, 174, 182};                     // colorpicker 2
+int W_trans_lat[] = {0, 175, 183};                     // colorpicker 2
 
 //grp logo
-int RRRRR[] = {0, 188};
-int GGGGG[] = {0, 189};
-int BBBBB[] = {0, 190};
-int WWWWW[] = {0, 191};
+int R_logo[] = {0, 188};
+int G_logo[] = {0, 189};
+int B_logo[] = {0, 190};
+int W_logo[] = {0, 191};
 
 //grp club
-int RRRRRR[] = {0, 196};                        // colorpicker 2
-int GGGGGG[] = {0, 197};                        // colorpicker 2
-int BBBBBB[] = {0, 198};                        // colorpicker 2
-int WWWWWW[] = {0, 199};                        // colorpicker 2
+int R_club[] = {0, 196};                        // colorpicker 2
+int G_club[] = {0, 197};                        // colorpicker 2
+int B_club[] = {0, 198};                        // colorpicker 2
+int W_club[] = {0, 199};                        // colorpicker 2
 
 //grp regie
-int RRRRRRR[] = {0, 102, 112};                  // colorpicker 1
-int GGGGGGG[] = {0, 103, 113};                  // colorpicker 1
-int BBBBBBB[] = {0, 104, 114};                  // colorpicker 1
+int R_regie[] = {0, 102, 112};                  // colorpicker 1
+int G_regie[] = {0, 103, 113};                  // colorpicker 1
+int B_regie[] = {0, 104, 114};                  // colorpicker 1
 
 //grp sandwich
-int RRRRRRRR[] = {0, 32};
-int GGGGGGGG[] = {0, 33};
-int BBBBBBBB[] = {0, 34};
+int R_sandwich[] = {0, 32};
+int G_sandwich[] = {0, 33};
+int B_sandwich[] = {0, 34};
 
 //grp bouteille
-int RRRRRRRRR[] = {0, 18};
-int GGGGGGGGG[] = {0, 19};
-int BBBBBBBBB[] = {0, 20};
+int R_bouteille[] = {0, 18};
+int G_bouteille[] = {0, 19};
+int B_bouteille[] = {0, 20};
 
 //grp escalier , medza 
-int RRRRRRRRRR[] = {0, 207, 217, 227, 237};     // colorpicker 2
-int GGGGGGGGGG[] = {0, 208, 218, 228, 238};     // colorpicker 2
-int BBBBBBBBBB[] = {0, 209, 219, 229, 239};     // colorpicker 2
-int WWWWWWWWWW[] = {0, 210, 220, 230, 240};     // colorpicker 2
-int AAAAAAAAAA[] = {0, 211, 221, 231, 241};     // colorpicker 2
-int UUUUUUUUUU[] = {0, 212, 222, 232, 242};     // colorpicker 2
+int R_escalier[] = {0, 207, 217, 227, 237};     // colorpicker 2
+int G_escalier[] = {0, 208, 218, 228, 238};     // colorpicker 2
+int B_escalier[] = {0, 209, 219, 229, 239};     // colorpicker 2
+int W_escalier[] = {0, 210, 220, 230, 240};     // colorpicker 2
+int A_escalier[] = {0, 211, 221, 231, 241};     // colorpicker 2
+int U_escalier[] = {0, 212, 222, 232, 242};     // colorpicker 2
 
 //grp route
-int RRRRRRRRRRR[] = {0, 247};     // colorpicker 1
-int GGGGGGGGGGG[] = {0, 248};     // colorpicker 1
-int BBBBBBBBBBB[] = {0, 249};     // colorpicker 1
-int WWWWWWWWWWW[] = {0, 250};     // colorpicker 1
-int AAAAAAAAAAA[] = {0, 251};     // colorpicker 1
-int UUUUUUUUUUU[] = {0, 252};     // colorpicker 1
+int R_route[] = {0, 247};     // colorpicker 1
+int G_route[] = {0, 248};     // colorpicker 1
+int B_route[] = {0, 249};     // colorpicker 1
+int W_route[] = {0, 250};     // colorpicker 1
+int A_route[] = {0, 251};     // colorpicker 1
+int U_route[] = {0, 252};     // colorpicker 1
 
 //grp rgb Led bar
 float lred;
