@@ -124,9 +124,9 @@ float ttblue;
 float ttwhite;
 
 //grp rgb colonnes
-float cred;
-float cgreen;
-float cblue;
+float cred;                 // colorpicker 2
+float cgreen;               // colorpicker 2
+float cblue;                // colorpicker 2
 
 //grp rgbw logo
 float lored;
