@@ -614,7 +614,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
                 send_Mast(2);
                 send_rvb6(); // all
 
-            } // mem11 [   ]
+            } // mem11 [ OFF ]
 
             else if (check == 12)
             {
