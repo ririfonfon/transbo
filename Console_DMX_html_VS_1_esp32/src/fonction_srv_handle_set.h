@@ -49,6 +49,10 @@ void srv_handle_set()
                 eambre = 0;
                 euv = 0;
 
+                cred = ttred;
+                cgreen = ttgreen;
+                cblue = ttblue;
+
                 send_rvb2();
             }
         }
