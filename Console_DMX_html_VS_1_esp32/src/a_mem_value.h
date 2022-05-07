@@ -686,7 +686,7 @@ void mem_value(int a)
         meambre = lambre;
         meuv = luv;
     }
-    else if (a == 11)
+    else if (a == 11) // mem 11 off
     {
         // grp rgb Led bar
         lred = 0;
@@ -743,7 +743,7 @@ void mem_value(int a)
         ered = lred;
         egreen = lgreen;
         eblue = lblue;
-        ewhite = 255;
+        ewhite = 0;
         eambre = lambre;
         euv = luv;
 
