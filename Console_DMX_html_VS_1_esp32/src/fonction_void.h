@@ -404,6 +404,29 @@ void send_rvb2()
         D[temp] = euv;
         ESP32DMX.setSlot(temp, D[temp]);
     } // for U_escalier
+
+    /////////////////////////////////////////////////////// grp colonnes
+
+    for (int i = 1; i < (sizeof(R_colonnes) / 4); i++)
+    {
+        int temp = R_colonnes[i];
+        D[temp] = cred;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } // for R_colonnes
+
+    for (int i = 1; i < (sizeof(G_colonnes) / 4); i++)
+    {
+        int temp = G_colonnes[i];
+        D[temp] = cgreen;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } // for G_colonnes
+
+    for (int i = 1; i < (sizeof(B_colonnes) / 4); i++)
+    {
+        int temp = B_colonnes[i];
+        D[temp] = cblue;
+        ESP32DMX.setSlot(temp, D[temp]);
+    } // for B_colonnes
 } // send_rvb2
 
 void send_rvb3()
