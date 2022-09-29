@@ -1,6 +1,6 @@
 // platformio run --target uploadfs // cmd console download spiff
 
-#define VERSION 6
+#define VERSION 7
 
 // #define DEBUG 1
 // #define DEBUGH 1
@@ -158,6 +158,9 @@ void setup()
   server.serveStatic("/special", SPIFFS, "/special.html");
   server.serveStatic("/special.js", SPIFFS, "/special.js");
   server.serveStatic("/special.css", SPIFFS, "/special.css");
+  server.serveStatic("/remote", SPIFFS, "/remote.html");
+  server.serveStatic("/remote.js", SPIFFS, "/remote.js");
+  server.serveStatic("/remote.css", SPIFFS, "/remote.css");
   server.begin();
 
   MDNS.addService("http", "tcp", 80);
