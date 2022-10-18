@@ -1,6 +1,6 @@
 // platformio run --target uploadfs // cmd console download spiff
 
-#define VERSION 7
+#define VERSION 8
 
 // #define DEBUG 1
 // #define DEBUGH 1
@@ -65,10 +65,10 @@ void setup()
 {
   EEPROM.begin(EEPROM_SIZE);
 
-  //init led
+  // init led
   init_led();
 
-  //init dmx
+  // init dmx
   init_dmx_out();
 
 #ifdef DEBUG
@@ -98,6 +98,14 @@ void setup()
 
   WiFi.begin(ssid, password);
   delay(1000);
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print(".");
+    delay(100);
+  }
+
+  Serial.println("\nConnected to the WiFi network");
+
   IPAddress myIP = WiFi.localIP();
 
   //////////////////////////////////////////////////// SPIFFS
@@ -105,31 +113,30 @@ void setup()
   listDir(SPIFFS, "/", 0);
 
   //////////////////////////////////////////////////// SERVER INIT
-  //list directory
+  // list directory
   server.on("/list", HTTP_GET, handleFileList);
-  //load editor
-  server.on("/edit", HTTP_GET, []() {
+  // load editor
+  server.on("/edit", HTTP_GET, []()
+            {
     if (!handleFileRead("/edit.html"))
-      server.send(404, "text/plain", "FileNotFound");
-  });
-  //create file
+      server.send(404, "text/plain", "FileNotFound"); });
+  // create file
   server.on("/edit", HTTP_PUT, handleFileCreate);
-  //delete file
+  // delete file
   server.on("/edit", HTTP_DELETE, handleFileDelete);
-  //first callback is called after the request has ended with all parsed arguments
-  //second callback handles file uploads at that location
+  // first callback is called after the request has ended with all parsed arguments
+  // second callback handles file uploads at that location
   server.on(
-      "/edit", HTTP_POST, []() {
-        server.send(200, "text/plain", "");
-      },
+      "/edit", HTTP_POST, []()
+      { server.send(200, "text/plain", ""); },
       handleFileUpload);
 
-  //called when the url is not defined here
-  //use it to load content from SPIFFS
-  server.onNotFound([]() {
+  // called when the url is not defined here
+  // use it to load content from SPIFFS
+  server.onNotFound([]()
+                    {
     if (!handleFileRead(server.uri()))
-      server.send(404, "text/plain", "FileNotFound");
-  }); //server.onNotFound
+      server.send(404, "text/plain", "FileNotFound"); }); // server.onNotFound
 
   // start webSocket server
   webSocket.begin();
@@ -148,7 +155,7 @@ void setup()
   Serial.println("HTTP server setup");
 #endif
 
-  //Serveur
+  // Serveur
   server.on("/set", srv_handle_set);
   server.serveStatic("/", SPIFFS, "/console.html");
   server.serveStatic("/main.js", SPIFFS, "/main.js");
@@ -183,10 +190,13 @@ void setup()
   Serial.println("HTTP server OK");
 #endif
 
-//////////////////////////////////////////////////// ota
-ota_setup();
+  WiFi.setAutoReconnect(true);
+  WiFi.persistent(true);
 
-} //setup
+  //////////////////////////////////////////////////// ota
+  ota_setup();
+
+} // setup
 
 //////////////////////////////////////////////////// loop
 void loop()
