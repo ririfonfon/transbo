@@ -835,7 +835,7 @@ void send_rvb6()
 
 void send_Mast(int Mas)
 {
-    if (Mas == 1 || Mas == 0)
+    if (Mas == 1)
     {
         for (int i = 1; i < (sizeof(M1) / 4); i++)
         {
@@ -852,7 +852,7 @@ void send_Mast(int Mas)
 
         } // for M1
     }
-    if (Mas == 2 || Mas == 0)
+    if (Mas == 2)
     {
         for (int i = 1; i < (sizeof(M2) / 4); i++)
         {
